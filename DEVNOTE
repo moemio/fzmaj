@@ -1,0 +1,14 @@
+build 1
+
+	A framework for fz mahjong adaptive AI program. The first version can only read 
+	a input file including a command line.
+
+build 2
+
+	Just a test for github.
+
+build 3
+
+	A test for template. Command should contain a "command" method.
+
+
