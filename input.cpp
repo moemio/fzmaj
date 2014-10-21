@@ -8,6 +8,7 @@
 #include "memory.h"
 #include "error.h"
 #include "style_command.h"
+#include "run.h"
 
 #define DELTALINE 256
 #define DELTA 4
@@ -287,7 +288,7 @@ int Input::execute_command()
 {
   	int flag = 1;
   
-  	if (!strcmp(command,"run")) run();
+  	if (!strcmp(command,"run_test")) run_test();
   
   	else flag = 0;
   
@@ -316,7 +317,7 @@ void Input::command_creator(FZMAJ *maj, int narg, char **arg)
   cmd.command(narg,arg);
 }
 
-void Input::run()
+void Input::run_test()
 {
 	if (screen) fprintf(screen, "Hello, world!\n");
 }

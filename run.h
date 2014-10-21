@@ -1,5 +1,11 @@
-#ifndef LMP_RUN_H
-#define LMP_RUN_H
+#ifdef COMMAND_CLASS
+
+CommandStyle(run,Run)
+
+#else
+
+#ifndef MAJ_RUN_H
+#define MAJ_RUN_H
 
 #include "pointers.h"
 
@@ -13,4 +19,5 @@ class Run : protected Pointers {
 
 }
 
+#endif
 #endif

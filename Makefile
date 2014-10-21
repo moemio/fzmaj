@@ -8,7 +8,7 @@ DEPFLAGS = -M
 
 FLAG = $(CFLAGS) $(LIBS) $(DEPFLAGS)
 
-OBJ = fzmaj.o error.o input.o memory.o main.o 
+OBJ = fzmaj.o error.o input.o memory.o main.o run.o
 
 all : Maj
 

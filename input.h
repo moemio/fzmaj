@@ -38,7 +38,7 @@ private:
 	void reallocate(char *&, int &,int);
 	int execute_command();
 
-	void run(); // FZMAJ Commands
+	void run_test(); // FZMAJ Commands
 
 };
 
