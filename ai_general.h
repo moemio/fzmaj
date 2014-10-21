@@ -1,6 +1,6 @@
 #ifdef AI_CLASS
 
-AIStyle(tsumogiri, AI_General)
+AIStyle(general, AI_General)
 
 #else
 
