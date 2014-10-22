@@ -11,4 +11,6 @@ build 3
 
 	A test for template. Command should contain a "command" method.
 
-
+build 4
+	
+	Add class Syanten for syanten calculation.
