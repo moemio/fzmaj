@@ -2,6 +2,8 @@
 #include "memory.h"
 #include "error.h"
 #include "input.h"
+#include "syanten.h"
+#include "tools.h"
 #include "string.h"
 #include "ctype.h"
 #include "style_ai.h"
@@ -13,6 +15,8 @@ FZMAJ::FZMAJ(int narg, char **arg)
 {
 	memory = new Memory(this);
 	error = new Error(this);
+	
+	tools = new Tools(this);
 
 	screen = stdout;
 	logfile = NULL;
@@ -77,6 +81,8 @@ FZMAJ::FZMAJ(int narg, char **arg)
 	}
 
 	input = new Input(this,narg,arg);
+	syanten = new Syanten(this);
+	tools = new Tools(this);
 }
 
 FZMAJ::~FZMAJ()

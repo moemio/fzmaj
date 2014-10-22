@@ -39,6 +39,7 @@ private:
 	int execute_command();
 
 	void run_test(); // FZMAJ Commands
+	void str2pai();
 
 };
 

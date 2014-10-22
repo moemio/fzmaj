@@ -11,6 +11,7 @@ public:
 	class Memory *memory;
 	class Error *error;
 	class Input *input;
+	class Tools *tools;
 	
 	class Syanten *syanten;
 

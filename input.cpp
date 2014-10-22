@@ -5,6 +5,8 @@
 #include "sys/stat.h"
 #include "unistd.h"
 #include "input.h"
+#include "tools.h"
+#include "syanten.h"
 #include "memory.h"
 #include "error.h"
 #include "style_command.h"
@@ -289,6 +291,7 @@ int Input::execute_command()
   	int flag = 1;
   
   	if (!strcmp(command,"run_test")) run_test();
+	else if (!strcmp(command,"str2pai")) str2pai();
   
   	else flag = 0;
   
@@ -320,4 +323,12 @@ void Input::command_creator(FZMAJ *maj, int narg, char **arg)
 void Input::run_test()
 {
 	if (screen) fprintf(screen, "Hello, world!\n");
+}
+
+void Input::str2pai()
+{
+	if (narg!=1) error->all(FLERR, "Illegal str2pai command");
+	int c[34];
+	tools->Str2pai(arg[0], c);
+	int nst = syanten->calcSyantenAll(c);
 }

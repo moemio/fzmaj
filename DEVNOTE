@@ -14,3 +14,19 @@ build 3
 build 4
 	
 	Add class Syanten for syanten calculation.
+
+build 5
+	
+	Add new subcommand "str2pai"
+
+	Syanten calculation is available.
+	
+	make
+	./Maj 
+	str2pai 123456z789m11122p
+
+	output:
+	st_normal : 3
+	st_7 : 4
+	st_13 : 4
+	min_syanten : 3

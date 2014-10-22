@@ -20,6 +20,7 @@ public:
 		memory(ptr->memory),
 		error(ptr->error),
 		input(ptr->input),
+		tools(ptr->tools),
 		syanten(ptr->syanten),
 		infile(ptr->infile),
 		screen(ptr->screen),
@@ -32,7 +33,7 @@ protected:
 	Memory *&memory;
 	Error *&error;
 	Input *&input;
-
+	Tools *&tools;
 	Syanten *&syanten;
 
 	FILE *&infile;

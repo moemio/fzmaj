@@ -2,6 +2,7 @@
 #include "string.h"
 #include "error.h"
 #include "syanten.h"
+#include "tools.h"
 #include <cmath>
 
 using namespace FZMAJ_NS;
@@ -62,14 +63,6 @@ void Syanten::i_tatsu_k(int k) { --c[k]; --c[k+2]; ++n_tatsu;}
 void Syanten::d_tatsu_k(int k) { ++c[k]; ++c[k+2]; --n_tatsu;}
 void Syanten::i_koritsu(int k) { --c[k]; f_koritsu|=(1<<k);}
 void Syanten::d_koritsu(int k) { ++c[k]; f_koritsu&=~(1<<k);}
-
-int Syanten::count34()
-{
-	return c[ 0]+c[ 1]+c[ 2]+c[ 3]+c[ 4]+c[ 5]+c[ 6]+c[ 7]+c[ 8]+
-	       c[ 9]+c[10]+c[11]+c[12]+c[13]+c[14]+c[15]+c[16]+c[17]+
-		   c[18]+c[19]+c[20]+c[21]+c[22]+c[23]+c[24]+c[25]+c[26]+
-		   c[27]+c[28]+c[29]+c[30]+c[31]+c[32]+c[33];
-}
 
 void Syanten::scan713()
 {
@@ -193,11 +186,12 @@ void Syanten::Run(int depth)
 	}
 }
 
-int Syanten::calcSyanten(bool isSkip713)
+int Syanten::calcSyanten(int isSkip713)
 {
-	int nc = count34();
+	int nc = tools->CountPai(c);
+	printf("npai=%d\n",nc);
 	if (nc>14) return -2;
-	if (!isSkip713 && nc>=13) scan713();
+	if (isSkip713==0 && nc>=13) scan713();
 	removeJihai(nc);
 	double imt = ((14-(float)nc)/3);
 	int init_mentsu=(int)floor(imt);
@@ -214,14 +208,20 @@ int Syanten::calcSyanten(bool isSkip713)
 
 int Syanten::calcSyantenAll(int tehai[])
 {
-	c[0] = *tehai;
-	calcSyanten(false);
+	init();
+	int i;
+	for(i=0;i<34;i++)
+		c[i]=tehai[i];
+	calcSyanten(0);
 	return min_syanten;
 }
 
 int Syanten::calcSyantenNo713(int tehai[])
 {
-	c[0] = *tehai;
-	calcSyanten(true);
+	init();
+	int i;
+	for(i=0;i<34;i++)
+		c[i]=tehai[i];
+	calcSyanten(1);
 	return min_syanten;
 }
