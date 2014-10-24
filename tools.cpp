@@ -1,4 +1,5 @@
 #include "tools.h"
+#include "stdlib.h"
 #include "string.h"
 #include "error.h"
 
@@ -58,4 +59,25 @@ int Tools::CountPai(int c[])
 	       c[10]+c[11]+c[12]+c[13]+c[14]+c[15]+c[16]+c[17]+c[18]+c[19]+
 	       c[20]+c[21]+c[22]+c[23]+c[24]+c[25]+c[26]+c[27]+c[28]+c[29]+
 	       c[30]+c[31]+c[32]+c[33];
+}
+
+void Tools::randPerm(int n, int perm[])
+{
+	int i,j,t;
+	for(i=0;i<n;i++)
+		perm[i]=i;
+	for(i=0;i<n;i++) {
+		j = rand()%(n-i)+i;
+		t = perm[j];
+		perm[j] = perm[i];
+		perm[i] = t;
+	}
+}
+
+int Tools::check_aka(int n)
+{
+	if (n==16) return 1;
+	if (n==52) return 2;
+	if (n==88) return 3;
+	return 0;
 }

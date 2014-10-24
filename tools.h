@@ -10,6 +10,8 @@ public:
 	void Pai2str(int, char*);
 	int  Str2pai(char*, int[] );
 	int CountPai(int []);
+	void randPerm(int, int []);
+	int check_aka(int);
 
 	Tools(FZMAJ *maj);
 	~Tools();

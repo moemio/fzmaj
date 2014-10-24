@@ -30,3 +30,8 @@ build 5
 	st_7 : 4
 	st_13 : 4
 	min_syanten : 3
+
+build 6
+	
+	Add a new class Game for game settings.
+

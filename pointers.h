@@ -22,6 +22,7 @@ public:
 		input(ptr->input),
 		tools(ptr->tools),
 		syanten(ptr->syanten),
+		game(ptr->game),
 		infile(ptr->infile),
 		screen(ptr->screen),
 		logfile(ptr->logfile) {}
@@ -35,6 +36,7 @@ protected:
 	Input *&input;
 	Tools *&tools;
 	Syanten *&syanten;
+	Game *&game;
 
 	FILE *&infile;
 	FILE *&logfile;

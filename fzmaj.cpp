@@ -6,6 +6,7 @@
 #include "tools.h"
 #include "string.h"
 #include "ctype.h"
+#include "game.h"
 #include "style_ai.h"
 #include "style_command.h"
 
@@ -83,6 +84,7 @@ FZMAJ::FZMAJ(int narg, char **arg)
 	input = new Input(this,narg,arg);
 	syanten = new Syanten(this);
 	tools = new Tools(this);
+	game = new Game(this);
 }
 
 FZMAJ::~FZMAJ()

@@ -12,6 +12,7 @@ public:
 	class Error *error;
 	class Input *input;
 	class Tools *tools;
+	class Game *game;
 	
 	class Syanten *syanten;
 

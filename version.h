@@ -1,1 +1,1 @@
-#define FZMAJ_VERSION "2014-10-21 build 0"
+#define FZMAJ_VERSION "2014-10-24 build 6"
