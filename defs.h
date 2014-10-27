@@ -45,5 +45,24 @@ struct Bakyou {
 	int isRed;
 };
 
+struct PATTERN {
+   int c[34];
+   int score;
+   int score_oya;
+   int score_ko;
+   int kotsu[34];
+   int syuntsu[34];
+   int toitsu[34];
+   int atama;
+   int n_kotsu;
+   int n_syuntsu;
+   int n_naki;
+   int naki_kotsu[34];
+   int naki_syuntsu[34];
+   int isYakuman;
+   int yakuman_baisu;
+   int isChiitoi;
+   int isKokushi;
+};
 
 #endif
