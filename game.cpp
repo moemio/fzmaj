@@ -9,7 +9,7 @@ Game::Game(FZMAJ *maj) : Pointers(maj) {}
 
 Game::~Game(){}
 
-void Game::init(long s)
+void Game::start(long s)
 {
 	int i;
 	seed = s;
@@ -17,6 +17,7 @@ void Game::init(long s)
 	bafuu = 27;
 	kyoku = 0;
 	hajioya = rand()%4;
+	oya = hajioya;
 	honba = 0;
 	residue = 0;
 	pos_ptr = hajioya;
@@ -25,6 +26,8 @@ void Game::init(long s)
 	for(i=0;i<4;++i) {
 		score[i]=25000;
 	}
+
+	gameLoop();
 }
 
 void Game::clearGame()
@@ -110,3 +113,20 @@ void Game::initGame()
 
 }
 
+int Game::gameLoop()
+{
+	int kr;
+	
+	initGame();
+	printf("start. oya = %d\n",oya);
+
+	while(!Ryukyoku) {
+		
+		++pai_ptr;
+
+		if (pai_ptr==dead_ptr) Ryukyoku=1;
+	}
+
+	clearGame();
+	printf("da wanle.\n");
+}

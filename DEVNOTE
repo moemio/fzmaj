@@ -35,3 +35,6 @@ build 6
 	
 	Add a new class Game for game settings.
 
+build 7
+	
+	Add a new class Agari for agari handan and score calc.

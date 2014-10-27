@@ -9,11 +9,12 @@ namespace FZMAJ_NS {
 
 class Game : protected Pointers {
 public:
-	
+
+
 	Game(class FZMAJ *);
 	~Game();
 //	int getBakyou(int pos, class Bakyou *);
-	int startGame();
+	void start(long);
 
 protected:
 	
@@ -56,10 +57,11 @@ protected:
 
 	long seed;
 
-	void init(long);
 	void clearGame();
 	void initGame();
 	void initPai(int []);
+
+	int gameLoop();
 
 };
 
