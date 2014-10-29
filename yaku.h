@@ -1,6 +1,8 @@
 #ifndef MAJ_YAKU_H
 #define MAJ_YAKU_H
 
+#include "pointers.h"
+
 namespace FZMAJ_NS {
 
 const char YAKU_NAME[46][25] = {
@@ -16,7 +18,7 @@ const char YAKU_NAME[46][25] = {
 	{"Tan Yao         "},
 	{"I-pei kou       "},
 	{"Pinfu           "},
-	{"Hon Tyantai     "},
+	{"Hon Chantai     "},
 	{"Ikki Tsukan     "},
 	{"SanShoku Tonsyun"},
 	{"Double Riichi   "},
@@ -27,7 +29,7 @@ const char YAKU_NAME[46][25] = {
 	{"Syao Sangen     "},
 	{"Hon Rou Tou     "},
 	{"Chii Toitsu     "},
-	{"Jon Tyantai     "},
+	{"Jon Chantai     "},
 	{"Hon Yii Sou     "},
 	{"Ryanpei kou     "},
 	{"Chin Yii Sou    "},
@@ -101,8 +103,20 @@ enum YAKU_SHURUI {
 	YAKU_JONCHUUREN						// 45
 };
 
-class YAKU {
+class Yaku : protected Pointers  {
 public:	
+	int countYaku(Bakyou *, PATTERN &);
+	Yaku(class FZMAJ *);
+	~Yaku();
+protected:
+	
+	int fan;
+	int fu;
+	int yakus[46];
+	int score;
+	int fan_nodora;
+
+
 	int IsMenTsumo();
 	int IsRiichi();
 	int IsTyankan();
@@ -156,17 +170,15 @@ public:
 
 	void countFan();
 	int countFu();
-	int countScore(Bakyou *bak, PATTERN &part);
-	
-	YAKU(FZMAJ *);
-	~YAKU();
+	int countScore();
 
 	PATTERN *pattern;
-	BAKYOU * bak;
+	Bakyou * bak;
 
 	int yakufan[46];
 	int Is19(int k);
 	int Is19z(int k);
+
 };
 
 }

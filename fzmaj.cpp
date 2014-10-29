@@ -3,6 +3,8 @@
 #include "error.h"
 #include "input.h"
 #include "syanten.h"
+#include "agari.h"
+#include "yaku.h"
 #include "tools.h"
 #include "string.h"
 #include "ctype.h"
@@ -83,6 +85,8 @@ FZMAJ::FZMAJ(int narg, char **arg)
 
 	input = new Input(this,narg,arg);
 	syanten = new Syanten(this);
+	agari = new Agari(this);
+	yaku = new Yaku(this);
 	tools = new Tools(this);
 	game = new Game(this);
 }
@@ -94,10 +98,16 @@ FZMAJ::~FZMAJ()
 	logfile = NULL;
 
 	if (infile && infile != stdin) fclose(infile);
-
+	
 	delete input;
 	delete error;
 	delete memory;
+
+	delete syanten;
+	delete agari;
+	delete yaku;
+
+	delete game;
 }
 
 void FZMAJ::help()

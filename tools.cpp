@@ -9,17 +9,6 @@ Tools::Tools(FZMAJ *maj) : Pointers(maj) {}
 
 Tools::~Tools(){}
 
-
-void Tools::Pai2str(int cpai, char* spai)
-{
-	char tp;
-	if (cpai>=9) {cpai -=9; tp='p';}
-	else tp ='m';
-	if (cpai>=9) {cpai -=9; tp='s';}
-	if (cpai>=9) {cpai -=9; tp='z';}
-	sprintf(spai, "%d%c", cpai, tp);
-}
-
 int Tools::Str2pai(char *spai, int c[])
 {
 	int i, e=-1, l, t;

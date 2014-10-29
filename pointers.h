@@ -22,6 +22,8 @@ public:
 		input(ptr->input),
 		tools(ptr->tools),
 		syanten(ptr->syanten),
+		agari(ptr->agari),
+		yaku(ptr->yaku),
 		game(ptr->game),
 		infile(ptr->infile),
 		screen(ptr->screen),
@@ -37,6 +39,8 @@ protected:
 	Tools *&tools;
 	Syanten *&syanten;
 	Game *&game;
+	Agari *&agari;
+	Yaku *&yaku;
 
 	FILE *&infile;
 	FILE *&logfile;

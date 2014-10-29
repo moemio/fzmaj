@@ -17,9 +17,8 @@ public:
 	int fan;
 	int fu;
 	int score;
-	int yaku[46];
+	int agari_yaku[46];
 	
-	int c[34];
 
 	int n_syuntsu;
 	int n_kotsu;
@@ -37,6 +36,8 @@ public:
 protected:
 	int maxp;
 	
+	int c[34];
+	int back_up_c[34];
 	void d_kotsu(int k);
 	void i_kotsu(int k);
 	void d_syuntsu(int k);
@@ -47,12 +48,16 @@ protected:
 	bool isAtamaMentsu(int,int);
 	bool isMentsu(int);
 
+	void init();
+
 	void removeJihai();
 	void updateResult();
 	void tokuHandan();
 
-	void countScore(PATTERN &part);
 	void Run(int depth);
+	void printPattern(int);
+
+	string hai2str(int);
 };
 
 }

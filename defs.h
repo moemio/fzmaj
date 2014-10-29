@@ -28,6 +28,8 @@ struct Bakyou {
 	int n_naki_kotsu[4];
 	int naki_kan[4][34];
 	int naki_ankan[4][34];
+	int n_naki_kan[4];
+	int n_naki_ankan[4];
 	int score[4];
 	int riichi[4];
 	int aka_river[4][3];
@@ -37,10 +39,12 @@ struct Bakyou {
 	vector< vector<int> > river;
 	vector< vector<int> > river_stat;
 	vector<int> dora;
+	vector<int> ura;
 	int nokori[34];
 
 	int syanpai;
 	int dacya;
+	int act;
 
 	int isRed;
 };
@@ -59,10 +63,26 @@ struct PATTERN {
    int n_naki;
    int naki_kotsu[34];
    int naki_syuntsu[34];
+   int n_naki_syuntsu;
+   int n_naki_kotsu;
    int isYakuman;
    int yakuman_baisu;
    int isChiitoi;
    int isKokushi;
+   int fan;
+   int fu;
+   int fu_tmp;
+   int yaku[46];
+};
+
+enum ENUM_ACT {
+	ACT_TEKIRI = 0,
+	ACT_TSUMOGIRI,
+	ACT_TSUMO,
+	ACT_CHII,
+	ACT_PON,
+	ACT_KAN,
+	ACT_KAN_SELF
 };
 
 #endif

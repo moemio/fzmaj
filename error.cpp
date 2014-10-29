@@ -11,14 +11,10 @@ Error::Error(FZMAJ *maj) : Pointers(maj) {}
 
 void Error::all(const char *file, int line, const char *str)
 {
-
     if (screen) fprintf(screen,"ERROR: %s (%s:%d)\n",str,file,line);
-    //fprintf(stdout, "ERROR: %s (%s:%d)\n",str,file,line);
     if (logfile) fprintf(logfile,"ERROR: %s (%s:%d)\n",str,file,line);
-
   	if (screen && screen != stdout) fclose(screen);
   	if (logfile) fclose(logfile);
-
   	exit(1);
 }
 
@@ -49,4 +45,10 @@ void Error::done()
   	if (logfile) fclose(logfile);
 
   exit(1);
+}
+
+void Error::debug(const char *file, int line, const char *str)
+{
+    if (screen) fprintf(screen,"DEBUG: %s (%s:%d)\n",str,file,line);
+  	if (screen && screen != stdout) fclose(screen);
 }

@@ -189,7 +189,6 @@ void Syanten::Run(int depth)
 int Syanten::calcSyanten(int isSkip713)
 {
 	int nc = tools->CountPai(c);
-	printf("npai=%d\n",nc);
 	if (nc>14) return -2;
 	if (isSkip713==0 && nc>=13) scan713();
 	removeJihai(nc);
@@ -198,11 +197,13 @@ int Syanten::calcSyanten(int isSkip713)
 	scanNormal(init_mentsu);
 
 	min_syanten = MIN(MIN(st_7,st_13),st_normal);
-
+	
+	if (min_syanten>0){
 	printf("st_normal : %d\n",st_normal);
 	printf("st_7 : %d\n",st_7);
 	printf("st_13 : %d\n",st_13);
 	printf("min_syanten : %d\n",min_syanten);
+	}
 
 }
 

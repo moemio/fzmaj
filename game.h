@@ -15,6 +15,8 @@ public:
 	~Game();
 //	int getBakyou(int pos, class Bakyou *);
 	void start(long);
+	void createEmptyBakyou(struct Bakyou *, int);
+	int started;
 
 protected:
 	

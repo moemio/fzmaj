@@ -15,6 +15,8 @@ public:
 	class Game *game;
 	
 	class Syanten *syanten;
+	class Agari *agari;
+	class Yaku *yaku;
 
 	FILE *infile;
 	FILE *logfile;
