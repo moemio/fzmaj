@@ -14,3 +14,52 @@ build 3
 build 4
 	
 	Add class Syanten for syanten calculation.
+
+build 5
+	
+	Add new subcommand "str2pai"
+
+	Syanten calculation is available.
+	
+	make
+	./Maj 
+	str2pai 123456z789m11122p
+
+	output:
+	st_normal : 3
+	st_7 : 4
+	st_13 : 4
+	min_syanten : 3
+
+build 6
+	
+	Add a new class Game for game settings.
+
+build 7
+	
+	Add a new class Agari for agari handan and score calc.
+
+build 8
+
+	Add a new class Yaku for yaku handan.
+	Add a new command "check" for debug.
+
+	for example:
+
+	check 111222333p456s99m
+	check 123456p789m11z -kan 8s -rs
+	check 345p345678s22m -chii 3m
+
+	argument:
+
+	-ns/-chii  naki syuntsu
+	-nk/-pon   naki kotsu
+	-nmk/-kan  naki minkan
+	-nak/-ankan naki ankan
+	-rs  rinsyan kaihou
+	-r/-riichi  riichi
+	-wr/-wriichi  double riichi
+	-ip/-ippatsu ippatsu
+	-ron  ron
+
+

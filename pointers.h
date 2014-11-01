@@ -20,7 +20,11 @@ public:
 		memory(ptr->memory),
 		error(ptr->error),
 		input(ptr->input),
+		tools(ptr->tools),
 		syanten(ptr->syanten),
+		agari(ptr->agari),
+		yaku(ptr->yaku),
+		game(ptr->game),
 		infile(ptr->infile),
 		screen(ptr->screen),
 		logfile(ptr->logfile) {}
@@ -32,8 +36,11 @@ protected:
 	Memory *&memory;
 	Error *&error;
 	Input *&input;
-
+	Tools *&tools;
 	Syanten *&syanten;
+	Game *&game;
+	Agari *&agari;
+	Yaku *&yaku;
 
 	FILE *&infile;
 	FILE *&logfile;

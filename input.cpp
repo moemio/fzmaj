@@ -5,10 +5,14 @@
 #include "sys/stat.h"
 #include "unistd.h"
 #include "input.h"
+#include "tools.h"
+#include "syanten.h"
 #include "memory.h"
 #include "error.h"
 #include "style_command.h"
 #include "run.h"
+#include "agari.h"
+#include "game.h"
 
 #define DELTALINE 256
 #define DELTA 4
@@ -287,8 +291,8 @@ void Input::reallocate(char *&str, int &max, int n)
 int Input::execute_command()
 {
   	int flag = 1;
-  
   	if (!strcmp(command,"run_test")) run_test();
+	else if (!strcmp(command,"check")) check_pai();
   
   	else flag = 0;
   
@@ -320,4 +324,90 @@ void Input::command_creator(FZMAJ *maj, int narg, char **arg)
 void Input::run_test()
 {
 	if (screen) fprintf(screen, "Hello, world!\n");
+}
+
+void Input::check_pai()
+{
+	int i;
+	int nst;
+	int c[34], last;
+	Bakyou *bak = new Bakyou;
+	int iarg = 1, tharg;
+
+	if (!game->started)
+		game->start(1);
+	game->createEmptyBakyou(bak, 0);
+
+	if (narg==0) error->all(FLERR, "Illegal check command");
+
+	last = tools->Str2pai(arg[0], c);
+	for(i=0;i<34;++i) {
+		bak->tehai[i] = c[i];
+	}
+	bak->syanpai = last;
+	bak->act = ACT_TSUMO;
+	bak->dacya = 0;
+
+	while (iarg < narg) {
+		if (!strcmp(arg[iarg],"-chii") ||
+			!strcmp(arg[iarg],"-ns")) {
+			if (iarg+1 > narg) error->all(FLERR, "Invalid check command-line");
+			tools->Str2pai(arg[iarg+1],bak->naki_syuntsu[0]);
+			bak->n_naki_syuntsu[0] = tools->CountPai(bak->naki_syuntsu[0]);
+			bak->n_naki[0] += bak->n_naki_syuntsu[0];
+			iarg += 2;
+		} else if (!strcmp(arg[iarg],"-pon") ||
+				   !strcmp(arg[iarg],"-nk")) {
+			if (iarg+1 > narg) error->all(FLERR, "Invalid check command-line");
+			tools->Str2pai(arg[iarg+1],bak->naki_kotsu[0]);
+			bak->n_naki_kotsu[0] = tools->CountPai(bak->naki_kotsu[0]);
+			bak->n_naki[0] += bak->n_naki_kotsu[0];
+			iarg += 2;
+		} else if (!strcmp(arg[iarg],"-kan") ||
+				   !strcmp(arg[iarg],"-nmk")) {
+			if (iarg+1 > narg) error->all(FLERR, "Invalid check command-line");
+			tools->Str2pai(arg[iarg+1],bak->naki_kan[0]);
+			bak->n_naki_kan[0] = tools->CountPai(bak->naki_kan[0]);
+			bak->n_naki[0] += bak->n_naki_kan[0];
+			iarg += 2;
+		} else if (!strcmp(arg[iarg],"-ankan") ||
+				   !strcmp(arg[iarg],"-nak")) {
+			if (iarg+1 > narg) error->all(FLERR, "Invalid check command-line");
+			tools->Str2pai(arg[iarg+1],bak->naki_ankan[0]);
+			bak->n_naki_ankan[0] = tools->CountPai(bak->naki_ankan[0]);
+			iarg += 2;
+		} else if (!strcmp(arg[iarg],"-riichi") ||
+				   !strcmp(arg[iarg],"-r")) {
+			bak->riichi[0]=1;
+			iarg += 1;
+		} else if (!strcmp(arg[iarg],"-ippatsu") ||
+				   !strcmp(arg[iarg],"-ip")) {
+			bak->jun[0]=1;
+			iarg += 1;
+		} else if (!strcmp(arg[iarg],"-ron")) {
+			bak->dacya = 2;
+			iarg += 1;
+		} else if (!strcmp(arg[iarg],"-last") ||
+				   !strcmp(arg[iarg],"-l")) {
+			bak->pai_ptr = bak->dead_ptr;
+			iarg += 1;
+		} else if (!strcmp(arg[iarg],"-rinsyan") ||
+		           !strcmp(arg[iarg],"-rs")) {
+			bak->act = ACT_KAN_SELF;
+			iarg += 1;
+		} else if (!strcmp(arg[iarg],"-tyankan") ||
+				   !strcmp(arg[iarg],"-tyk")) {
+			bak->act = ACT_KAN;
+			bak->dacya = 2;
+			iarg += 1;
+		}
+
+	}
+	printf ("  check  \n");
+	printf ("\n\n*******************************\n");
+	nst = syanten->calcSyantenAll(c);
+	agari->checkAgari(bak);
+
+	printf ("*******************************\n");
+	delete bak;
 }

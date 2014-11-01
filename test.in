@@ -1,1 +1,5 @@
-run 123
+check 123456p888s67899m								# mentsumo
+check 123456p888s67899m -riichi  					# riichi
+check 123456p888s67899m -tyk							# tyan kan	
+check 123456p67899m -kan 8s -rs                      # rinsyan
+

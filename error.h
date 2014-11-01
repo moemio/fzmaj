@@ -10,6 +10,7 @@ class Error : protected Pointers {
   Error(class FZMAJ *);
 
   void all(const char *, int, const char *);
+  void debug(const char *, int, const char *);
   void warning(const char *, int, const char *, int = 1);
   void message(const char *, int, const char *, int = 1);
   void done();

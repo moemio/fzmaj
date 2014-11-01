@@ -8,12 +8,16 @@ DEPFLAGS = -M
 
 FLAG = $(CFLAGS) $(LIBS) $(DEPFLAGS)
 
-OBJ = fzmaj.o error.o input.o memory.o main.o run.o syanten.o
+
+CUR_PATH = ./
+OBJ_PATH = ./
+ALL_CPP = $(foreach dir, $(CUR_PATH),$(wildcard $(dir)*.cpp))
+OBJ = $(patsubst $(CUR_PATH)%.cpp,%.o,$(ALL_CPP))
 
 all : Maj 
 
-Maj: $(OBJ) Makefile
-	$(CC) $(OBJ) $(CFLAGS) -o Maj
+Maj: $(OBJ)
+	$(CC) *.o $(CFLAGS) -o Maj
 
 %.o:%.cpp
 	$(CC) $(CFLAGS) -c $<

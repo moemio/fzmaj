@@ -19,7 +19,7 @@ public:
 	void file();
 	void file(const char *);
 	char *one(const char *);
-
+	
 private:
 	
 	char *command;
@@ -39,6 +39,8 @@ private:
 	int execute_command();
 
 	void run_test(); // FZMAJ Commands
+	void str2pai();
+	void check_pai();
 
 };
 

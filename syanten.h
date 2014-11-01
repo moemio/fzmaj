@@ -19,7 +19,6 @@ public:
 	int n_mentsu;
 	int n_tatsu;
 	int n_toitsu;
-	int min_syanten;
 	int st_normal;
 	int st_7;
 	int st_13;
@@ -30,6 +29,7 @@ protected:
 	int f_n4;
 	int f_koritsu;
 	int n_jidahai;
+	int min_syanten;
 
 	void updateResult();
 	void scan713();
@@ -48,8 +48,7 @@ protected:
 	void d_tatsu_k(int k);
 	void i_koritsu(int k);
 	void d_koritsu(int k);
-	int count34();
-	int calcSyanten(bool isSkip713);
+	int calcSyanten(int isSkip713);
 };
 
 }
