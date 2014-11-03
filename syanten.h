@@ -49,6 +49,7 @@ protected:
 	void i_koritsu(int k);
 	void d_koritsu(int k);
 	int calcSyanten(int isSkip713);
+
 };
 
 }

@@ -147,7 +147,7 @@ void Agari::tokuHandan()
 		}
 	}
 	printf("agari pattern: %d\n",pattern.size());
-	printPattern(maxp);
+	if (pattern.size())printPattern(maxp);
 }
 
 
@@ -281,7 +281,7 @@ void Agari::updateResult()
 		part.n_syuntsu=n_syuntsu;
 		part.n_kotsu += bak->n_naki_kotsu[0];
 		part.n_kotsu += bak->n_naki_kan[0];
-		part.n_kotsu += bak->n_naki_ankan[0];
+		//part.n_kotsu += bak->n_naki_ankan[0];
 		part.n_syuntsu += bak->n_naki_syuntsu[0];
 		for(i=0;i<34;++i) {
 			part.c[i]=back_up_c[i];
@@ -331,7 +331,7 @@ void Agari::printPattern(int p)
 			if (bak->naki_ankan[0][i])
 				cout << hai2str(i) << hai2str(i) << hai2str(i) << hai2str(i) << "  ";
 	}
-	cout << "  Agari pai: " << hai2str(bak->syanpai);
+	cout << "  Agari pai: " << hai2str(bak->syanpai) << endl;
 	cout << "   dora: ";
 	for (i=0;i<bak->n_dora;++i)
 		cout << hai2str(bak->dora[i]);

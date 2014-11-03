@@ -624,7 +624,7 @@ int Yaku::countScore()
 {
 	int score_tmp;
 
-	if (pattern->isYakuman) score_tmp=8000;
+	if (pattern->isYakuman) score_tmp=8000*pattern->yakuman_baisu;
 	else if (pattern->fan>=13) score_tmp=8000;
 	else if (pattern->fan>=11) score_tmp=6000;
 	else if (pattern->fan>=8) score_tmp=4000;

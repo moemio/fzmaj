@@ -198,7 +198,7 @@ int Syanten::calcSyanten(int isSkip713)
 
 	min_syanten = MIN(MIN(st_7,st_13),st_normal);
 	
-	if (min_syanten>0){
+	if (min_syanten>=0){
 	printf("st_normal : %d\n",st_normal);
 	printf("st_7 : %d\n",st_7);
 	printf("st_13 : %d\n",st_13);
@@ -226,3 +226,4 @@ int Syanten::calcSyantenNo713(int tehai[])
 	calcSyanten(1);
 	return min_syanten;
 }
+

@@ -400,7 +400,7 @@ void Input::check_pai()
 			bak->act = ACT_KAN;
 			bak->dacya = 2;
 			iarg += 1;
-		}
+		} 
 
 	}
 	printf ("  check  \n");
