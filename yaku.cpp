@@ -205,10 +205,13 @@ int Yaku::IsTonko()
 }
 
 int Yaku::IsSankantsu()
-{	return bak->n_naki_kan[0]==3; }
+{	return bak->n_naki_kan[0]+bak->n_naki_ankan[0]==3; }
 
 int Yaku::IsToitoi()
-{	return (pattern->n_kotsu + pattern->n_naki_kotsu)==4; }
+{
+
+printf("atama = %d\n",pattern->atama);
+return (pattern->n_kotsu)==4; }
 
 int Yaku::IsSananko()
 {	
@@ -324,10 +327,10 @@ int Yaku::IsDasangen()
 }
 
 int Yaku::IsSuanko()
-{	return pattern->n_kotsu==4 && bak->act==ACT_TSUMO && pattern->atama!=bak->syanpai;}
+{	return pattern->n_kotsu==4 && bak->n_naki[0] && bak->act==ACT_TSUMO && pattern->atama!=bak->syanpai;}
 
 int Yaku::IsSuanko_tanki()
-{	return pattern->n_kotsu==4 && pattern->atama==bak->syanpai; }
+{	return pattern->n_kotsu==4 && bak->n_naki[0]==0 && pattern->atama==bak->syanpai; }
 
 int Yaku::IsTsuiisou()
 {	
@@ -378,6 +381,7 @@ int Yaku::IsSyaosushi()
 
 int Yaku::IsSukantsu()
 {
+	printf("kan = %d\n",bak->n_naki_ankan[0]+bak->n_naki_kan[0]);
 	return bak->n_naki_ankan[0]+bak->n_naki_kan[0]==4;
 }
 

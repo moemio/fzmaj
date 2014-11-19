@@ -3,6 +3,9 @@
 
 #include "pointers.h"
 #include <vector>
+#include <string>
+#include <map>
+
 using namespace std;
 
 namespace FZMAJ_NS {
@@ -17,6 +20,14 @@ public:
 	void start(long);
 	void createEmptyBakyou(struct Bakyou *, int);
 	int started;
+
+	class AI *ai[4];
+	char *ai_style;
+	typedef AI *(*AICreator)(FZMAJ *);
+	void create_ai(const char*, int);
+	std::map<std::string,AICreator> *ai_map;
+	
+	class AI *new_ai(const char *);
 
 protected:
 	
@@ -64,6 +75,8 @@ protected:
 	void initPai(int []);
 
 	int gameLoop();
+
+	template <typename T> static AI *ai_creator(FZMAJ *);
 
 };
 

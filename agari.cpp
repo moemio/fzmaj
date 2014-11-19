@@ -270,7 +270,10 @@ void Agari::Run(int depth)
 void Agari::updateResult()
 {
 	int i,j;
-	if ((n_mentsu + bak->n_naki[0])==4 && isatama  ) {
+	printf ("bak->naki = %d  nm  =%d atama = %d isa = %d\n",bak->n_naki[0],n_mentsu,
+	 atama, isatama);
+	if ((n_mentsu)==4 && isatama  ) {
+		printf("have pattern\n");
 		PATTERN part;
 		part.isYakuman=false;
 		part.isChiitoi=false;
@@ -305,13 +308,13 @@ void Agari::printPattern(int p)
 	cout << endl << "Agari pattern  ";
 	// kotsu
 	for (i=0;i<34;++i)
-		if (pattern[p].kotsu[i] && !bak->naki_ankan[0][i]) cout << hai2str(i) << hai2str(i) << hai2str(i) << " ";
+		if (pattern[p].kotsu[i] && !bak->naki_kotsu[0][i] && !bak->naki_kan[0][i] && !bak->naki_ankan[0][i]) cout << hai2str(i) << hai2str(i) << hai2str(i) << " ";
 	// syuntsu
 	for(i=0;i<34;++i)
-		if (pattern[p].syuntsu[i]) 
+		if (pattern[p].syuntsu[i] && !bak->naki_syuntsu[0][i]) 
 			for(j=0;j<pattern[p].syuntsu[i];++j)
 				cout << hai2str(i) << hai2str(i+1) << hai2str(i+2) << " ";
-	cout << hai2str(atama) << hai2str(atama);
+	cout << hai2str(pattern[p].atama) << hai2str(pattern[p].atama);
 	// naki
 	if (pattern[p].n_naki){
 		cout << " naki: ";

@@ -293,6 +293,7 @@ int Input::execute_command()
   	int flag = 1;
   	if (!strcmp(command,"run_test")) run_test();
 	else if (!strcmp(command,"check")) check_pai();
+	else if (!strcmp(command,"ai_style")) ai_style();
   
   	else flag = 0;
   
@@ -324,6 +325,13 @@ void Input::command_creator(FZMAJ *maj, int narg, char **arg)
 void Input::run_test()
 {
 	if (screen) fprintf(screen, "Hello, world!\n");
+}
+
+void Input::ai_style()
+{
+	if (narg < 2 ) error->all(FLERR, "Illegal ai_style command");
+	int pos = atoi(arg[0]);
+	game->create_ai(arg[1],pos);
 }
 
 void Input::check_pai()

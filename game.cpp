@@ -3,10 +3,31 @@
 #include "game.h"
 #include "tools.h"
 #include "input.h"
+#include "ai.h"
+#include "style_ai.h"
+#include "error.h"
 
 using namespace FZMAJ_NS;
 
-Game::Game(FZMAJ *maj) : Pointers(maj) {}
+Game::Game(FZMAJ *maj) : Pointers(maj) {
+	
+	int i;
+	for(i=0;i<4;++i)
+		ai[i] = NULL;
+	char *str = (char *) "none";
+	int n = strlen(str) + 1;
+	ai_style = new char[n];
+	strcpy(ai_style,str);
+
+	ai_map = new std::map<std::string,AICreator>();
+
+#define AI_CLASS
+#define AIStyle(key,Class) \
+  (*ai_map)[#key] = &ai_creator<Class>;
+#include "style_ai.h"
+#undef AIStyle
+#undef AI_CLASS
+}
 
 Game::~Game(){}
 
@@ -28,8 +49,16 @@ void Game::start(long s)
 	for(i=0;i<4;++i) {
 		score[i]=25000;
 	}
+	
+	// seed = 1 for test.
 
-	gameLoop();
+	if (seed==1) 
+		initGame();
+	else {
+		printf("Game started. Seed = %d. Hajioya = %d\n",seed, hajioya);
+		gameLoop();
+	
+	}
 }
 
 void Game::clearGame()
@@ -117,20 +146,34 @@ void Game::initGame()
 
 int Game::gameLoop()
 {
-	int kr;
+	int kr, endgame=0;
+	int i;
+	// check ai
+
+	for(i=0;i<3;++i)
+		if (!ai[i]) error->all(FLERR, "Insufficient AI number");
 	
-	initGame();
-/*	printf("start. oya = %d\n",oya);
-
-	while(!Ryukyoku) {
+	while(!endgame) {
+		initGame();
+		printf("start. oya = %d\n",oya);
+		if (bafuu==27) printf("Ton %d kyoku.",kyoku+1);
+		else if (bafuu==28) printf("Nan %d kyoku.", kyoku+1);
+		else if (bafuu==29) printf("Sya %d kyoku.", kyoku+1);
 		
-		++pai_ptr;
+		printf ("%d pon ba. residue = %d\n", honba, residue);
+	
+		while(!Ryukyoku) {
+		
+			++pai_ptr;
 
-		if (pai_ptr==dead_ptr) Ryukyoku=1;
+			if (pai_ptr==dead_ptr) Ryukyoku=1;
+		}
+		endgame = 1;
 	}
 
 	clearGame();
-	printf("da wanle.\n"); */
+	printf("da wanle.\n"); 
+	return 0;
 }
 
 void Game::createEmptyBakyou(Bakyou *bak, int pos)
@@ -183,3 +226,27 @@ void Game::createEmptyBakyou(Bakyou *bak, int pos)
 	bak->act = 0;
 	bak->isRed = 0;
 }		
+
+void Game::create_ai(const char *style, int pos)
+{
+	if (ai[pos]) delete ai[pos];
+	ai[pos] = new_ai(style);
+}
+
+AI *Game::new_ai(const char *style)
+{
+	if (!strcmp(style, "none")) return NULL;
+	if (ai_map->find(style) != ai_map->end()) {
+		AICreator ai_creator = (*ai_map)[style];
+		return ai_creator(maj);
+	}
+
+	error->all(FLERR, "Invalid ai style");
+	return NULL;
+}
+
+template <typename T>
+AI *Game::ai_creator(FZMAJ *maj)
+{
+	return new T(maj);
+}
