@@ -46,7 +46,7 @@ struct Bakyou {
 	int dacya;
 	int act;
 
-	int isRed;
+	int aka;
 };
 
 struct PATTERN {
@@ -76,13 +76,16 @@ struct PATTERN {
 };
 
 enum ENUM_ACT {
-	ACT_TEKIRI = 0,
+	ACT_TSUMORU = 0,
+	ACT_TEKIRI,
 	ACT_TSUMOGIRI,
-	ACT_TSUMO,
+	ACT_AGARI_TSUMO,
+	ACT_AGARI_RON,
 	ACT_CHII,
 	ACT_PON,
 	ACT_KAN,
-	ACT_KAN_SELF
+	ACT_KAN_SELF,
+	ACT_CANCEL
 };
 
 #endif

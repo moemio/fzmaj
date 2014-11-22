@@ -62,4 +62,13 @@ build 8
 	-ip/-ippatsu ippatsu
 	-ron  ron
 
+build 9
 
+	Fix some bug of yaku.
+	Add AI father class
+	Some templates of AI was made as ai_tsumogiri and ai_general
+
+build 10
+
+	a lot of bugs.
+	WTF

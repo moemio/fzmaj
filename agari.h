@@ -31,10 +31,11 @@ public:
 	Agari(class FZMAJ * );
 	~Agari();
 	
-	void checkAgari(Bakyou *);
+	int checkAgari(Bakyou *);
+	int agari_test( int c[]);
 
-protected:
 	int maxp;
+protected:
 	
 	int c[34];
 	int back_up_c[34];
@@ -52,7 +53,7 @@ protected:
 
 	void removeJihai();
 	void updateResult();
-	void tokuHandan();
+	int tokuHandan();
 
 	void Run(int depth);
 	void printPattern(int);

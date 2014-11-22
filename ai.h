@@ -2,6 +2,7 @@
 #define MAJ_AI_H
 
 #include "pointers.h"
+#include "defs.h"
 
 namespace FZMAJ_NS {
 
@@ -16,6 +17,15 @@ public:
 
 	AI(class FZMAJ *);
 	virtual ~AI();
+	
+	class Bakyou *bak;
+
+	int sutehai;
+	int aka;
+	int act;
+	int pos_me;
+
+	void request(int act);
 
 };
 

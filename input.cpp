@@ -125,6 +125,7 @@ void Input::file()
       	sprintf(str,"Unknown command: %s",line);
      	error->all(FLERR,str);}
   	}
+	printf ("out file\n");
 }
 
 /* ----------------------------------------------------------------------
@@ -306,6 +307,7 @@ int Input::execute_command()
   	if (command_map->find(command) != command_map->end()) {
     	CommandCreator command_creator = (*command_map)[command];
     	command_creator(maj,narg,arg);
+		printf ("pass command\n");
     return 0;
   }
   
@@ -353,7 +355,7 @@ void Input::check_pai()
 		bak->tehai[i] = c[i];
 	}
 	bak->syanpai = last;
-	bak->act = ACT_TSUMO;
+	bak->act = ACT_AGARI_TSUMO;
 	bak->dacya = 0;
 
 	while (iarg < narg) {

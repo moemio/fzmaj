@@ -14,7 +14,6 @@ AI_General::~AI_General() {}
 
 void AI_General::compute()
 {
-
 	printf ("I'm ai_general, I'm computing.\n");
 }
 
