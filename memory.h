@@ -2,6 +2,7 @@
 #define MAJ_MEMORY_H
 
 #include "pointers.h"
+#include "defs.h"
 
 namespace FZMAJ_NS {
 
@@ -12,9 +13,37 @@ public:
 	void *smalloc(int n, const char *);
 	void *srealloc(void *, int n, const char *);
 	void sfree(void *);
+	void free_bakyou(class Bakyou *);
+
+
+	template <typename TYPE>
+	TYPE *create(TYPE *&array, int n, const char *name)
+	{
+		int nbytes = ((int) sizeof(TYPE))*n;
+		array = (TYPE *) smalloc(nbytes,name);
+		return array;
+	}
+	
+	template <typename TYPE>
+	TYPE **create(TYPE **&array, int n1, int n2, const char *name)
+	{
+		int nbytes = ((int) sizeof(TYPE)) * n1 * n2;
+		TYPE *data = (TYPE *) smalloc(nbytes,name);
+		nbytes = ((int) sizeof(TYPE *)) * n1;
+		array = (TYPE **) smalloc(nbytes,name);
+	
+		int n=0;
+		for(int i=0;i<n1;i++) {
+			array[i] = &data[n];
+			n += n2;
+		}
+		return array;
+	}
 
 };
 
 }
 
 #endif
+
+

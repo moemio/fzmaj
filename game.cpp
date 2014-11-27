@@ -33,10 +33,14 @@ Game::Game(FZMAJ *maj) : Pointers(maj) {
 }
 
 Game::~Game(){
-	int i;
-	for(i=0;i<4;++i)
-		if(ai[i]) delete ai[i];
-//	delete ai_map; // Segmentation fault
+	delete ai_map; 
+	delete [] pai;
+	printf("delete ai\n");
+	delete [] ai;
+	error->debug(FLERR,"pass ai");
+
+
+	printf("done game.\n");
 }
 
 void Game::start(long s)
@@ -51,6 +55,7 @@ void Game::start(long s)
 	oya = hajioya;
 	honba = 0;
 	residue = 0;
+	pai_ptr = 0;
 	pos_ptr = hajioya;
 	river.resize(4);
 	river_stat.resize(4);
@@ -64,11 +69,10 @@ void Game::start(long s)
 		initGame();
 	else {
 		printf("Game started. Seed = %d. Hajioya = %d\n",seed, hajioya);
-		init_ai();
+		printf("ptr = %d\n",pai_ptr);
 		gameLoop();
 			
 	}
-	printf ("pass start\n");
 }
 
 void Game::clearGame()
@@ -105,7 +109,7 @@ void Game::clearGame()
 		aka_dorahyouji[i]=0;
 	dora.clear();
 	ura.clear();
-
+	pai_ptr = 0;
 }
 
 void Game::initGame()
@@ -156,6 +160,14 @@ void Game::initGame()
 	aka = tools->check_aka(pai[130]);
 	if (aka) aka_dorahyouji[aka] = 1;
 
+	for(i=0;i<4;++i) {
+		if(ai[i]) {
+			createEmptyBakyou(ai[i]->bak,i);
+			updateBakyou(ai[i]->bak,i);
+		}
+	}
+
+	if(seed==1) pai_ptr = 80;
 }
 
 void Game::tsumoru(int pos)
@@ -167,7 +179,7 @@ void Game::tsumoru(int pos)
 	cur_aka = aka;
 	tsumo_hai = cpai>>2;
 
-	++tehai[pos][cpai];
+	++tehai[pos][tsumo_hai];
 	if (aka) aka_tehai[pos][aka-1] = 1;
 #ifdef GAME_DEBUG
 	printf ("pos %d tsumo %d, %s\n", pos, tsumo_hai,tools->Pai2str(tsumo_hai,aka).c_str());
@@ -177,7 +189,7 @@ void Game::tsumoru(int pos)
 int Game::gameLoop()
 {
 	int kr, endgame=0;
-	int i;
+	int i,j;
 	int p;
 	// check ai
 
@@ -194,9 +206,20 @@ int Game::gameLoop()
 		printf ("%d pon ba. residue = %d\n", honba, residue);
 	
 		p=oya;
+		
+	// Main Loop
+
 		while(!Ryukyoku) {
 			cur_pos = p;	
+			printf ("********************************************\n");
+			printf ("ptr: %d, cur_pos: %d\n",pai_ptr,cur_pos);
+
+#ifdef GAME_DEBUG
+			for(j=0;j<4;++j)
+				ai[j]->print_tehai();
+#endif
 			tsumoru(p);
+
 			updateBakyou(ai[p]->bak, p);
 			ai[p]->compute();
 
@@ -218,17 +241,10 @@ void Game::dealRequest(int pos, int ai_act)
 {
 	switch (ai_act) {
 		case ACT_TSUMOGIRI:
-			sutehai = tsumo_hai;
-			--tehai[pos][sutehai];
-			river[pos].push_back(sutehai);
-			river_stat[pos].push_back(0);
-			if (cur_aka) {
-				aka_river[pos][ai[pos]->aka-1]=1;
-			}
-			++jun[pos];
-			dacya = pos;
-			printf ("jun %d, ptr = %d, pos %d da %s\n",jun[pos],pai_ptr,pos,tools->Pai2str(sutehai,cur_aka).c_str());
+			tsumogiri(pos);
 			break;
+		case ACT_CANCEL:
+			printf ("pos %d cancel pos %d's sutehai.\n",pos,cur_pos);
 
 	}
 	cur_act = ai[pos]->act;
@@ -238,44 +254,141 @@ void Game::request(int pos, int ai_act)
 {
 	switch (ai_act) {
 		case ACT_CHII:
-			if (chiiable(pos,sutehai)) dealRequest(pos,ai_act);
-			else ai_act = ACT_CANCEL;
+			if (chiiable(pos,sutehai)) dealRequest(pos,ACT_CHII);
+			else dealRequest(pos,ACT_CANCEL);
 			break;
 		case ACT_PON:
-			if (ponable(pos,sutehai)) dealRequest(pos,ai_act);
-			else ai_act = ACT_CANCEL;
+			if (ponable(pos,sutehai)) dealRequest(pos,ACT_PON);
+			else dealRequest(pos,ACT_CANCEL);
 			break;
 		case ACT_TSUMOGIRI:
-			dealRequest(pos,ai_act);
+			if (pos == cur_pos) dealRequest(pos,ACT_TSUMOGIRI);
+			break;
+		case ACT_CANCEL:
+			dealRequest(pos,ACT_CANCEL);
 	}
 }
 
-void Game::checkRequest(int pos)
+int Game::checkRequest(int pos)
 {
-	int p=(pos+1)%4;
-// check agari
+	int i, p=(pos+1)%4;
+	int computeflag[4];
+	for(i=0;i<4;++i) {
+		computeflag[i]=0;
+	}
+
+	//check ron
+
 	while(p!=pos){
 	updateBakyou(ai[p]->bak,p);
 	++ai[p]->bak->tehai[sutehai];
 	if(agari->checkAgari(ai[p]->bak)){
-		ai[p]->bak->act = ACT_AGARI_RON;
-		ai[p]->compute();
+		computeflag[p]=1;
 		}
+	--ai[p]->bak->tehai[sutehai];
 	++p;
 	p=p%4;
 	}
-		
-// check pon
 
-// check chii
+	//check pon kan chii
+
+	p=(pos+1)%4;
+	while(p!=pos){
+		if(ponable(p,sutehai) || kanable(p,sutehai)) {
+			computeflag[p]=1;
+			printf("pos %d can request pon/kan.\n",p);
+			ai[p]->print_tehai();
+		}
+		++p;
+		p=p%4;
+	}
+	p=(pos+1)%4;
+	if(chiiable(p,sutehai))
+		{computeflag[p]=1;
+			printf("pos %d can request chi.\n",p);
+			ai[p]->print_tehai();
+		}
+	
+	// compute
+
+	for(i=0;i<3;++i){
+		p=(pos+1+i)%4;
+		if(computeflag[p]) {
+			updateBakyou(ai[p]->bak,p);
+			ai[p]->compute();
+		}
+	}
+}
+
+void Game::add_queue(int pos,int ai_act)
+{
+	int p = (cur_pos-pos+3)%4;
+	if(ai_act==ACT_AGARI_RON) queue[p]=1;
+	else if (ai_act==ACT_KAN) queue[3+p]=1;
+	else if (ai_act==ACT_PON) queue[6+p]=1;
+	else if (ai_act==ACT_CHII) queue[9]=1;
+	else error->all(FLERR,"Illegal add_queue command");
+}
+
+void Game::deal_queue()
+{
+	int i,deal_idx;
+	int p;
+	for(i=0;i<10;++i) 
+		if (queue[i]) {
+			deal_idx = i;
+			break;
+		}
+	for(i=0;i<10;++i)
+		queue[i]=0;
+	p = ((deal_idx%3)+1+cur_pos)%4;
+	printf("cur_pos :%d, pos %d deal index %d\n",cur_pos,p,deal_idx);
+	if (deal_idx==9) chii(p,ai[p]->cpai1,ai[p]->cpai2,ai[p]->caka);
+	else if (deal_idx>=6) pon(p);
+	else if (deal_idx>=3) kan(p);
+	else agari_ron(p);
+}
+
+void Game::tsumogiri(int pos)
+{
+	sutehai = tsumo_hai;
+	--tehai[pos][sutehai];
+//	updateBakyou(ai[pos]->bak,pos);
+	river[pos].push_back(sutehai);
+	river_stat[pos].push_back(0);
+	if (cur_aka) {
+		aka_river[pos][ai[pos]->aka-1]=1;
+		aka_tehai[pos][ai[pos]->aka-1]=0;
+	}
+	++jun[pos];
+	dacya = pos;
+	printf ("jun %d, ptr = %d, pos %d da %s\n",jun[pos],pai_ptr,pos,tools->Pai2str(sutehai,cur_aka).c_str());
+	checkRequest(pos);
+}
+
+void Game::tekiri(int pos)
+{
+	sutehai = ai[pos]->sutehai;
+	--tehai[pos][sutehai];
+	river[pos].push_back(sutehai);
+	river_stat[pos].push_back(1);
+	if (ai[pos]->aka) {
+		aka_river[pos][ai[pos]->aka-1]=1;
+	}
 }
 
 void Game::pon(int pos)
 {
-
+	++n_naki[pos];
+	++n_naki_kotsu[pos];
+	++naki_kotsu[pos][sutehai];
+	if (cur_aka) aka_naki[pos][cur_aka-1]=1;
+	tehai[pos][sutehai] -= 2;
+	
+	tekiri(pos);
 }
 
-void Game::chii(int pos)
+void Game::chii(int pos, int cpai1, int cpai2, int aka)
 {
 
 }
@@ -353,7 +466,7 @@ void Game::updateBakyou(Bakyou *bak, int pos)
 {
 	int i,j,p;
 	for(j=0;j<3;++j) {
-		p = (pos+j)%4;
+		p = (j-pos+4)%4;
 		bak->river[j] = river[p];
 		bak->river_stat[j] = river[p];
 		bak->jun[j] = jun[p];
@@ -383,18 +496,19 @@ void Game::updateBakyou(Bakyou *bak, int pos)
 		}
 	}
 	for(i=0;i<34;++i)
-		bak->tehai[i]=tehai[p][i];
-	if (cur_pos == pos || cur_act == ACT_KAN_SELF) {
+		bak->tehai[i]=tehai[pos][i];
+	if (cur_pos == pos || cur_act == ACT_KAN) {
 		bak->syanpai = tsumo_hai;
 		bak->dacya = 0;
 		bak->act = 0;
 		bak->aka = cur_aka;
 	} else {
 		bak->syanpai = sutehai;
-		bak->dacya = cur_pos;
+		bak->dacya = (pos-cur_pos+4)%4;
 		bak->act = cur_act;
 		bak->aka = cur_aka;
 	}
+	printf ("bak %d updated. cur_pos = %d, dacya = %d\n",pos,cur_pos,bak->dacya);
 }
 
 void Game::createEmptyBakyou(Bakyou *bak, int pos)
@@ -454,15 +568,6 @@ void Game::create_ai(const char *style, int pos)
 	if (ai[pos]) delete ai[pos];
 	ai[pos] = new_ai(style);
 	ai[pos]-> pos_me = pos;
-}
-
-void Game::init_ai()
-{
-	int i;
-	for(i=0;i<4;++i) {
-		ai[i]->bak = new Bakyou;
-		createEmptyBakyou(ai[i]->bak, i);
-	}
 }
 
 AI *Game::new_ai(const char *style)

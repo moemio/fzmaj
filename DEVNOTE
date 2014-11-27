@@ -72,3 +72,10 @@ build 10
 
 	a lot of bugs.
 	WTF
+
+build 11
+
+	Fix: a lot of bugs.
+	Working on the ai framework
+	Memory leak, never mind.
+	Cannot destruct game, don't know why.

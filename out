@@ -1,70 +1,2368 @@
-check 123456p888s67899m								# mentsumo
-  check  
 
+ai_style 0 tsumogiri
+ai_style 1 tsumogiri
+ai_style 2 tsumogiri
+ai_style 3 tsumogiri
 
-*******************************
-agari pattern: 1
-
-Agari pattern  8s8s8s 6m7m8m 1p2p3p 4p5p6p 9m9m
- n naki 0 bak 0
-  Agari pai: 9m   dora:    ura: 
-oya : 3  jifuu:  28
-  28 -> 30 fu  1 fan  
- Score: 1000 ( 500 , 300 )
-
-     Menchin Tsumo      1 Fan
-
-*******************************
-check 123456p888s67899m -riichi  					# riichi
-  check  
-
-
-*******************************
-agari pattern: 1
-
-Agari pattern  8s8s8s 6m7m8m 1p2p3p 4p5p6p 9m9m
- n naki 0 bak 0
-  Agari pai: 9m   dora:    ura: 
-oya : 3  jifuu:  28
-  28 -> 30 fu  3 fan  
- Score: 3900 ( 2000 , 1000 )
-
-     Menchin Tsumo      1 Fan
-     Double Riichi      2 Fan
-
-*******************************
-check 123456p888s67899m -tyk							# tyan kan
-  check  
-
-
-*******************************
-agari pattern: 1
-
-Agari pattern  8s8s8s 6m7m8m 1p2p3p 4p5p6p 9m9m
- n naki 0 bak 0
-  Agari pai: 9m   dora:    ura: 
-oya : 3  jifuu:  28
-  38 -> 40 fu  1 fan  
- Score: 1300
-
-     Tyan Kan           1 Fan
-
-*******************************
-check 123456p67899m -kan 8s -rs                      # rinsyan
-  check  
-
-
-*******************************
-agari pattern: 1
-
-Agari pattern  6m7m8m 1p2p3p 4p5p6p 9m9m
- n naki 1 bak 1
- naki: 8s8s8s8s    Agari pai: 9m   dora:    ura: 
-oya : 3  jifuu:  28
-  32 -> 40 fu  1 fan  
- Score: 1300 ( 700 , 400 )
-
-     Rinsyan Kaihou     1 Fan
-
-*******************************
-
+run 12345
+narg=1
+Game started. Seed = 12345. Hajioya = 3
+ptr = 0
+bak 0 updated. cur_pos = 0, dacya = 0
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+start. oya = 3
+Ton 1 kyoku.0 pon ba. residue = 0
+********************************************
+ptr: 52, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 30, 4z
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 1, ptr = 53, pos 3 da 4z
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 53, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 6, 7m
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 1, ptr = 54, pos 0 da 7m
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 54, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 12, 4p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 1, ptr = 55, pos 1 da 4p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 2 can request chi.
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+********************************************
+ptr: 55, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 2, 3m
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 1, ptr = 56, pos 2 da 3m
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 56, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 8, 9m
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 2, ptr = 57, pos 3 da 9m
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 57, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 15, 7p
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 2, ptr = 58, pos 0 da 7p
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 58, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 14, 6p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 2, ptr = 59, pos 1 da 6p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 59, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 2, 3m
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 2, ptr = 60, pos 2 da 3m
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 60, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 17, 9p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 3, ptr = 61, pos 3 da 9p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 61, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 3, 4m
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 3, ptr = 62, pos 0 da 4m
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 62, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 2, 3m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 3, ptr = 63, pos 1 da 3m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 63, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 16, 8p
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 3, ptr = 64, pos 2 da 8p
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 64, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 29, 3z
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 4, ptr = 65, pos 3 da 3z
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 65, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 17, 9p
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 4, ptr = 66, pos 0 da 9p
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 66, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 1, 2m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 4, ptr = 67, pos 1 da 2m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 67, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 27, 1z
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 4, ptr = 68, pos 2 da 1z
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 68, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 9, 1p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 5, ptr = 69, pos 3 da 1p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 69, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 22, 0s
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 5, ptr = 70, pos 0 da 0s
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+pos 2 can request pon/kan.
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+bak 2 updated. cur_pos = 0, dacya = 2
+ai 2 computing, cur_pos dacya 2
+ai 2 requesting act 9
+pos 2 cancel pos 0's sutehai.
+********************************************
+ptr: 70, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 10, 2p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 5, ptr = 71, pos 1 da 2p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 2 can request chi.
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+********************************************
+ptr: 71, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 29, 3z
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 5, ptr = 72, pos 2 da 3z
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 72, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 8, 9m
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 6, ptr = 73, pos 3 da 9m
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 73, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 18, 1s
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 6, ptr = 74, pos 0 da 1s
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+pos 1 can request chi.
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+bak 1 updated. cur_pos = 0, dacya = 1
+ai 1 computing, cur_pos dacya 1
+ai 1 requesting act 9
+pos 1 cancel pos 0's sutehai.
+********************************************
+ptr: 74, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 27, 1z
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 6, ptr = 75, pos 1 da 1z
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 75, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 26, 9s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 6, ptr = 76, pos 2 da 9s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 76, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 11, 3p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 7, ptr = 77, pos 3 da 3p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 77, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 28, 2z
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 7, ptr = 78, pos 0 da 2z
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 78, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 11, 3p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 7, ptr = 79, pos 1 da 3p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 2 can request chi.
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+********************************************
+ptr: 79, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 21, 4s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 7, ptr = 80, pos 2 da 4s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request pon/kan.
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 80, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 4, 5m
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 8, ptr = 81, pos 3 da 5m
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 81, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 23, 6s
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 8, ptr = 82, pos 0 da 6s
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+pos 1 can request chi.
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+bak 1 updated. cur_pos = 0, dacya = 1
+ai 1 computing, cur_pos dacya 1
+ai 1 requesting act 9
+pos 1 cancel pos 0's sutehai.
+********************************************
+ptr: 82, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 26, 9s
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 8, ptr = 83, pos 1 da 9s
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 83, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 4, 5m
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 8, ptr = 84, pos 2 da 5m
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 84, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 33, 7z
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 9, ptr = 85, pos 3 da 7z
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 85, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 12, 4p
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 9, ptr = 86, pos 0 da 4p
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 86, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 8, 9m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 9, ptr = 87, pos 1 da 9m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 87, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 33, 7z
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 9, ptr = 88, pos 2 da 7z
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 88, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 7, 8m
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 10, ptr = 89, pos 3 da 8m
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 89, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 32, 6z
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 10, ptr = 90, pos 0 da 6z
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 90, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 3, 4m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 10, ptr = 91, pos 1 da 4m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 91, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 11, 3p
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 10, ptr = 92, pos 2 da 3p
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 92, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 24, 7s
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 11, ptr = 93, pos 3 da 7s
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+pos 0 can request chi.
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+bak 0 updated. cur_pos = 3, dacya = 1
+ai 0 computing, cur_pos dacya 1
+ai 0 requesting act 9
+pos 0 cancel pos 3's sutehai.
+********************************************
+ptr: 93, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 0, 1m
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 11, ptr = 94, pos 0 da 1m
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 94, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 31, 5z
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 11, ptr = 95, pos 1 da 5z
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 95, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 10, 2p
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 11, ptr = 96, pos 2 da 2p
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 96, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 3, 4m
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 12, ptr = 97, pos 3 da 4m
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 97, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 20, 3s
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 12, ptr = 98, pos 0 da 3s
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 98, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 0, 1m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 12, ptr = 99, pos 1 da 1m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 99, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 9, 1p
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 12, ptr = 100, pos 2 da 1p
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 100, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 4, 0m
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 13, ptr = 101, pos 3 da 0m
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 101, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 19, 2s
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 13, ptr = 102, pos 0 da 2s
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 102, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 23, 6s
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 13, ptr = 103, pos 1 da 6s
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 2 can request chi.
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+********************************************
+ptr: 103, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 25, 8s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 13, ptr = 104, pos 2 da 8s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 104, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 31, 5z
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 14, ptr = 105, pos 3 da 5z
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 105, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 2, 3m
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 14, ptr = 106, pos 0 da 3m
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+pos 1 can request chi.
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+bak 1 updated. cur_pos = 0, dacya = 1
+ai 1 computing, cur_pos dacya 1
+ai 1 requesting act 9
+pos 1 cancel pos 0's sutehai.
+********************************************
+ptr: 106, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 9, 1p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 14, ptr = 107, pos 1 da 1p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 2 can request chi.
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+********************************************
+ptr: 107, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 18, 1s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 14, ptr = 108, pos 2 da 1s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 108, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 20, 3s
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 15, ptr = 109, pos 3 da 3s
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 109, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 28, 2z
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 15, ptr = 110, pos 0 da 2z
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 110, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 9, 1p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 15, ptr = 111, pos 1 da 1p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 2 can request chi.
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+********************************************
+ptr: 111, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 15, 7p
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 15, ptr = 112, pos 2 da 7p
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 112, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 17, 9p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 16, ptr = 113, pos 3 da 9p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 113, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 32, 6z
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 16, ptr = 114, pos 0 da 6z
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 114, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 13, 5p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 16, ptr = 115, pos 1 da 5p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 0 can request pon/kan.
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+pos 2 can request chi.
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+bak 0 updated. cur_pos = 1, dacya = 3
+ai 0 computing, cur_pos dacya 3
+ai 0 requesting act 9
+pos 0 cancel pos 1's sutehai.
+********************************************
+ptr: 115, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 6, 7m
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 16, ptr = 116, pos 2 da 7m
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 116, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 19, 2s
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 17, ptr = 117, pos 3 da 2s
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 117, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 27, 1z
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 17, ptr = 118, pos 0 da 1z
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 118, cur_pos: 1
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 1 tsumo 23, 6s
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 17, ptr = 119, pos 1 da 6s
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 2 can request chi.
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+********************************************
+ptr: 119, cur_pos: 2
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 2 tsumo 23, 6s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 17, ptr = 120, pos 2 da 6s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 120, cur_pos: 3
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 3 tsumo 21, 4s
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 18, ptr = 121, pos 3 da 4s
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 121, cur_pos: 0
+ai 0's tehai = 2m 6m 6m 2p 5p 5p 7p 8s 9s 2z 4z 5z 6z 
+ai 1's tehai = 1m 2m 2m 4m 9m 5p 8p 2s 3s 7s 8s 1z 4z 
+ai 2's tehai = 6m 7m 2p 3p 4p 6p 5s 5s 7s 9s 2z 6z 7z 
+ai 3's tehai = 6m 8m 4p 6p 7p 8p 9p 1s 2s 4s 4s 5s 5z 
+pos 0 tsumo 7, 8m
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 18, ptr = 122, pos 0 da 8m
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+da wanle.
+pass start
+pass command
+run 123
+narg=1
+Game started. Seed = 123. Hajioya = 1
+ptr = 0
+bak 0 updated. cur_pos = 0, dacya = 0
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+start. oya = 1
+Ton 1 kyoku.0 pon ba. residue = 0
+********************************************
+ptr: 52, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 0, 1m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 1, ptr = 53, pos 1 da 1m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 53, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 15, 7p
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 1, ptr = 54, pos 2 da 7p
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 54, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 11, 3p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 1, ptr = 55, pos 3 da 3p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+pos 1 can request pon/kan.
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+bak 1 updated. cur_pos = 3, dacya = 2
+ai 1 computing, cur_pos dacya 2
+ai 1 requesting act 9
+pos 1 cancel pos 3's sutehai.
+********************************************
+ptr: 55, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 33, 7z
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 1, ptr = 56, pos 0 da 7z
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 56, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 33, 7z
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 2, ptr = 57, pos 1 da 7z
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 57, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 26, 9s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 2, ptr = 58, pos 2 da 9s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request pon/kan.
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 58, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 22, 5s
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 2, ptr = 59, pos 3 da 5s
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 59, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 25, 8s
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 2, ptr = 60, pos 0 da 8s
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+pos 1 can request chi.
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+bak 1 updated. cur_pos = 0, dacya = 1
+ai 1 computing, cur_pos dacya 1
+ai 1 requesting act 9
+pos 1 cancel pos 0's sutehai.
+********************************************
+ptr: 60, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 5, 6m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 3, ptr = 61, pos 1 da 6m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 61, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 21, 4s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 3, ptr = 62, pos 2 da 4s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request pon/kan.
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 62, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 9, 1p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 3, ptr = 63, pos 3 da 1p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 63, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 24, 7s
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 3, ptr = 64, pos 0 da 7s
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+pos 1 can request chi.
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+bak 1 updated. cur_pos = 0, dacya = 1
+ai 1 computing, cur_pos dacya 1
+ai 1 requesting act 9
+pos 1 cancel pos 0's sutehai.
+********************************************
+ptr: 64, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 10, 2p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 4, ptr = 65, pos 1 da 2p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 65, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 3, 4m
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 4, ptr = 66, pos 2 da 4m
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 66, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 31, 5z
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 4, ptr = 67, pos 3 da 5z
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 67, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 13, 5p
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 4, ptr = 68, pos 0 da 5p
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+pos 1 can request chi.
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+bak 1 updated. cur_pos = 0, dacya = 1
+ai 1 computing, cur_pos dacya 1
+ai 1 requesting act 9
+pos 1 cancel pos 0's sutehai.
+********************************************
+ptr: 68, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 0, 1m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 5, ptr = 69, pos 1 da 1m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 69, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 19, 2s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 5, ptr = 70, pos 2 da 2s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 70, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 12, 4p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 5, ptr = 71, pos 3 da 4p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 71, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 16, 8p
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 5, ptr = 72, pos 0 da 8p
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 72, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 2, 3m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 6, ptr = 73, pos 1 da 3m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 73, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 22, 5s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 6, ptr = 74, pos 2 da 5s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 74, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 8, 9m
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 6, ptr = 75, pos 3 da 9m
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 75, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 19, 2s
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 6, ptr = 76, pos 0 da 2s
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 76, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 6, 7m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 7, ptr = 77, pos 1 da 7m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 77, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 4, 5m
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 7, ptr = 78, pos 2 da 5m
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 78, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 30, 4z
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 7, ptr = 79, pos 3 da 4z
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 79, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 8, 9m
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 7, ptr = 80, pos 0 da 9m
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 80, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 23, 6s
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 8, ptr = 81, pos 1 da 6s
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 2 can request chi.
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+********************************************
+ptr: 81, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 33, 7z
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 8, ptr = 82, pos 2 da 7z
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 82, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 14, 6p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 8, ptr = 83, pos 3 da 6p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+pos 0 can request chi.
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+bak 0 updated. cur_pos = 3, dacya = 1
+ai 0 computing, cur_pos dacya 1
+ai 0 requesting act 9
+pos 0 cancel pos 3's sutehai.
+********************************************
+ptr: 83, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 30, 4z
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 8, ptr = 84, pos 0 da 4z
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 84, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 3, 4m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 9, ptr = 85, pos 1 da 4m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 85, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 13, 5p
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 9, ptr = 86, pos 2 da 5p
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 86, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 29, 3z
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 9, ptr = 87, pos 3 da 3z
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 87, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 32, 6z
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 9, ptr = 88, pos 0 da 6z
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 88, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 31, 5z
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 10, ptr = 89, pos 1 da 5z
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 89, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 20, 3s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 10, ptr = 90, pos 2 da 3s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 90, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 13, 5p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 10, ptr = 91, pos 3 da 5p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 91, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 5, 6m
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 10, ptr = 92, pos 0 da 6m
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 92, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 12, 4p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 11, ptr = 93, pos 1 da 4p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 93, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 22, 5s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 11, ptr = 94, pos 2 da 5s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 94, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 11, 3p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 11, ptr = 95, pos 3 da 3p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+pos 1 can request pon/kan.
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+bak 1 updated. cur_pos = 3, dacya = 2
+ai 1 computing, cur_pos dacya 2
+ai 1 requesting act 9
+pos 1 cancel pos 3's sutehai.
+********************************************
+ptr: 95, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 18, 1s
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 11, ptr = 96, pos 0 da 1s
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 96, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 3, 4m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 12, ptr = 97, pos 1 da 4m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 97, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 29, 3z
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 12, ptr = 98, pos 2 da 3z
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 98, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 9, 1p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 12, ptr = 99, pos 3 da 1p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 99, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 7, 8m
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 12, ptr = 100, pos 0 da 8m
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 100, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 14, 6p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 13, ptr = 101, pos 1 da 6p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 101, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 0, 1m
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 13, ptr = 102, pos 2 da 1m
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 102, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 15, 7p
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 13, ptr = 103, pos 3 da 7p
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 103, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 22, 0s
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 13, ptr = 104, pos 0 da 0s
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+pos 1 can request chi.
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+bak 1 updated. cur_pos = 0, dacya = 1
+ai 1 computing, cur_pos dacya 1
+ai 1 requesting act 9
+pos 1 cancel pos 0's sutehai.
+********************************************
+ptr: 104, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 23, 6s
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 14, ptr = 105, pos 1 da 6s
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 2 can request chi.
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+********************************************
+ptr: 105, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 3, 4m
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 14, ptr = 106, pos 2 da 4m
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+pos 3 can request chi.
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+bak 3 updated. cur_pos = 2, dacya = 1
+ai 3 computing, cur_pos dacya 1
+ai 3 requesting act 9
+pos 3 cancel pos 2's sutehai.
+********************************************
+ptr: 106, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 1, 2m
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 14, ptr = 107, pos 3 da 2m
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 107, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 8, 9m
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 14, ptr = 108, pos 0 da 9m
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 108, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 20, 3s
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 15, ptr = 109, pos 1 da 3s
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+pos 2 can request chi.
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+bak 2 updated. cur_pos = 1, dacya = 1
+ai 2 computing, cur_pos dacya 1
+ai 2 requesting act 9
+pos 2 cancel pos 1's sutehai.
+********************************************
+ptr: 109, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 28, 2z
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 15, ptr = 110, pos 2 da 2z
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 110, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 18, 1s
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 15, ptr = 111, pos 3 da 1s
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 111, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 4, 0m
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 15, ptr = 112, pos 0 da 0m
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 112, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 6, 7m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 16, ptr = 113, pos 1 da 7m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 113, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 17, 9p
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 16, ptr = 114, pos 2 da 9p
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 114, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 2, 3m
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 16, ptr = 115, pos 3 da 3m
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 115, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 27, 1z
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 16, ptr = 116, pos 0 da 1z
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+********************************************
+ptr: 116, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 10, 2p
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 17, ptr = 117, pos 1 da 2p
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 117, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 4, 5m
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 17, ptr = 118, pos 2 da 5m
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+********************************************
+ptr: 118, cur_pos: 3
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 3 tsumo 1, 2m
+bak 3 updated. cur_pos = 3, dacya = 0
+ai 3 computing, cur_pos dacya 0
+ai 3 requesting act 2
+bak 3 updated. cur_pos = 3, dacya = 0
+jun 17, ptr = 119, pos 3 da 2m
+bak 0 updated. cur_pos = 3, dacya = 1
+bak 1 updated. cur_pos = 3, dacya = 2
+bak 2 updated. cur_pos = 3, dacya = 3
+********************************************
+ptr: 119, cur_pos: 0
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 0 tsumo 9, 1p
+bak 0 updated. cur_pos = 0, dacya = 0
+ai 0 computing, cur_pos dacya 0
+ai 0 requesting act 2
+bak 0 updated. cur_pos = 0, dacya = 0
+jun 17, ptr = 120, pos 0 da 1p
+bak 1 updated. cur_pos = 0, dacya = 1
+bak 2 updated. cur_pos = 0, dacya = 2
+bak 3 updated. cur_pos = 0, dacya = 3
+pos 1 can request chi.
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+bak 1 updated. cur_pos = 0, dacya = 1
+ai 1 computing, cur_pos dacya 1
+ai 1 requesting act 9
+pos 1 cancel pos 0's sutehai.
+********************************************
+ptr: 120, cur_pos: 1
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 1 tsumo 2, 3m
+bak 1 updated. cur_pos = 1, dacya = 0
+ai 1 computing, cur_pos dacya 0
+ai 1 requesting act 2
+bak 1 updated. cur_pos = 1, dacya = 0
+jun 18, ptr = 121, pos 1 da 3m
+bak 2 updated. cur_pos = 1, dacya = 1
+bak 3 updated. cur_pos = 1, dacya = 2
+bak 0 updated. cur_pos = 1, dacya = 3
+********************************************
+ptr: 121, cur_pos: 2
+ai 0's tehai = 6m 8m 8m 8m 2p 7p 8p 8p 8p 1s 1z 2z 6z 
+ai 1's tehai = 6m 2p 3p 3p 4p 9p 2s 6s 7s 8s 2z 3z 4z 
+ai 2's tehai = 1p 7p 9p 2s 3s 4s 7s 8s 9s 1z 3z 4z 6z 
+ai 3's tehai = 2m 2m 3m 4p 6p 1s 3s 4s 4s 9s 9s 5z 6z 
+pos 2 tsumo 24, 7s
+bak 2 updated. cur_pos = 2, dacya = 0
+ai 2 computing, cur_pos dacya 0
+ai 2 requesting act 2
+bak 2 updated. cur_pos = 2, dacya = 0
+jun 18, ptr = 122, pos 2 da 7s
+bak 3 updated. cur_pos = 2, dacya = 1
+bak 0 updated. cur_pos = 2, dacya = 2
+bak 1 updated. cur_pos = 2, dacya = 3
+da wanle.
+pass start
+pass command
+out file
+ pass yaku

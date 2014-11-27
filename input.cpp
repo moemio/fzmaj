@@ -125,7 +125,6 @@ void Input::file()
       	sprintf(str,"Unknown command: %s",line);
      	error->all(FLERR,str);}
   	}
-	printf ("out file\n");
 }
 
 /* ----------------------------------------------------------------------
@@ -307,7 +306,6 @@ int Input::execute_command()
   	if (command_map->find(command) != command_map->end()) {
     	CommandCreator command_creator = (*command_map)[command];
     	command_creator(maj,narg,arg);
-		printf ("pass command\n");
     return 0;
   }
   
@@ -396,6 +394,7 @@ void Input::check_pai()
 			iarg += 1;
 		} else if (!strcmp(arg[iarg],"-ron")) {
 			bak->dacya = 2;
+			bak->act=ACT_AGARI_RON;
 			iarg += 1;
 		} else if (!strcmp(arg[iarg],"-last") ||
 				   !strcmp(arg[iarg],"-l")) {

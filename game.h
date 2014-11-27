@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "string.h"
 
 using namespace std;
 
@@ -82,25 +83,31 @@ protected:
 
 	long seed;
 
+	int queue[11];
+
 	void clearGame();
 	void initGame();
 	void initPai(int []);
 	void initBakyou(class Bakyou *, int);
-	void init_ai();
 	int gameLoop();
 	
 	void dealRequest(int,int);
-	void checkRequest(int);
+	int checkRequest(int);
 
+	void tsumogiri(int);
+	void tekiri(int);
 	void tsumoru(int);
 	void pon(int);
-	void chii(int);
+	void chii(int,int,int,int);
 	void kan(int);
 	int chiiable(int,int);
 	int ponable(int,int);
 	int kanable(int,int);
 	void agari_tsumo(int);
 	void agari_ron(int);
+
+	void add_queue(int,int);
+	void deal_queue();
 
 
 	template <typename T> static AI *ai_creator(FZMAJ *);

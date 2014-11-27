@@ -9,7 +9,6 @@ namespace FZMAJ_NS {
 class AI : protected Pointers {
 
 public:
-	double eng_tot[34];
 
 	virtual void compute() = 0;
 	
@@ -21,11 +20,18 @@ public:
 	class Bakyou *bak;
 
 	int sutehai;
-	int aka;
+	int aka;      // sutehai is aka
 	int act;
 	int pos_me;
 
+	// naki_chii
+	int cpai1,cpai2,caka;
+
 	void request(int act);
+
+	// 
+
+	void print_tehai();
 
 };
 

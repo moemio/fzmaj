@@ -2,6 +2,7 @@
 #include "stdlib.h"
 #include "string.h"
 #include "memory.h"
+#include "error.h"
 
 using namespace FZMAJ_NS;
 
@@ -11,7 +12,11 @@ void *Memory::smalloc(int nbytes, const char *name)
 {
 	if (nbytes == 0) return NULL;
  	void *ptr = malloc(nbytes);
-	
+	if (ptr == NULL) {
+		char str[128];
+		sprintf(str,"Failed to allocate %d bytes for array %s",nbytes,name);
+		error->all(FLERR,str);
+	}
 	return ptr;
 }
 
@@ -29,5 +34,10 @@ void Memory::sfree(void *ptr)
 {
   if (ptr == NULL) return;
   free(ptr);
+}
+
+void Memory::free_bakyou(Bakyou *bak)
+{
+	
 }
 

@@ -76,7 +76,7 @@ int Yaku::countYaku(Bakyou *bk, PATTERN &part)
 }
 
 int Yaku::IsMenTsumo() 
-{	return (!bak->n_naki[0]) && (bak->act==ACT_AGARI_TSUMO || bak->act==ACT_KAN_SELF); }
+{	return (!bak->n_naki[0]) && bak->dacya==0 && (bak->act==ACT_AGARI_TSUMO || bak->act==ACT_KAN_SELF); }
 
 int Yaku::IsRiichi()
 {	return bak->riichi[0]>1; }
@@ -210,13 +210,14 @@ int Yaku::IsSankantsu()
 int Yaku::IsToitoi()
 {
 
-printf("atama = %d\n",pattern->atama);
 return (pattern->n_kotsu)==4; }
 
 int Yaku::IsSananko()
 {	
 return (pattern->n_kotsu==3 && bak->act==ACT_AGARI_TSUMO) ||
 		   (pattern->n_kotsu==3 && bak->dacya!=0 && !pattern->kotsu[bak->syanpai]) ||
+		   (pattern->n_kotsu==3 && bak->dacya!=0 && pattern->kotsu[bak->syanpai] && 
+		   pattern->c[bak->syanpai]==4) ||
 		   (pattern->n_kotsu==4 && bak->dacya!=0 && pattern->kotsu[bak->syanpai]); }
 
 int Yaku::IsSyaosangen()
@@ -381,7 +382,6 @@ int Yaku::IsSyaosushi()
 
 int Yaku::IsSukantsu()
 {
-	printf("kan = %d\n",bak->n_naki_ankan[0]+bak->n_naki_kan[0]);
 	return bak->n_naki_ankan[0]+bak->n_naki_kan[0]==4;
 }
 
@@ -601,7 +601,7 @@ int Yaku::countFu()
 	if (pattern->isChiitoi) return 25;
 	if (yakus[YAKU_PINFU]) return 20;
 	if (bak->dacya!=0 && !bak->n_naki[0]) fu+=10;
-	if (bak->act=ACT_AGARI_TSUMO) fu += 2;
+	if (bak->act==ACT_AGARI_TSUMO) fu += 2;
 	if (pattern->atama==bak->bafuu) fu+=2;
 	if (pattern->atama==bak->jifuu) fu+=2;
 	if (pattern->atama==31 || pattern->atama==32 || pattern->atama==33) fu+=2;
