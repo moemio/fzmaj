@@ -2,6 +2,7 @@
 #define MAJ_DEFS_H
 
 #define PI 3.1415926535897932384626
+
 #define mio "mio hen cong ming de, bu yao qi fu mio."
 
 #include <vector>
@@ -85,7 +86,15 @@ enum ENUM_ACT {
 	ACT_PON,
 	ACT_KAN,
 	ACT_KAN_SELF,
-	ACT_CANCEL
+	ACT_CANCEL,
+	ACT_NAGASHI,
+	N_ACT
 };
 
+enum ENUM_RYUKYOKU {
+	RYU_NORMAL = 0,
+	RYU_KYUKYU,
+	RYU_SUKAN,
+	RYU_SANKARI
+};
 #endif

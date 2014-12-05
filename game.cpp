@@ -7,6 +7,8 @@
 #include "style_ai.h"
 #include "error.h"
 #include "agari.h"
+#include "syanten.h"
+
 #define GAME_DEBUG
 
 using namespace std;
@@ -57,6 +59,7 @@ void Game::start(long s)
 	residue = 0;
 	pai_ptr = 0;
 	pos_ptr = hajioya;
+	endgame = 0;
 	river.resize(4);
 	river_stat.resize(4);
 	for(i=0;i<4;++i) {
@@ -65,11 +68,16 @@ void Game::start(long s)
 	
 	// seed = 1 for test.
 
-	if (seed==1) 
+	if (seed==1) {
 		initGame();
-	else {
+		is_test=1;
+	} else {
+		is_test=0;
 		printf("Game started. Seed = %d. Hajioya = %d\n",seed, hajioya);
 		printf("ptr = %d\n",pai_ptr);
+		update_syunii();
+		printf("syunii: %d,%d \n%d,%d \n%d,%d \n%d,%d\n",syunii[0],score[syunii[0]],
+	syunii[1],score[syunii[1]],syunii[2],score[syunii[2]],syunii[3],score[syunii[3]]);
 		gameLoop();
 			
 	}
@@ -102,6 +110,7 @@ void Game::clearGame()
 		river_stat[i].clear();
 		jun[i]=0;
 		riichi[i]=0;
+		furiten[i]=0;
 	}
 
 
@@ -110,6 +119,9 @@ void Game::clearGame()
 	dora.clear();
 	ura.clear();
 	pai_ptr = 0;
+
+	ren_zoku = 0;
+	agari_flag = 0;
 }
 
 void Game::initGame()
@@ -154,11 +166,11 @@ void Game::initGame()
 	Ryukyoku  = 0;
 
 	n_dora = 1;
-	dora.push_back(pai[130]>>2);
-	ura.push_back(pai[131]>>2);
+	dora.push_back(c_dora(pai[130]>>2));
+	ura.push_back(c_dora(pai[131]>>2));
 
 	aka = tools->check_aka(pai[130]);
-	if (aka) aka_dorahyouji[aka] = 1;
+	if (aka) aka_dorahyouji[aka-1] = 1;
 
 	for(i=0;i<4;++i) {
 		if(ai[i]) {
@@ -168,6 +180,16 @@ void Game::initGame()
 	}
 
 	if(seed==1) pai_ptr = 80;
+}
+
+int Game::c_dora(int cpai)
+{
+	if (cpai==8)return 0;
+	else if (cpai==17)return 9;
+	else if (cpai==26)return 18;
+	else if (cpai==30)return 27;
+	else if (cpai==33)return 31;
+	else return cpai+1;
 }
 
 void Game::tsumoru(int pos)
@@ -186,11 +208,24 @@ void Game::tsumoru(int pos)
 #endif
 }
 
+void Game::kan_tsumoru(int pos)
+{
+	int aka, cpai;
+	cpai = pai[136-n_dora];
+	aka = tools->check_aka(cpai);
+	cur_aka = aka;
+	tsumo_hai = cpai>>2;
+
+	++tehai[pos][tsumo_hai];
+	if (aka) aka_tehai[pos][aka-1] = 1;
+#ifdef GAME_DEBUG
+	printf ("pos %d rinsyan tsumo %d, %s\n", pos, tsumo_hai, tools->Pai2str(tsumo_hai,aka).c_str());
+#endif
+}
+
 int Game::gameLoop()
 {
-	int kr, endgame=0;
 	int i,j;
-	int p;
 	// check ai
 
 	for(i=0;i<3;++i)
@@ -205,36 +240,76 @@ int Game::gameLoop()
 		
 		printf ("%d pon ba. residue = %d\n", honba, residue);
 	
-		p=oya;
+		cur_pos=oya;
 		
 	// Main Loop
 
 		while(!Ryukyoku) {
-			cur_pos = p;	
 			printf ("********************************************\n");
 			printf ("ptr: %d, cur_pos: %d\n",pai_ptr,cur_pos);
 
 #ifdef GAME_DEBUG
+			for(j=0;j<3;++j)
+				printf("ai 0 's aka %d is %d\n",j,aka_tehai[0][j]);
 			for(j=0;j<4;++j)
 				ai[j]->print_tehai();
 #endif
-			tsumoru(p);
+			tsumoru(cur_pos);
+			if (Ryukyoku==1)break;
+			updateBakyou(ai[cur_pos]->bak, cur_pos);
+			ai[cur_pos]->compute();
+			//checkRequest(cur_pos);
 
-			updateBakyou(ai[p]->bak, p);
-			ai[p]->compute();
-
-			checkRequest(p);
-
-			if (pai_ptr==dead_ptr) Ryukyoku=1;
-			++p;
-			p=p%4;
+			if (pai_ptr==dead_ptr) ryukyoku(RYU_NORMAL);
+			++cur_pos;
+			cur_pos=cur_pos%4;
 		}
-		endgame = 1;
+		update_syunii();
+	printf("syunii: %d,%d \n%d,%d \n%d,%d \n%d,%d\n",syunii[0],score[syunii[0]],
+	syunii[1],score[syunii[1]],syunii[2],score[syunii[2]],syunii[3],score[syunii[3]]);
+		for (i=0;i<4;++i)
+			if (score[i]<0) endgame = 1;
+		if (ren_zoku) {
+			if (bafuu==28 && oya == (hajioya+3)%4 && score[oya]>30000 && syunii[oya]==1)
+				endgame = 1;
+			else
+				++honba;
+			}
+		else {
+			++kyoku;
+			if(kyoku>3){
+				kyoku=0;
+				if(bafuu==29) endgame = 1;
+				else if (bafuu==28) {
+					if (score[syunii[0]]>30000) endgame = 1;
+					else ++bafuu;
+				} else ++bafuu;
+			++oya;
+			oya=oya%4;
+			}
+		}
 	}
-
+	if(residue>0)score[syunii[0]] += residue;
 	clearGame();
 	printf("da wanle.\n"); 
+	printf("syunii: %d,%d \n%d,%d \n%d,%d \n%d,%d\n",syunii[0],score[syunii[0]],
+	syunii[1],score[syunii[1]],syunii[2],score[syunii[2]],syunii[3],score[syunii[3]]);
 	return 0;
+}
+
+void Game::update_syunii()
+{
+	int top=0,sec=1,tir=2,las=3,swp;
+	if(score[sec]>score[top]){swp=sec;sec=top;top=swp;}
+	if(score[tir]>score[top]){swp=tir;tir=top;top=swp;}
+	if(score[las]>score[top]){swp=las;las=top;top=swp;}
+	if(score[tir]>score[sec]){swp=sec;sec=tir;tir=swp;}
+	if(score[las]>score[sec]){swp=las;las=sec;sec=swp;}
+	if(score[las]>score[tir]){swp=tir;tir=las;las=swp;}
+	syunii[0]=top;
+	syunii[1]=sec;
+	syunii[2]=tir;
+	syunii[3]=las;
 }
 
 void Game::dealRequest(int pos, int ai_act)
@@ -320,6 +395,37 @@ int Game::checkRequest(int pos)
 	}
 }
 
+void Game::ryukyoku(int ryu)
+{
+	int i,t[4]={0,0,0,0},nt=0;
+	switch (ryu) {
+		case RYU_NORMAL:
+			for(i=0;i<4;++i)
+				if (syanten->is_tenpai(tehai[i])) {
+					++nt;
+					printf("%d tenpai\n",i);
+					t[i]=1;
+				}
+				printf("nt=%d\n",nt);
+			if (nt==0) break;
+			else if (nt==4) {ren_zoku = 1;break;}
+			else {
+				for(i=0;i<4;++i)
+					if(t[i]) score[i]+=(3000/nt);
+					else score[i]-=(3000/(4-nt));
+			}
+			break;
+		case RYU_KYUKYU:
+			printf("%d kyukyu ryukyoku\n",cur_pos);
+			break;
+		case RYU_SUKAN:
+			printf("su kan ryukyoku\n");
+			break;
+			
+	}
+	Ryukyoku=1;
+}
+
 void Game::add_queue(int pos,int ai_act)
 {
 	int p = (cur_pos-pos+3)%4;
@@ -343,7 +449,7 @@ void Game::deal_queue()
 		queue[i]=0;
 	p = ((deal_idx%3)+1+cur_pos)%4;
 	printf("cur_pos :%d, pos %d deal index %d\n",cur_pos,p,deal_idx);
-	if (deal_idx==9) chii(p,ai[p]->cpai1,ai[p]->cpai2,ai[p]->caka);
+	if (deal_idx==9) chii(p,ai[p]->cpai,ai[p]->caka);
 	else if (deal_idx>=6) pon(p);
 	else if (deal_idx>=3) kan(p);
 	else agari_ron(p);
@@ -353,16 +459,16 @@ void Game::tsumogiri(int pos)
 {
 	sutehai = tsumo_hai;
 	--tehai[pos][sutehai];
-//	updateBakyou(ai[pos]->bak,pos);
 	river[pos].push_back(sutehai);
 	river_stat[pos].push_back(0);
 	if (cur_aka) {
-		aka_river[pos][ai[pos]->aka-1]=1;
-		aka_tehai[pos][ai[pos]->aka-1]=0;
+		aka_river[pos][cur_aka-1]=1;
+		aka_tehai[pos][cur_aka-1]=0;
 	}
 	++jun[pos];
 	dacya = pos;
 	printf ("jun %d, ptr = %d, pos %d da %s\n",jun[pos],pai_ptr,pos,tools->Pai2str(sutehai,cur_aka).c_str());
+	updateBakyou(ai[pos]->bak, pos);
 	checkRequest(pos);
 }
 
@@ -372,56 +478,241 @@ void Game::tekiri(int pos)
 	--tehai[pos][sutehai];
 	river[pos].push_back(sutehai);
 	river_stat[pos].push_back(1);
+	if (sutehai%9==4 && aka_tehai[pos][(sutehai-4)/9]==1) {
+		if (tehai[sutehai]==0) cur_aka = (sutehai-4)/9;
+		else cur_aka = ai[pos]->aka;
+	} else cur_aka = 0;
+
 	if (ai[pos]->aka) {
-		aka_river[pos][ai[pos]->aka-1]=1;
+		aka_river[pos][cur_aka-1]=1;
+		aka_river[pos][cur_aka-1]=0;
+	}
+	++jun[pos];
+	furiten[pos]=0;
+	dacya = pos;
+	printf("jun %d, ptr = %d, pos %d da %s\n",jun[pos],pai_ptr,pos,tools->Pai2str(sutehai,cur_aka).c_str());
+	updateBakyou(ai[pos]->bak, pos);
+	checkRequest(pos);
+}
+
+void Game::check_furiten()
+{
+	int i,j;
+	for(i=0;i<4;++i)
+		if (!furiten[i]) {
+			for (j=0;j<river[i].size();++j)
+				if (in_agari_list(i,river[i][j]))
+					furiten[i]=1;
+		}
+}
+
+int Game::in_agari_list(int pos,int cpai)
+{
+	
+}
+
+void Game::add_dora()
+{
+	dora.push_back(c_dora(pai[130-2*n_dora]>>2));
+	ura.push_back(c_dora(pai[131-2*n_dora]>>2));
+	++n_dora;
+	--dead_ptr;
+}
+
+void Game::kan(int pos)
+{
+	int i;
+	// minkan
+	if (cur_pos!=pos) {
+		++n_naki[pos];
+		++n_naki_kan[pos];
+		++naki_kan[pos][sutehai];
+		if (sutehai<27 && sutehai%9==4) aka_naki[pos][(sutehai-4)/9]=1;
+		if (cur_aka) aka_river[dacya][cur_aka-1]=0;
+		else aka_tehai[pos][(sutehai-4)/9]=0;
+		tehai[pos][sutehai]-=3;
+		cur_pos = pos;
+		for(i=0;i<4;++i)
+			++jun[i];
+		kan_tsumoru(pos);
+		updateBakyou(ai[pos]->bak, pos);
+		checkRequest(pos);
+		add_dora();
+	} else if (cur_pos==pos) {
+	// kakan
+		if(naki_kotsu[pos][tsumo_hai]) {
+			++n_naki_kan[pos];
+			++naki_kan[pos][tsumo_hai];
+			if (cur_aka) {
+				aka_naki[pos][cur_aka-1]=1;
+				aka_tehai[pos][cur_aka-1]=0;
+			}
+			cur_pos = pos;
+			for(i=0;i<4;++i)
+				++jun[i];
+			kan_tsumoru(pos);
+			updateBakyou(ai[pos]->bak,pos);
+			checkRequest(pos);
+			add_dora();
+		} else {
+	// ankan
+			++n_naki_ankan[pos];
+			++n_naki_ankan[pos];
+			++naki_ankan[pos][tsumo_hai];
+			if (cur_aka) {
+				aka_naki[pos][cur_aka-1]=1;
+				aka_tehai[pos][cur_aka-1]=0;
+			}
+			cur_pos=pos;
+			add_dora();
+			for(i=0;i<4;++i)
+				++jun[i];
+			kan_tsumoru(pos);
+			updateBakyou(ai[pos]->bak,pos);
+			checkRequest(pos);
+		}
+	}
+	int rkflag = 1;
+	if (n_dora==5) {
+		for(i=0;i<4;++i)
+			if(n_naki_kan[i]==4) {
+				rkflag = 0;
+				break;
+			}
+		if (rkflag==1) ryukyoku(RYU_SUKAN);
 	}
 }
 
 void Game::pon(int pos)
 {
+	int i;
 	++n_naki[pos];
 	++n_naki_kotsu[pos];
 	++naki_kotsu[pos][sutehai];
-	if (cur_aka) aka_naki[pos][cur_aka-1]=1;
+	if (cur_aka) {
+		aka_naki[pos][cur_aka-1]=1;
+		aka_river[dacya][cur_aka-1]=0;
+	}
+	if (ai[pos]->aka) {
+		aka_naki[pos][ai[pos]->aka-1]=1;
+		aka_tehai[pos][ai[pos]->aka-1]=0;
+	}
 	tehai[pos][sutehai] -= 2;
-	
+	cur_pos = pos;
+	for(i=0;i<4;++i)
+		if (i!=pos) ++jun[i];
 	tekiri(pos);
 }
 
-void Game::chii(int pos, int cpai1, int cpai2, int aka)
+void Game::chii(int pos, int cpai, int aka)
 {
-
+	int i,p;
+	++n_naki[pos];
+	p = cpai > sutehai ? sutehai : cpai;
+	++n_naki_syuntsu[p];
+	if (cur_aka) {
+		aka_naki[pos][cur_aka-1]=1;
+		aka_river[dacya][cur_aka-1]=0;
+	}
+	if (ai[pos]-aka) {
+		aka_naki[pos][cur_aka-1]=1;
+		aka_tehai[pos][cur_aka-1]=0;
+	}
+	--tehai[pos][cpai];
+	if (sutehai==cpai+1) --tehai[pos][cpai+2];
+	else --tehai[pos][cpai+1];
+	cur_pos = pos;
+	for(i=0;i<4;++i)
+		if(i!=pos) ++jun[i];
+	tekiri(pos);
 }
 
 void Game::agari_tsumo(int pos)
 {
-
+	int i;
+	agari->checkAgari(ai[pos]->bak);
+	if (pos==oya) 
+		for (i=0;i<4;++i)
+			if(i!=pos) score[i]-=(agari->score_ko + 100*honba);
+			else score[i] += (agari->score_ko*6 + 300*honba);
+	else 
+		for (i=0;i<4;++i)
+			if (i!=pos) 
+				if (i==oya) score[i]-=(agari->score_oya +100*honba);
+				else score[i]-=(agari->score_ko +100*honba);
+			else score[i] += (agari->score_ko*4 + 300*honba);
+	score[i] += residue;
+	residue = 0;
+	// next game
+	agari_flag=1;
+	if (pos==oya) ren_zoku = 1;
 }
 
 void Game::agari_ron(int pos)
 {
-
+	agari->checkAgari(ai[pos]->bak);
+	score[pos] += (agari->score + 300*honba);
+	score[cur_pos] -= (agari->score + 300*honba);
+	score[pos] += residue;
+	residue = 0;
+	agari_flag = 1;
+	if (pos==oya) ren_zoku = 1;
 }
 
-void Game::kan(int pos)
-{
-
-}
 
 int Game::kanable(int pos, int pai)
 {
-	if (pai_ptr == dead_ptr -1) return 0;
-	if(cur_pos==pos) return (naki_kotsu[pos][pai] && tehai[pos][pai]) || (tehai[pos][pai]==4);
-	else return tehai[pos][pai]==3;
+	if (!riichi[pos]) {
+		if (pai_ptr == dead_ptr -1) return 0;
+		if(cur_pos==pos) return (naki_kotsu[pos][pai] && tehai[pos][pai]) || (tehai[pos][pai]==4);
+		else return tehai[pos][pai]==3;
+	} else {
+		if (cur_pos!=pos)return 0;
+		if (pai!=tsumo_hai)return 0;
+		//check tenpai
+
+		
+		return 0;
+	}
+}
+
+int Game::riichiable(int pos)
+{
+	return syanten->is_tenpai(tehai[pos]) && score[pos]>1000 && pai_ptr<=dead_ptr-4;	
+}
+
+void Game::riichi_sengen(int pos)
+{
+	int i, tekiri_flag=1;
+	if (riichiable(pos)){
+		sutehai=ai[pos]->sutehai;
+		if (sutehai==-1) {
+			sutehai=tsumo_hai;
+			tekiri_flag = 0;
+		}
+		if (tekiri_flag)
+			tekiri(pos);
+		else tsumogiri(pos);
+
+		riichi[pos]=jun[pos];
+		score[pos]-=1000;
+		residue += 1000;
+	} else
+	{
+		if(sutehai==-1) tekiri_flag=0;
+		if (tekiri_flag) tekiri(pos);
+		else tsumogiri(pos);
+	}
 }
 
 int Game::ponable(int pos, int pai)
 {
-	return tehai[pos][pai]>=2;
+	return tehai[pos][pai]>=2 && (riichi[pos]==0);
 }
 
 int Game::chiiable(int p, int pai)
 {
+	if (riichi[p]) return 0;
 	if ((cur_pos+1)%4 != p) return 0;
 	if(pai>=27) return 0;
 	if(pai%9==0 || pai%9==8)
@@ -508,6 +799,8 @@ void Game::updateBakyou(Bakyou *bak, int pos)
 		bak->act = cur_act;
 		bak->aka = cur_aka;
 	}
+	for (i=0;i<3;++i)
+		bak->aka_tehai[i]=aka_tehai[0][i];
 	printf ("bak %d updated. cur_pos = %d, dacya = %d\n",pos,cur_pos,bak->dacya);
 }
 
@@ -535,7 +828,7 @@ void Game::createEmptyBakyou(Bakyou *bak, int pos)
 		bak->n_naki_kan[i] = 0;
 		bak->n_naki_ankan[i] = 0;
 		bak->riichi[i] = 0;
-		bak->score[i] = 25000;
+		bak->score[i] = score[i];
 		for(j=0;j<34;++j) {
 			bak->naki_kotsu[i][j] = 0;
 			bak->naki_syuntsu[i][j] = 0;

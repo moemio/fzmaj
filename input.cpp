@@ -294,6 +294,7 @@ int Input::execute_command()
   	if (!strcmp(command,"run_test")) run_test();
 	else if (!strcmp(command,"check")) check_pai();
 	else if (!strcmp(command,"ai_style")) ai_style();
+	else if (!strcmp(command,"agari_test")) check_agari();
   
   	else flag = 0;
   
@@ -334,9 +335,19 @@ void Input::ai_style()
 	game->create_ai(arg[1],pos);
 }
 
+void Input::check_agari()
+{
+	int c[34],last,n;
+	last = tools->Str2pai(arg[0],c);
+	n = tools->CountPai(c);
+	if(n==14) n=agari->agari_test(c);
+	else return;
+	printf("n=%d\n",n);
+}
+
 void Input::check_pai()
 {
-	int i;
+	int i,n;
 	int nst;
 	int c[34], last;
 	Bakyou *bak = new Bakyou;
@@ -349,6 +360,8 @@ void Input::check_pai()
 	if (narg==0) error->all(FLERR, "Illegal check command");
 
 	last = tools->Str2pai(arg[0], c);
+	n = tools->CountPai(c);
+	if(n>14) error->all(FLERR, "Illegal pai number");
 	for(i=0;i<34;++i) {
 		bak->tehai[i] = c[i];
 	}

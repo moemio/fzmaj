@@ -31,6 +31,11 @@ public:
 	class AI *new_ai(const char *);
 	void request(int,int);
 
+	int is_test;
+
+	int in_agari_list(int,int);
+	void check_furiten();
+
 protected:
 	
 	int pai[136];
@@ -48,6 +53,7 @@ protected:
 	int dead_ptr;
 	int pos_ptr;
 	int riichi[4];
+	int furiten[4];
 	int n_naki[4];
 	int naki_kotsu[4][34];
 	int naki_syuntsu[4][34];
@@ -70,16 +76,21 @@ protected:
 	int cur_aka;
 	int dacya;
 
+	int agari_flag;
+	int ren_zoku;
+
 	vector< vector<int> > river;
 	vector< vector<int> > river_stat;
 	vector<int> dora;
 	vector<int> ura;
 	
+	int endgame;
 	int ura_check;
 
 	int score[4];
 	int Ryukyoku;
 	int tehai[4][34];
+	int syunii[4];
 
 	long seed;
 
@@ -93,21 +104,28 @@ protected:
 	
 	void dealRequest(int,int);
 	int checkRequest(int);
+	void update_syunii();
 
 	void tsumogiri(int);
 	void tekiri(int);
 	void tsumoru(int);
+	void kan_tsumoru(int);
 	void pon(int);
-	void chii(int,int,int,int);
+	void chii(int,int,int);
 	void kan(int);
 	int chiiable(int,int);
 	int ponable(int,int);
 	int kanable(int,int);
+	int riichiable(int);
 	void agari_tsumo(int);
 	void agari_ron(int);
+	void riichi_sengen(int);
 
 	void add_queue(int,int);
 	void deal_queue();
+	int c_dora(int);
+	void add_dora();
+	void ryukyoku(int);
 
 
 	template <typename T> static AI *ai_creator(FZMAJ *);

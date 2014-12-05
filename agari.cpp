@@ -105,6 +105,8 @@ int Agari::tokuHandan()
 	part.n_kotsu=0;
 	part.n_naki=0;
 	part.atama=-1;
+	part.fan=0;
+	part.fu=20;
 	part.isYakuman = false;
 	part.yakuman_baisu = 0;
 
@@ -147,7 +149,17 @@ int Agari::tokuHandan()
 			maxp = i;
 		}
 	}
-	if (pattern.size())printPattern(maxp);
+	if (pattern.size()) {
+		fan = pattern[maxp].fan;
+		fu = pattern[maxp].fu;
+		if (fan==0) printf("Yaku nashi.\n");
+		else {
+			printPattern(maxp);
+			score = pattern[maxp].score;
+			score_ko = pattern[maxp].score_ko;
+			score_oya = pattern[maxp].score_oya;
+		}
+	}
 	return pattern.size();
 }
 
@@ -182,7 +194,7 @@ void Agari::d_atama(int k)
 	{c[k]+=2; isatama = 0;}
 
 
-int Agari::cc2m(int d)
+int Agari::cc2m(int c[], int d)
 {
 	return (c[d+0]<< 0)|(c[d+1]<< 3)|(c[d+2]<< 6)|
 	       (c[d+3]<< 9)|(c[d+4]<<12)|(c[d+5]<<15)|
@@ -246,9 +258,9 @@ int Agari::agari_test( int c[] )
 	if (n2==1) return 0;
 	if ((n0==2)+(n1==2)+(n2==2)+
 			(c[27]==2)+(c[28]==2)+(c[29]==2)+(c[30]==2)+(c[31]==2)+(c[32]==2)+(c[33]==2)!=1) return 0;
-    int nn0=(n00*1+n01*2)%3, m0=cc2m(0);
-	int nn1=(n10*1+n11*2)%3, m1=cc2m(9);
-	int nn2=(n20*1+n21*2)%3, m2=cc2m(18);
+    int nn0=(n00*1+n01*2)%3, m0=cc2m(c, 0);
+	int nn1=(n10*1+n11*2)%3, m1=cc2m(c, 9);
+	int nn2=(n20*1+n21*2)%3, m2=cc2m(c,18);
 	if (j&4) return !(n0|nn0|n1|nn1|n2|nn2) && isMentsu(m0) && isMentsu(m1) && isMentsu(m2);
 	if (n0==2) return !(n1|nn1|n2|nn2) && isMentsu(m1) && isMentsu(m2) && isAtamaMentsu(nn0,m0);
 	if (n1==2) return !(n2|nn2|n0|nn0) && isMentsu(m2) && isMentsu(m0) && isAtamaMentsu(nn1,m1);
@@ -311,6 +323,8 @@ void Agari::updateResult()
 		part.isKokushi=false;
 		part.yakuman_baisu=0;
 		part.n_kotsu=n_kotsu;
+		part.fan=0;
+		part.fu=20;
 		part.n_naki=bak->n_naki[0];
 		part.n_syuntsu=n_syuntsu;
 		part.n_kotsu += bak->n_naki_kotsu[0];

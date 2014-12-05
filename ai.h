@@ -24,8 +24,10 @@ public:
 	int act;
 	int pos_me;
 
+	int *actlist;
+
 	// naki_chii
-	int cpai1,cpai2,caka;
+	int cpai,caka;
 
 	void request(int act);
 

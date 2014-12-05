@@ -79,3 +79,8 @@ build 11
 	Working on the ai framework
 	Memory leak, never mind.
 	Cannot destruct game, don't know why.
+
+build 12
+
+	add chii, pon, kan, agari
+	add agari_test 

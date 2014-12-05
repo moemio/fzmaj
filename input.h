@@ -41,6 +41,7 @@ private:
 	void run_test(); // FZMAJ Commands
 	void str2pai();
 	void check_pai();
+	void check_agari();
 	void ai_style();
 
 };
