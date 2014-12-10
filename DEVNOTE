@@ -84,3 +84,8 @@ build 12
 
 	add chii, pon, kan, agari
 	add agari_test 
+
+build 13
+	
+	add ai_player for test
+	add actlist
