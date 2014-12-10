@@ -24,6 +24,7 @@ public:
 	int st_normal;
 	int st_7;
 	int st_13;
+	int min_syanten;
 	string agarilist;
 
 protected:
@@ -32,7 +33,6 @@ protected:
 	int f_n4;
 	int f_koritsu;
 	int n_jidahai;
-	int min_syanten;
 	int bakc[34];
 
 	void updateResult();

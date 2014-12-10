@@ -14,6 +14,7 @@ public:
 	void *srealloc(void *, int n, const char *);
 	void sfree(void *);
 	void free_bakyou(class Bakyou *);
+	void fail(const char *);
 
 
 	template <typename TYPE>
@@ -23,6 +24,10 @@ public:
 		array = (TYPE *) smalloc(nbytes,name);
 		return array;
 	}
+
+  	template <typename TYPE>
+  	TYPE **create(TYPE **&array, int n, const char *name) 
+  	{fail(name); return NULL;}
 	
 	template <typename TYPE>
 	TYPE **create(TYPE **&array, int n1, int n2, const char *name)
@@ -39,6 +44,19 @@ public:
 		}
 		return array;
 	}
+
+	template <typename TYPE>
+	void destroy(TYPE *array)
+	{sfree(array);}
+
+	template <typename TYPE>
+	void destroy(TYPE **array)
+	{
+		if (array==NULL) return;
+		sfree(array[0]);
+		sfree(array);
+	}
+	
 
 };
 

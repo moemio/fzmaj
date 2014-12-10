@@ -201,15 +201,15 @@ int Syanten::calcSyanten(int isSkip713)
 	scanNormal(init_mentsu);
 
 	min_syanten = MIN(MIN(st_7,st_13),st_normal);
-	
+/*	
 	if (min_syanten>=0 && game->is_test==1){
 	printf("st_normal : %d\n",st_normal);
 	printf("st_7 : %d\n",st_7);
 	printf("st_13 : %d\n",st_13);
 	printf("min_syanten : %d\n",min_syanten);
 	}
-
-	if (nc==13 && min_syanten==0) {
+*/
+	if ((nc%3==1) && min_syanten==0) {
 		gen_agarilist();
 		printf("tenpai.\n");
 		printf("agarilist = %s\n",agarilist.c_str());
@@ -218,12 +218,14 @@ int Syanten::calcSyanten(int isSkip713)
 
 void Syanten::gen_agarilist()
 {
-	int i;
+	int i,st;
 	agarilist = "";
 	for(i=0;i<34;++i)
 	for(i=0;i<34;++i) {
 		++bakc[i];
-		if (agari->agari_test(bakc)) {
+		if (bakc[i]<=4 && agari->agari_test(bakc)) {
+		//st = calcSyantenAll(bakc);	
+		//if (st<0) {
 			agarilist += tools->Pai2str(i,0);
 		}
 		--bakc[i];

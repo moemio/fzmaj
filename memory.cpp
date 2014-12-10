@@ -41,3 +41,9 @@ void Memory::free_bakyou(Bakyou *bak)
 	
 }
 
+void Memory::fail(const char *name)
+{
+	char str[128];
+	sprintf(str,"Cannot greate an array of pointers for %s",name);
+	error->all(FLERR,str);
+}

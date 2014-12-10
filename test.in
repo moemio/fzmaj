@@ -1,8 +1,8 @@
 
-ai_style 0 tsumogiri
+ai_style 0 player
 ai_style 1 tsumogiri
 ai_style 2 tsumogiri
 ai_style 3 tsumogiri
 
 run 12345
-run 123
+#run 123

@@ -3,6 +3,7 @@
 #include "tools.h"
 #include "agari.h"
 #include "yaku.h"
+#include "game.h"
 
 #include <iostream>
 #include <string>
@@ -36,6 +37,18 @@ void Agari::init()
 	}
 	for(i=0;i<46;++i)
 		agari_yaku[i]=0;
+}
+
+int Agari::check_agari_empty(int tehai_t[], int last)
+{
+	int i;
+	if (!game->started) game->start(1);
+	Bakyou *bak_t = new Bakyou;
+	game->createEmptyBakyou(bak_t,0);
+	bak->syanpai = last;
+	for(i=0;i<34;++i)
+		bak_t->tehai[i]=tehai_t[i];
+	return checkAgari(bak_t);
 }
 
 int Agari::checkAgari(Bakyou *bakyou)

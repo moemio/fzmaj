@@ -8,7 +8,7 @@ using namespace FZMAJ_NS;
 AI::AI(FZMAJ *maj) : Pointers(maj)
 {
 	bak = new Bakyou;
-	
+	actlist = (int*)malloc(N_ACT*sizeof(int));
 }
 
 AI::~AI() 
@@ -28,8 +28,9 @@ void AI::print_tehai()
 {
 	int i,j,akaflag[3],akap;
 	printf("ai %d's tehai = ",pos_me);
-	for(i=0;i<3;++i)
-		akaflag[i]=bak->aka_tehai[i];
+	for(i=0;i<3;++i) {
+		akaflag[i]=(bak->aka_tehai[i]!=0);
+	}
 	for(i=0;i<34;++i) {
 		if (bak->tehai[i]) {
 			for(j=0;j<bak->tehai[i];++j) {

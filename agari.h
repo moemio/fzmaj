@@ -34,7 +34,8 @@ public:
 	~Agari();
 	
 	int checkAgari(Bakyou *);
-	int agari_test( int c[]);
+	int agari_test( int []);
+	int check_agari_empty(int [],int);
 
 	int maxp;
 protected:

@@ -33,8 +33,6 @@ public:
 
 	int is_test;
 
-	int in_agari_list(int,int);
-	void check_furiten();
 
 protected:
 	
@@ -78,6 +76,7 @@ protected:
 
 	int agari_flag;
 	int ren_zoku;
+	int n_kan_tot;
 
 	vector< vector<int> > river;
 	vector< vector<int> > river_stat;
@@ -90,11 +89,16 @@ protected:
 	int score[4];
 	int Ryukyoku;
 	int tehai[4][34];
-	int syunii[4];
+	int juni[4];
+	int tenpai[4][34];
+	string agarilist[4];
+	int in_agari_list(int,int);
+	void check_furiten(int);
+	int queue[11];
+	int **actlist;
 
 	long seed;
 
-	int queue[11];
 
 	void clearGame();
 	void initGame();
@@ -104,7 +108,8 @@ protected:
 	
 	void dealRequest(int,int);
 	int checkRequest(int);
-	void update_syunii();
+	void update_juni();
+	void clear_actlist(int);
 
 	void tsumogiri(int);
 	void tekiri(int);
@@ -127,6 +132,7 @@ protected:
 	void add_dora();
 	void ryukyoku(int);
 
+	void request_ai(int);
 
 	template <typename T> static AI *ai_creator(FZMAJ *);
 
