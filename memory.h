@@ -56,7 +56,6 @@ public:
 		sfree(array[0]);
 		sfree(array);
 	}
-	
 
 };
 

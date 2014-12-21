@@ -89,3 +89,8 @@ build 13
 	
 	add ai_player for test
 	add actlist
+
+build 14
+
+	Fixed some bugs.
+	Rearranged ai_player and game structures.

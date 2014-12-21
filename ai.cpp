@@ -19,7 +19,9 @@ AI::~AI()
 
 void AI::request(int ai_act)
 {
+//#ifdef GAME_DEUBG
 	printf("ai %d requesting act %d\n",pos_me,ai_act);
+//#endif
 	act = ai_act;
 	game->request(pos_me, ai_act);
 }
@@ -49,3 +51,5 @@ void AI::print_tehai()
 	}
 	printf("\n");
 }
+
+void AI::player_act(int narg, char** arg){}

@@ -47,7 +47,7 @@ struct Bakyou {
 	int dacya;
 	int act;
 
-	int aka;
+	int aka;   // syanpai is aka
 };
 
 struct PATTERN {
@@ -86,6 +86,7 @@ enum ENUM_ACT {
 	ACT_PON,
 	ACT_KAN,
 	ACT_KAN_SELF,
+	ACT_RIICHI,
 	ACT_CANCEL,
 	ACT_NAGASHI,
 	N_ACT
@@ -97,4 +98,20 @@ enum ENUM_RYUKYOKU {
 	RYU_SUKAN,
 	RYU_SANKARI
 };
+
+const char ACT_NAME[12][128] = {
+	{"ACT_Tsumoru		"},
+	{"ACT_Tekiri		"},
+	{"ACT_Tsumogiri		"},
+	{"ACT_Agari_Tsumo	: tsumo	"},
+	{"ACT_Agari_Ron		: ron	"},
+	{"ACT_Chii			: chii	"},
+	{"ACT_Pon			: pon	"},
+	{"ACT_Kan			: kan	"},
+	{"ACT_Kan_self		: kan   "},
+	{"ACT_Riichi 		: riichi"},
+	{"ACT_Cancel		"},
+	{"ACT_Nagashi		: nagare"}
+};
+
 #endif

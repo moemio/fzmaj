@@ -7,6 +7,8 @@
 #include <map>
 #include "string.h"
 
+//#define GAME_DEBUG
+
 using namespace std;
 
 namespace FZMAJ_NS {
@@ -106,7 +108,6 @@ protected:
 	void initBakyou(class Bakyou *, int);
 	int gameLoop();
 	
-	void dealRequest(int,int);
 	int checkRequest(int);
 	void update_juni();
 	void clear_actlist(int);
@@ -131,6 +132,7 @@ protected:
 	int c_dora(int);
 	void add_dora();
 	void ryukyoku(int);
+	void make_actlist(int);
 
 	void request_ai(int);
 

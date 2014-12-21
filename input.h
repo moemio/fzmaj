@@ -43,6 +43,7 @@ private:
 	void check_pai();
 	void check_agari();
 	void ai_style();
+	void player_act();
 
 };
 

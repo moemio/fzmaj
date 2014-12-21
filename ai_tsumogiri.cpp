@@ -15,7 +15,7 @@ AI_Tsumogiri::~AI_Tsumogiri() {}
 
 void AI_Tsumogiri::compute()
 {
-	printf("ai %d computing, dacya %d\n",pos_me,bak->dacya);
+//	printf("ai %d computing, dacya %d\n",pos_me,bak->dacya);
 	if (bak->dacya == 0)	request(ACT_TSUMOGIRI);
 	else request(ACT_CANCEL);
 }

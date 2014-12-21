@@ -10,30 +10,28 @@ class AI : protected Pointers {
 
 public:
 
+	int pos_me;
+	char* style;
+
+	virtual void player_act(int,char**);
 	virtual void compute() = 0;
-	
 	virtual void settings(int, char**) = 0;
+	void request(int act);
+	void print_tehai();
 
 	AI(class FZMAJ *);
 	virtual ~AI();
 	
-	class Bakyou *bak;
+	struct Bakyou *bak;
 
 	int sutehai;
 	int aka;      // sutehai is aka
 	int act;
-	int pos_me;
 
 	int *actlist;
-
+	
 	// naki_chii
 	int cpai,caka;
-
-	void request(int act);
-
-	// 
-
-	void print_tehai();
 
 };
 

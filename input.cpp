@@ -13,6 +13,7 @@
 #include "run.h"
 #include "agari.h"
 #include "game.h"
+#include "ai.h"
 
 #define DELTALINE 256
 #define DELTA 4
@@ -180,7 +181,8 @@ char *Input::one(const char *single)
   	if (execute_command()) {
     	char *str = new char[maxline+32];
     	sprintf(str,"Unknown command: %s",line);
-    	error->all(FLERR,str);
+    //	error->all(FLERR,str);
+		error->debug(FLERR,str);
   }
   
   return command;
@@ -295,6 +297,7 @@ int Input::execute_command()
 	else if (!strcmp(command,"check")) check_pai();
 	else if (!strcmp(command,"ai_style")) ai_style();
 	else if (!strcmp(command,"agari_test")) check_agari();
+	else if (!strcmp(command,"player_act")) player_act();
   
   	else flag = 0;
   
@@ -436,4 +439,12 @@ void Input::check_pai()
 
 	printf ("*******************************\n");
 	delete bak;
+}
+
+void Input::player_act()
+{
+	int pos = atoi(arg[0]);
+	printf("input player_act %d act %s\n",pos,arg[1]);
+	if(game->ai[pos] && strcmp(game->ai[pos]->style,"player")==0)
+		game->ai[pos]->player_act(narg,arg);
 }
