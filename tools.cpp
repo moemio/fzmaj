@@ -70,3 +70,17 @@ int Tools::check_aka(int n)
 	if (n==88) return 3;
 	return 0;
 }
+
+string Tools::Pai2str(int cpai, int aka)
+{
+	string sth = "";
+	char tp;
+	if (cpai>=9) {cpai -= 9;tp='p';}
+	else tp='m';
+	if (cpai>=9) {cpai -= 9;tp='s';}
+	if (cpai>=9) {cpai -= 9;tp='z';}
+	if (aka) sth += '0';
+	else sth += ('1'+cpai);
+	sth += tp;
+	return sth;
+}

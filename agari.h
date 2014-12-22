@@ -17,6 +17,8 @@ public:
 	int fan;
 	int fu;
 	int score;
+	int score_ko;
+	int score_oya;
 	int agari_yaku[46];
 	
 
@@ -31,10 +33,12 @@ public:
 	Agari(class FZMAJ * );
 	~Agari();
 	
-	void checkAgari(Bakyou *);
+	int checkAgari(Bakyou *);
+	int agari_test( int []);
+	int check_agari_empty(int [],int);
 
-protected:
 	int maxp;
+protected:
 	
 	int c[34];
 	int back_up_c[34];
@@ -44,7 +48,7 @@ protected:
 	void i_syuntsu(int k);
 	void d_atama(int k);
 	void i_atama(int k);
-	int cc2m(int);
+	int cc2m(int [],int);
 	bool isAtamaMentsu(int,int);
 	bool isMentsu(int);
 
@@ -52,7 +56,7 @@ protected:
 
 	void removeJihai();
 	void updateResult();
-	void tokuHandan();
+	int tokuHandan();
 
 	void Run(int depth);
 	void printPattern(int);

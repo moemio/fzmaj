@@ -3,6 +3,8 @@
 #include "tools.h"
 #include "agari.h"
 #include "yaku.h"
+#include "game.h"
+#include "memory.h"
 
 #include <iostream>
 #include <string>
@@ -38,10 +40,22 @@ void Agari::init()
 		agari_yaku[i]=0;
 }
 
-void Agari::checkAgari(Bakyou *bakyou)
+int Agari::check_agari_empty(int tehai_t[], int last)
 {
-
 	int i;
+	if (!game->started) game->start(1);
+	Bakyou *bak_t = new Bakyou;
+	memory->create_bakyou(bak_t);
+	game->createEmptyBakyou(bak_t,0);
+	bak->syanpai = last;
+	for(i=0;i<34;++i)
+		bak_t->tehai[i]=tehai_t[i];
+	return checkAgari(bak_t);
+}
+
+int Agari::checkAgari(Bakyou *bakyou)
+{
+	int i,np;
 	init();
 	for(i=0;i<34;++i) {
 		c[i]=bakyou->tehai[i];
@@ -83,10 +97,13 @@ void Agari::checkAgari(Bakyou *bakyou)
 	pattern.clear();
 //	bak = new Bakyou;
 	bak = bakyou;
-	tokuHandan();
+	printf("in agari 1\n");
+	np = tokuHandan();
+	printf("in agari out\n");
+	return np;
 }
 
-void Agari::tokuHandan()
+int Agari::tokuHandan()
 {
 	
 	int i,j,sc;
@@ -104,6 +121,8 @@ void Agari::tokuHandan()
 	part.n_kotsu=0;
 	part.n_naki=0;
 	part.atama=-1;
+	part.fan=0;
+	part.fu=20;
 	part.isYakuman = false;
 	part.yakuman_baisu = 0;
 
@@ -142,12 +161,24 @@ void Agari::tokuHandan()
 	for(i=0;i<pattern.size();++i) {
 		yaku->countYaku(bak, pattern[i]);
 		if(pattern[i].score > sc) {
+	printf("in agari 7.5\n");
 			sc = pattern[i].score;
 			maxp = i;
 		}
 	}
-	printf("agari pattern: %d\n",pattern.size());
-	printPattern(maxp);
+	printf("in agari 8\n");
+	if (pattern.size()) {
+		fan = pattern[maxp].fan;
+		fu = pattern[maxp].fu;
+		if (fan==0) printf("Yaku nashi.\n");
+		else {
+			printPattern(maxp);
+			score = pattern[maxp].score;
+			score_ko = pattern[maxp].score_ko;
+			score_oya = pattern[maxp].score_oya;
+		}
+	}
+	return pattern.size();
 }
 
 
@@ -181,7 +212,7 @@ void Agari::d_atama(int k)
 	{c[k]+=2; isatama = 0;}
 
 
-int Agari::cc2m(int d)
+int Agari::cc2m(int c[], int d)
 {
 	return (c[d+0]<< 0)|(c[d+1]<< 3)|(c[d+2]<< 6)|
 	       (c[d+3]<< 9)|(c[d+4]<<12)|(c[d+5]<<15)|
@@ -221,6 +252,39 @@ bool Agari::isAtamaMentsu(int nn, int m)
 	return false;
 }
 
+int Agari::agari_test( int c[] )
+{
+	int j=(1<<c[27])|(1<<c[28])|(1<<c[29])|(1<<c[30])|(1<<c[31])|(1<<c[32])|(1<<c[33]);
+	if (j>=0x10) return 0;
+	// Kokushi musou
+	if (((j&3)==2) && (c[0]*c[8]*c[9]*c[17]*c[18]*c[26]*c[27]*c[28]*c[29]*c[30]*c[31]*c[32]*c[33]==2)) return 1;
+	// 7 tui tsu
+	if (!(j&10) && (
+			(c[ 0]==2)+(c[ 1]==2)+(c[ 2]==2)+(c[ 3]==2)+(c[ 4]==2)+(c[ 5]==2)+(c[ 6]==2)+(c[ 7]==2)+(c[ 8]==2)+
+			(c[ 9]==2)+(c[10]==2)+(c[11]==2)+(c[12]==2)+(c[13]==2)+(c[14]==2)+(c[15]==2)+(c[16]==2)+(c[17]==2)+
+			(c[18]==2)+(c[19]==2)+(c[20]==2)+(c[21]==2)+(c[22]==2)+(c[23]==2)+(c[24]==2)+(c[25]==2)+(c[26]==2)+
+			(c[27]==2)+(c[28]==2)+(c[29]==2)+(c[30]==2)+(c[31]==2)+(c[32]==2)+(c[33]==2))==7) return 1;
+	if (j&2) return 0;
+	int n00 = c[ 0]+c[ 3]+c[ 6], n01 = c[ 1]+c[ 4]+c[ 7], n02 = c[ 2]+c[ 5]+c[ 8];
+	int n10 = c[ 9]+c[12]+c[15], n11 = c[10]+c[13]+c[16], n12 = c[11]+c[14]+c[17];
+	int n20 = c[18]+c[21]+c[24], n21 = c[19]+c[22]+c[25], n22 = c[20]+c[23]+c[26];
+	int n0 = (n00+n01+n02)%3;
+	if (n0==1) return 0;
+	int n1 = (n10+n11+n12)%3;
+	if (n1==1) return 0;
+	int n2 = (n20+n21+n22)%3;
+	if (n2==1) return 0;
+	if ((n0==2)+(n1==2)+(n2==2)+
+			(c[27]==2)+(c[28]==2)+(c[29]==2)+(c[30]==2)+(c[31]==2)+(c[32]==2)+(c[33]==2)!=1) return 0;
+    int nn0=(n00*1+n01*2)%3, m0=cc2m(c, 0);
+	int nn1=(n10*1+n11*2)%3, m1=cc2m(c, 9);
+	int nn2=(n20*1+n21*2)%3, m2=cc2m(c,18);
+	if (j&4) return !(n0|nn0|n1|nn1|n2|nn2) && isMentsu(m0) && isMentsu(m1) && isMentsu(m2);
+	if (n0==2) return !(n1|nn1|n2|nn2) && isMentsu(m1) && isMentsu(m2) && isAtamaMentsu(nn0,m0);
+	if (n1==2) return !(n2|nn2|n0|nn0) && isMentsu(m2) && isMentsu(m0) && isAtamaMentsu(nn1,m1);
+	if (n2==2) return !(n0|nn0|n1|nn1) && isMentsu(m0) && isMentsu(m1) && isAtamaMentsu(nn2,m2);
+	return 0;
+}
 void Agari::Run(int depth)
 {
 	for (; depth<27&&!c[depth];++depth);
@@ -270,18 +334,20 @@ void Agari::Run(int depth)
 void Agari::updateResult()
 {
 	int i,j;
-	if ((n_mentsu + bak->n_naki[0])==4 && isatama  ) {
+	if ((n_mentsu)==4 && isatama  ) {
 		PATTERN part;
 		part.isYakuman=false;
 		part.isChiitoi=false;
 		part.isKokushi=false;
 		part.yakuman_baisu=0;
 		part.n_kotsu=n_kotsu;
+		part.fan=0;
+		part.fu=20;
 		part.n_naki=bak->n_naki[0];
 		part.n_syuntsu=n_syuntsu;
 		part.n_kotsu += bak->n_naki_kotsu[0];
 		part.n_kotsu += bak->n_naki_kan[0];
-		part.n_kotsu += bak->n_naki_ankan[0];
+		//part.n_kotsu += bak->n_naki_ankan[0];
 		part.n_syuntsu += bak->n_naki_syuntsu[0];
 		for(i=0;i<34;++i) {
 			part.c[i]=back_up_c[i];
@@ -305,13 +371,13 @@ void Agari::printPattern(int p)
 	cout << endl << "Agari pattern  ";
 	// kotsu
 	for (i=0;i<34;++i)
-		if (pattern[p].kotsu[i] && !bak->naki_ankan[0][i]) cout << hai2str(i) << hai2str(i) << hai2str(i) << " ";
+		if (pattern[p].kotsu[i] && !bak->naki_kotsu[0][i] && !bak->naki_kan[0][i] && !bak->naki_ankan[0][i]) cout << hai2str(i) << hai2str(i) << hai2str(i) << " ";
 	// syuntsu
 	for(i=0;i<34;++i)
-		if (pattern[p].syuntsu[i]) 
+		if (pattern[p].syuntsu[i] && !bak->naki_syuntsu[0][i]) 
 			for(j=0;j<pattern[p].syuntsu[i];++j)
 				cout << hai2str(i) << hai2str(i+1) << hai2str(i+2) << " ";
-	cout << hai2str(atama) << hai2str(atama);
+	cout << hai2str(pattern[p].atama) << hai2str(pattern[p].atama);
 	// naki
 	if (pattern[p].n_naki){
 		cout << " naki: ";
@@ -331,7 +397,7 @@ void Agari::printPattern(int p)
 			if (bak->naki_ankan[0][i])
 				cout << hai2str(i) << hai2str(i) << hai2str(i) << hai2str(i) << "  ";
 	}
-	cout << "  Agari pai: " << hai2str(bak->syanpai);
+	cout << "  Agari pai: " << hai2str(bak->syanpai) << endl;
 	cout << "   dora: ";
 	for (i=0;i<bak->n_dora;++i)
 		cout << hai2str(bak->dora[i]);

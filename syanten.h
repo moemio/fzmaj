@@ -1,5 +1,6 @@
 #ifndef MAJ_SYANTEN_H
 #define MAJ_SYANTEN_H
+#include <string>
 
 #include "pointers.h"
 
@@ -14,6 +15,7 @@ public:
 	void init();
 	int calcSyantenAll(int tehai[]);
 	int calcSyantenNo713(int tehai[]);
+	int is_tenpai(int tehai[]);
 
 	int c[34];
 	int n_mentsu;
@@ -22,6 +24,8 @@ public:
 	int st_normal;
 	int st_7;
 	int st_13;
+	int min_syanten;
+	string agarilist;
 
 protected:
 	
@@ -29,7 +33,7 @@ protected:
 	int f_n4;
 	int f_koritsu;
 	int n_jidahai;
-	int min_syanten;
+	int bakc[34];
 
 	void updateResult();
 	void scan713();
@@ -49,6 +53,8 @@ protected:
 	void i_koritsu(int k);
 	void d_koritsu(int k);
 	int calcSyanten(int isSkip713);
+	void gen_agarilist();
+
 };
 
 }

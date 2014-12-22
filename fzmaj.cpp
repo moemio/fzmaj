@@ -106,8 +106,9 @@ FZMAJ::~FZMAJ()
 	delete syanten;
 	delete agari;
 	delete yaku;
+	printf(" class yaku destructed\n");
 
-	delete game;
+	//delete game;  // <--- BUG here
 }
 
 void FZMAJ::help()

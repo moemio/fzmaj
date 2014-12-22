@@ -173,7 +173,7 @@ protected:
 	int countScore();
 
 	PATTERN *pattern;
-	Bakyou * bak;
+	Bakyou *bak;
 
 	int yakufan[46];
 	int Is19(int k);

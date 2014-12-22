@@ -13,6 +13,7 @@
 #include "run.h"
 #include "agari.h"
 #include "game.h"
+#include "ai.h"
 
 #define DELTALINE 256
 #define DELTA 4
@@ -180,7 +181,8 @@ char *Input::one(const char *single)
   	if (execute_command()) {
     	char *str = new char[maxline+32];
     	sprintf(str,"Unknown command: %s",line);
-    	error->all(FLERR,str);
+    //	error->all(FLERR,str);
+		error->debug(FLERR,str);
   }
   
   return command;
@@ -293,6 +295,9 @@ int Input::execute_command()
   	int flag = 1;
   	if (!strcmp(command,"run_test")) run_test();
 	else if (!strcmp(command,"check")) check_pai();
+	else if (!strcmp(command,"ai_style")) ai_style();
+	else if (!strcmp(command,"agari_test")) check_agari();
+	else if (!strcmp(command,"player_act")) player_act();
   
   	else flag = 0;
   
@@ -326,12 +331,30 @@ void Input::run_test()
 	if (screen) fprintf(screen, "Hello, world!\n");
 }
 
+void Input::ai_style()
+{
+	if (narg < 2 ) error->all(FLERR, "Illegal ai_style command");
+	int pos = atoi(arg[0]);
+	game->create_ai(arg[1],pos);
+}
+
+void Input::check_agari()
+{
+	int c[34],last,n;
+	last = tools->Str2pai(arg[0],c);
+	n = tools->CountPai(c);
+	if(n==14) n=agari->agari_test(c);
+	else return;
+	printf("n=%d\n",n);
+}
+
 void Input::check_pai()
 {
-	int i;
+	int i,n;
 	int nst;
 	int c[34], last;
 	Bakyou *bak = new Bakyou;
+	memory->create_bakyou(bak);
 	int iarg = 1, tharg;
 
 	if (!game->started)
@@ -341,11 +364,13 @@ void Input::check_pai()
 	if (narg==0) error->all(FLERR, "Illegal check command");
 
 	last = tools->Str2pai(arg[0], c);
+	n = tools->CountPai(c);
+	if(n>14) error->all(FLERR, "Illegal pai number");
 	for(i=0;i<34;++i) {
 		bak->tehai[i] = c[i];
 	}
 	bak->syanpai = last;
-	bak->act = ACT_TSUMO;
+	bak->act = ACT_AGARI_TSUMO;
 	bak->dacya = 0;
 
 	while (iarg < narg) {
@@ -386,6 +411,7 @@ void Input::check_pai()
 			iarg += 1;
 		} else if (!strcmp(arg[iarg],"-ron")) {
 			bak->dacya = 2;
+			bak->act=ACT_AGARI_RON;
 			iarg += 1;
 		} else if (!strcmp(arg[iarg],"-last") ||
 				   !strcmp(arg[iarg],"-l")) {
@@ -400,14 +426,26 @@ void Input::check_pai()
 			bak->act = ACT_KAN;
 			bak->dacya = 2;
 			iarg += 1;
-		}
+		} 
 
 	}
 	printf ("  check  \n");
 	printf ("\n\n*******************************\n");
 	nst = syanten->calcSyantenAll(c);
+	if(syanten->min_syanten>0){
+		printf("%d syanten.\n",syanten->min_syanten);
+		printf("normal: %d   7toi: %d   kokushi: %d\n",syanten->st_normal,syanten->st_7,syanten->st_13);
+	}
 	agari->checkAgari(bak);
 
 	printf ("*******************************\n");
 	delete bak;
+}
+
+void Input::player_act()
+{
+	int pos = atoi(arg[0]);
+	printf("input player_act %d act %s\n",pos,arg[1]);
+	if(game->ai[pos] && strcmp(game->ai[pos]->style,"player")==0)
+		game->ai[pos]->player_act(narg,arg);
 }
