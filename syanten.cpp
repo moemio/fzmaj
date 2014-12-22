@@ -254,5 +254,5 @@ int Syanten::calcSyantenNo713(int tehai[])
 
 int Syanten::is_tenpai(int tehai[])
 {
-	return !calcSyantenAll(tehai);
+	return calcSyantenAll(tehai)<=0;
 }

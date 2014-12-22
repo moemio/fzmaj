@@ -4,6 +4,7 @@
 #include "agari.h"
 #include "yaku.h"
 #include "game.h"
+#include "memory.h"
 
 #include <iostream>
 #include <string>
@@ -44,6 +45,7 @@ int Agari::check_agari_empty(int tehai_t[], int last)
 	int i;
 	if (!game->started) game->start(1);
 	Bakyou *bak_t = new Bakyou;
+	memory->create_bakyou(bak_t);
 	game->createEmptyBakyou(bak_t,0);
 	bak->syanpai = last;
 	for(i=0;i<34;++i)
@@ -53,7 +55,6 @@ int Agari::check_agari_empty(int tehai_t[], int last)
 
 int Agari::checkAgari(Bakyou *bakyou)
 {
-
 	int i,np;
 	init();
 	for(i=0;i<34;++i) {
@@ -96,7 +97,9 @@ int Agari::checkAgari(Bakyou *bakyou)
 	pattern.clear();
 //	bak = new Bakyou;
 	bak = bakyou;
+	printf("in agari 1\n");
 	np = tokuHandan();
+	printf("in agari out\n");
 	return np;
 }
 
@@ -158,10 +161,12 @@ int Agari::tokuHandan()
 	for(i=0;i<pattern.size();++i) {
 		yaku->countYaku(bak, pattern[i]);
 		if(pattern[i].score > sc) {
+	printf("in agari 7.5\n");
 			sc = pattern[i].score;
 			maxp = i;
 		}
 	}
+	printf("in agari 8\n");
 	if (pattern.size()) {
 		fan = pattern[maxp].fan;
 		fu = pattern[maxp].fu;

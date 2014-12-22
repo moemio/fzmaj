@@ -115,6 +115,7 @@ void Game::clearGame()
 	ren_zoku = 0;
 	agari_flag = 0;
 	n_kan_tot =0;
+	naki_flag = 0;
 }
 
 void Game::initGame()
@@ -168,6 +169,7 @@ void Game::initGame()
 	for(i=0;i<4;++i) {
 		if(ai[i]) {
 			createEmptyBakyou(ai[i]->bak,i);
+			initBakyou(ai[i]->bak,i);
 			updateBakyou(ai[i]->bak,i);
 		}
 	}
@@ -193,17 +195,32 @@ void Game::clear_actlist(int pos)
 
 void Game::make_actlist(int pos)
 {
+	updateBakyou(ai[pos]->bak,pos);
 	int i;
 	clear_actlist(pos);
 	if (cur_pos==pos){
-		actlist[pos][ACT_TSUMOGIRI]=1;
+		actlist[pos][ACT_TSUMOGIRI]=(naki_flag==0);
 		if(!riichi[pos]){
+			if(pos==0){
+				int st0 = syanten->calcSyantenAll(tehai[pos]);
+				printf("pos 0 syanten is: %d, is tenpai = %d\n",st0,syanten->is_tenpai(tehai[pos]));
+			}
+
 			actlist[pos][ACT_TEKIRI]=1;
 			for(i=0;i<34;++i)
 				if(tehai[pos][i]==4)actlist[pos][ACT_KAN_SELF]=1;
 			if(riichiable(pos))actlist[pos][ACT_RIICHI]=1;
 		}
-		if(agari->checkAgari(ai[pos]->bak))actlist[pos][ACT_AGARI_TSUMO]=1;
+		printf("pass makelist 1\n");
+		int d = agari->checkAgari(ai[pos]->bak);
+		//int d = agari->check_agari_empty(tehai[pos],tsumo_hai);
+		printf("pass makelist 2\n");
+		if(d>0)actlist[pos][ACT_AGARI_TSUMO]=1;
+		printf("pass makelist 3\n");
+		if (pos==0 && riichi[0]){
+			ai[pos]->print_tehai();
+			printf("agari = %d\n",d);
+		}
 	}
 }
 
@@ -306,9 +323,9 @@ int Game::gameLoop()
 					if (score[juni[0]]>30000) endgame = 1;
 					else ++bafuu;
 				} else ++bafuu;
+			}
 			++oya;
 			oya=oya%4;
-			}
 		}
 	}
 	if(residue>0)score[juni[0]] += residue;
@@ -364,13 +381,14 @@ void Game::request(int pos, int ai_act)
 			if (pos == cur_pos) tekiri(pos);
 			break;
 		case ACT_RIICHI:
-			if (riichiable(pos)) riichi_sengen(pos);
+			if (riichiable_sute(pos)) riichi_sengen(pos);
 			else tsumogiri(pos);
 			break;
 		case ACT_CANCEL:
 			break;
 	}
 	cur_act = ai[pos]->act;
+	naki_flag = 0;
 }
 
 int Game::checkRequest(int pos)
@@ -457,6 +475,27 @@ int Game::checkRequest(int pos)
 	deal_queue();
 }
 
+int Game::is_kyukyu(int pos)
+{
+	return ((tehai[pos][ 0]!=0) + (tehai[pos][ 8]!=0) +
+			(tehai[pos][ 9]!=0) + (tehai[pos][17]!=0) +
+			(tehai[pos][18]!=0) + (tehai[pos][26]!=0) +
+			(tehai[pos][27]!=0) + (tehai[pos][28]!=0) + (tehai[pos][29]!=0) +
+			(tehai[pos][30]!=0) + (tehai[pos][31]!=0) + (tehai[pos][32]!=0) +
+			(tehai[pos][33]!=0))>=9;
+}
+
+int Game::is_19z(int k)
+{
+	return (k==0)+(k== 8)+(k== 9)+(k==17)+(k==18)+(k==26)+(k==27)
+	             +(k==28)+(k==29)+(k==30)+(k==31)+(k==32)+(k==33); 
+}
+
+int Game::is_nagashi_mankan(int pos)
+{
+	
+}
+
 void Game::ryukyoku(int ryu)
 {
 	int i,t[4]={0,0,0,0},nt=0;
@@ -475,6 +514,7 @@ void Game::ryukyoku(int ryu)
 				for(i=0;i<4;++i)
 					if(t[i]) score[i]+=(3000/nt);
 					else score[i]-=(3000/(4-nt));
+				if(t[oya])ren_zoku =1;
 			}
 			break;
 		case RYU_KYUKYU:
@@ -592,10 +632,15 @@ int Game::in_agari_list(int pos,int cpai)
 
 void Game::add_dora()
 {
+	int aka,i;
 	dora.push_back(c_dora(pai[130-2*n_dora]>>2));
 	ura.push_back(c_dora(pai[131-2*n_dora]>>2));
-	++n_dora;
+	aka = tools->check_aka(pai[130-2*n_dora]);
+	if (aka) aka_dorahyouji[aka-1] = 1;
 	--dead_ptr;
+	++n_dora;
+	for(i=0;i<4;++i)
+		initBakyou(ai[i]->bak,i);
 }
 
 void Game::kan(int pos)
@@ -605,6 +650,7 @@ void Game::kan(int pos)
 	// minkan
 	++n_kan_tot;
 	if (cur_pos!=pos) {
+		printf("minkan\n");
 		++n_naki[pos];
 		++n_naki_kan[pos];
 		++n_naki_kotsu[pos];
@@ -617,16 +663,17 @@ void Game::kan(int pos)
 		cur_pos = pos;
 		for(i=0;i<4;++i)
 			++jun[i];
-		tehai[pos][sutehai]-=3;
 		kan_tsumoru(pos);
 		request_ai(pos);
 		checkRequest(pos);
 		add_dora();
 	} else if (cur_pos==pos) {
 	// kakan
-		if(naki_kotsu[pos][tsumo_hai]) {
+		printf("kakan\n");
+		kanpai = ai[pos]->cpai;
+		if(naki_kotsu[pos][kanpai]) {
 			++n_naki_kan[pos];
-			naki_kan[pos][tsumo_hai]=river[cur_pos].size();
+			naki_kan[pos][kanpai]=river[cur_pos].size();
 			if (cur_aka) {
 				aka_naki[pos][cur_aka-1]=1;
 				aka_tehai[pos][cur_aka-1]=0;
@@ -640,7 +687,7 @@ void Game::kan(int pos)
 			add_dora();
 		} else {
 	// ankan
-			++n_naki_ankan[pos];
+		printf("ankan\n");
 			++n_naki_ankan[pos];
 			kanpai = ai[pos]->cpai;
 			naki_ankan[pos][kanpai]=river[cur_pos].size();
@@ -687,7 +734,7 @@ void Game::pon(int pos)
 	cur_pos = pos;
 	for(i=0;i<4;++i)
 		if (i!=pos) ++jun[i];
-//	tekiri(pos);
+	naki_flag = 1;
 	make_actlist(cur_pos);
 	request_ai(cur_pos);
 }
@@ -712,7 +759,7 @@ void Game::chii(int pos, int cpai, int aka)
 	cur_pos = pos;
 	for(i=0;i<4;++i)
 		if(i!=pos) ++jun[i];
-//	tekiri(pos);
+	naki_flag = 1;
 	make_actlist(cur_pos);
 	request_ai(cur_pos);
 }
@@ -774,9 +821,17 @@ int Game::kanable(int pos, int pai)
 
 int Game::riichiable(int pos)
 {
+	if (score[pos]<1000)return 0;
+	if (pai_ptr>dead_ptr-4)return 0;
+	return syanten->is_tenpai(tehai[pos]);
+}
+
+int Game::riichiable_sute(int pos)
+{
 	int rcflag = 0;
+	if(n_naki[pos])return 0;
 	if(score[pos]<1000)return 0;
-	if(pai_ptr<dead_ptr-4)return 0;
+	if(pai_ptr>dead_ptr-4)return 0;
 	--tehai[pos][ai[pos]->sutehai];
 	rcflag = syanten->is_tenpai(tehai[pos]);
 	++tehai[pos][ai[pos]->sutehai];
@@ -786,7 +841,6 @@ int Game::riichiable(int pos)
 void Game::riichi_sengen(int pos)
 {
 	int i, tekiri_flag=1;
-	if (riichiable(pos)){
 		sutehai=ai[pos]->sutehai;
 		if (sutehai==-1) {
 			sutehai=tsumo_hai;
@@ -799,21 +853,16 @@ void Game::riichi_sengen(int pos)
 		riichi[pos]=jun[pos];
 		score[pos]-=1000;
 		residue += 1000;
-	} else
-	{
-		if(sutehai==-1) tekiri_flag=0;
-		if (tekiri_flag) tekiri(pos);
-		else tsumogiri(pos);
-	}
 }
 
 int Game::ponable(int pos, int pai)
 {
-	return tehai[pos][pai]>=2 && (riichi[pos]==0);
+	return ((dead_ptr - pai_ptr) > 1) && tehai[pos][pai]>=2 && (riichi[pos]==0);
 }
 
 int Game::chiiable(int p, int pai)
 {
+	if (dead_ptr-pai_ptr <=1) return 0;
 	if (riichi[p]) return 0;
 	if ((cur_pos+1)%4 != p) return 0;
 	if(pai>=27) return 0;
@@ -845,12 +894,11 @@ void Game::initBakyou(Bakyou *bak, int pos)
 	bak->pai_ptr = pai_ptr;
 	bak->dead_ptr = dead_ptr;
 	bak->n_dora = n_dora;
-	bak->dora.push_back(dora[0]);
+	bak->dora.clear();
+	for(i=0;i<n_dora;++i)
+		bak->dora.push_back(dora[i]);
 	for(i=0;i<3;++i)
 		bak->aka_dorahyouji[i] = aka_dorahyouji[i];
-	--bak->nokori[bak->dora[0]];
-	for(i=0;i<34;++i)
-		bak->nokori[i] -= tehai[pos][i];
 	for(i=0;i<4;++i)
 		bak->score[i] = score[(i+pos)%4];
 }
@@ -987,7 +1035,9 @@ void Game::request_ai(int pos)
 {
 	updateBakyou(ai[pos]->bak,pos);
 	ai[pos]->actlist = actlist[pos];
-	ai[pos]->compute();
+	if (riichi[pos] && actlist[pos][ACT_KAN_SELF]==0 && actlist[pos][ACT_AGARI_TSUMO]==0)
+		request(pos,ACT_TSUMOGIRI);
+	else ai[pos]->compute();
 }
 
 template <typename T>

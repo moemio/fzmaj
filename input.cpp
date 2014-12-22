@@ -354,6 +354,7 @@ void Input::check_pai()
 	int nst;
 	int c[34], last;
 	Bakyou *bak = new Bakyou;
+	memory->create_bakyou(bak);
 	int iarg = 1, tharg;
 
 	if (!game->started)

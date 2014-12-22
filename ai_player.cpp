@@ -22,7 +22,6 @@ void AI_Player::compute()
 {
 	int i,j,p,akap;
 	printf("ai %d computing, dacya %d\n",pos_me,bak->dacya);
-	printf("my tehai:\n");
 	for (i=0;i<4;++i){
 		printf("river %d is :",i);
 		for(j=0;j<bak->river[i].size();++j) {
@@ -38,6 +37,10 @@ void AI_Player::compute()
 		}
 		printf("\n");
 	}
+	printf("dora is:");
+	for(i=0;i<bak->n_dora;++i)
+		printf("%s ",tools->Pai2str(bak->dora[i],0).c_str());
+	printf("\n");
 	printf("actlist:\n");
 	for(i=0;i<N_ACT;++i)
 		if(actlist[i])printf("%d, %s\n",i,ACT_NAME[i]);
@@ -90,7 +93,7 @@ void AI_Player::tehai_14()
 			for(j=0;j<bak->tehai[i];++j){
 				th[p].idx = i;
 				if(i<27 && i%9==4 && akaflag[(i-4)/9]==1) {
-					th[p].aka = 1;
+					if(bak->aka!=(i-4)/9+1)	th[p].aka = (i-4)/9+1;
 					akaflag[(i-4)/9]=0;
 				} else th[p].aka = 0;
 				th[p].name = tools->Pai2str(th[p].idx,th[p].aka);
@@ -116,60 +119,37 @@ void AI_Player::player_act(int narg, char** arg)
 {
 	int p=1,np;
 	int i;
-	for(i=0;i<narg;++i)
-		printf("arg %d is %s\n",i,arg[i]);
-	/*
-	while(p<=narg){
-		if(!strcmp(arg[p],"pon")){
-			if(bak->dacya!=0) {
-				request(ACT_PON);
-				break;
-			} else { request(ACT_TSUMOGIRI); break;}
-		++p;
-		} else if (!strcmp(arg[p],"ron")) {
-			if(bak->dacya!=0) {
-				request(ACT_AGARI_RON);
-			} else {
-				request(ACT_TSUMOGIRI);
-				break;}
-		} else {
-			if(bak->dacya!=0){ request(ACT_CANCEL);break;}
-			else {
-				np = atoi(arg[p]);
-				if (np<1 || np>=tools->CountPai(bak->tehai)) {
-					printf("np = %d, nc = %d\n",np,tools->CountPai(bak->tehai));
-					request(ACT_TSUMOGIRI);
-					break;
-				}
-				else{
-					sutehai=th[np-1].idx;
-					printf("sutehai is  %d, %s\n",sutehai,tools->Pai2str(sutehai,0).c_str());
-					aka = th[np-1].aka;
-					request(ACT_TEKIRI);
-					break;
-				}
-			}
-		}
-	} */
 	
+	if(narg==1){
+		go_default();
+		return;
+	}
 	if (!strcmp(arg[1],"pon") && actlist[ACT_PON]) {
 		request(ACT_PON);
 	} else if (!strcmp(arg[1],"kan") && actlist[ACT_KAN]) {
-		request(ACT_KAN);
-	} else if (!strcmp(arg[1],"ankan") && actlist[ACT_KAN_SELF]) {
+		if(bak->dacya!=0)request(ACT_KAN);
+	} else if (!strcmp(arg[1],"ankan") && actlist[ACT_KAN_SELF] && narg>=3) {
 		np = atoi(arg[2]);
 		if(np<1 || np>tools->CountPai(bak->tehai)) go_default();
 		else {
 			cpai = th[np-1].idx;
 			request(ACT_KAN_SELF);
 		}
-	} else if (!strcmp(arg[1],"chii") && actlist[ACT_CHII]) {
+	} else if (!strcmp(arg[1],"chii") && actlist[ACT_CHII] && narg>=3) {
 		np = atoi(arg[2]);
 		if(np<1 || np>tools->CountPai(bak->tehai)) go_default();
 		else {
 			cpai = th[np-1].idx;
 			aka = th[np-1].aka;
 			request(ACT_CHII);
+		}
+	} else if (!strcmp(arg[1],"riichi") && actlist[ACT_RIICHI] && narg>=3) {
+		np = atoi(arg[2]);
+		if(np<1 || np>tools->CountPai(bak->tehai)) go_default();
+		else {
+			sutehai = th[np-1].idx;
+			aka = th[np-1].aka;
+			request(ACT_RIICHI);
 		}
 	} else {
 		np = atoi(arg[1]);
@@ -185,6 +165,15 @@ void AI_Player::player_act(int narg, char** arg)
 
 void AI_Player::go_default()
 {
+	int nc;
 	if (bak->dacya!=0) request(ACT_CANCEL);
-	else request(ACT_TSUMOGIRI);
+	else {
+		if(actlist[ACT_TSUMOGIRI])	request(ACT_TSUMOGIRI);
+		else {
+			nc=tools->CountPai(bak->tehai);
+			sutehai = th[nc-1].idx;
+			aka = th[nc-1].aka;
+			request(ACT_TEKIRI);
+		}
+	}
 }

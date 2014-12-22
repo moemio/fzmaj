@@ -14,6 +14,7 @@ public:
 	void *srealloc(void *, int n, const char *);
 	void sfree(void *);
 	void free_bakyou(class Bakyou *);
+	void create_bakyou(class Bakyou*);
 	void fail(const char *);
 
 

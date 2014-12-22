@@ -2,11 +2,12 @@
 #include "defs.h"
 #include "math.h"
 #include "error.h"
+#include "tools.h"
+#include "memory.h"
 
 using namespace FZMAJ_NS;
 
 Yaku::Yaku(FZMAJ * maj) : Pointers (maj) {
-
 	yakufan[YAKU_MENTSUMO]       =  1;
 	yakufan[YAKU_RIICHI]         =  1;	
 	yakufan[YAKU_TYANKAN]        =  1;
@@ -58,20 +59,27 @@ Yaku::Yaku(FZMAJ * maj) : Pointers (maj) {
 	yakufan[YAKU_SUKANTSU]       = 13;
 	yakufan[YAKU_CHUUREN]        = 13;
 	yakufan[YAKU_JONCHUUREN]     = 13;
-
+	
+	bak = new Bakyou;
+	memory->create_bakyou(bak);
 
 }
 
-Yaku::~Yaku() {}
+Yaku::~Yaku() {
+}
 
 int Yaku::countYaku(Bakyou *bk, PATTERN &part)
 {
 	pattern = &part;
 	bak = bk;
+	printf("sizeof bakyou = %d\n",sizeof(Bakyou));
 	int i;	
 	for(i=0;i<46;i++)
 		yakus[i]=0;
-	countFan();
+	printf("in yaku 0\n");
+	for(i=0;i<bak->river[0].size();++i)
+		printf("river 0 %d is %s\n",i,tools->Pai2str(bak->river[0][i],0).c_str());
+	countFan();  // <- segmentation fault why?
 	return 0; 
 }
 
@@ -413,22 +421,28 @@ int Yaku::IsChuuren()
 
 void Yaku::countFan()
 {
+	printf("in yaku fan 0\n");
 	int i;
+	printf("in yaku fan 1");
 	// Menchin Tsumo
 	if (IsMenTsumo()) yakus[YAKU_MENTSUMO]=yakufan[YAKU_MENTSUMO];
 	
+	printf("in yaku fan 2");
 	// Riichi
 	if (IsRiichi()) yakus[YAKU_RIICHI]=yakufan[YAKU_RIICHI];
 
+	printf("in yaku fan 3");
 	// Tyankan
 	if (IsTyankan()) yakus[YAKU_TYANKAN]=yakufan[YAKU_TYANKAN];
 
+	printf("in yaku fan 4");
 	// Rinsyan
 	if (IsRinsyan()) yakus[YAKU_RINSYAN]=yakufan[YAKU_RINSYAN];
 	
 	// Haitei
 	if (IsHaitei()) yakus[YAKU_HAITEI]=yakufan[YAKU_HAITEI];
 
+	printf("in yaku fan 5");
 	// Houtei
 	if (IsHoutei()) yakus[YAKU_HOUTEI]=yakufan[YAKU_HOUTEI];
 	
@@ -446,30 +460,36 @@ void Yaku::countFan()
 	// Pinfu
 	if (IsPinfu()) yakus[YAKU_PINFU]=yakufan[YAKU_PINFU];
 
+	printf("in yaku fan 6");
 	// Hon Chantai
 	if (IsChantai()) {
 		yakus[YAKU_HONCHAN]=yakufan[YAKU_HONCHAN];
 		if (bak->n_naki[0]) --yakus[YAKU_HONCHAN];
 	}
 
+	printf("in yaku fan 7");
 	// Ikki Tsukan
 	if (IsIkki()) {
 		yakus[YAKU_IKKITSUKAN]=yakufan[YAKU_IKKITSUKAN];
 		if (bak->n_naki[0]) --yakus[YAKU_IKKITSUKAN];
 	}
 
+	printf("in yaku fan 8");
 	// Sanshoku Tonsyun
 	if (IsSanshoku()) {
 		yakus[YAKU_SANSHOKU]=yakufan[YAKU_SANSHOKU];
 		if (bak->n_naki[0]) --yakus[YAKU_SANSHOKU];
 	}
 
+	printf("in yaku fan 9");
 	// WRiichi
 	if (IsWRiichi()) yakus[YAKU_WRIICHI]=yakufan[YAKU_WRIICHI];
 
+	printf("in yaku fan 10");
 	// Sanshoku Tonkou
 	if (IsTonko()) yakus[YAKU_TONKO]=yakufan[YAKU_TONKO];
 
+	printf("in yaku fan 11");
 	// San Kantsu
 	if (IsSankantsu()) yakus[YAKU_SANKANTSU]=yakufan[YAKU_SANKANTSU];
 

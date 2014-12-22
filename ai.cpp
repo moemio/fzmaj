@@ -2,19 +2,19 @@
 #include "stdio.h"
 #include "game.h"
 #include "tools.h"
+#include "memory.h"
 
 using namespace FZMAJ_NS;
 
 AI::AI(FZMAJ *maj) : Pointers(maj)
 {
 	bak = new Bakyou;
+	memory->create_bakyou(bak);
 	actlist = (int*)malloc(N_ACT*sizeof(int));
 }
 
 AI::~AI() 
 {
-	printf("delete bak\n");
-	delete bak;
 }
 
 void AI::request(int ai_act)

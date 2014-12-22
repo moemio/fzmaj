@@ -77,6 +77,7 @@ protected:
 	int dacya;
 
 	int agari_flag;
+	int naki_flag;
 	int ren_zoku;
 	int n_kan_tot;
 
@@ -123,9 +124,13 @@ protected:
 	int ponable(int,int);
 	int kanable(int,int);
 	int riichiable(int);
+	int riichiable_sute(int);
 	void agari_tsumo(int);
 	void agari_ron(int);
 	void riichi_sengen(int);
+	int is_19z(int);
+	int is_kyukyu(int);
+	int is_nagashi_mankan(int);
 
 	void add_queue(int,int);
 	void deal_queue();
