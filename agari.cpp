@@ -97,9 +97,7 @@ int Agari::checkAgari(Bakyou *bakyou)
 	pattern.clear();
 //	bak = new Bakyou;
 	bak = bakyou;
-	printf("in agari 1\n");
 	np = tokuHandan();
-	printf("in agari out\n");
 	return np;
 }
 
@@ -161,12 +159,10 @@ int Agari::tokuHandan()
 	for(i=0;i<pattern.size();++i) {
 		yaku->countYaku(bak, pattern[i]);
 		if(pattern[i].score > sc) {
-	printf("in agari 7.5\n");
 			sc = pattern[i].score;
 			maxp = i;
 		}
 	}
-	printf("in agari 8\n");
 	if (pattern.size()) {
 		fan = pattern[maxp].fan;
 		fu = pattern[maxp].fu;

@@ -10,7 +10,8 @@ AI::AI(FZMAJ *maj) : Pointers(maj)
 {
 	bak = new Bakyou;
 	memory->create_bakyou(bak);
-	actlist = (int*)malloc(N_ACT*sizeof(int));
+	//actlist = (int*)malloc(N_ACT*sizeof(int));
+	memory->create(actlist,N_ACT,"Actlist");
 }
 
 AI::~AI() 
