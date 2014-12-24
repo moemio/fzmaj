@@ -32,7 +32,6 @@ Game::Game(FZMAJ *maj) : Pointers(maj) {
 
 Game::~Game(){
 	delete ai_map; 
-	delete [] pai;
 	delete [] ai;
 	memory->destroy(actlist);
 }

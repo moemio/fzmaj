@@ -36,9 +36,26 @@ void Memory::sfree(void *ptr)
   free(ptr);
 }
 
-void Memory::free_bakyou(Bakyou *bak)
+void Memory::destroy_bakyou(Bakyou *bak)
 {
 	destroy(bak->tehai);
+	destroy(bak->jun);
+	destroy(bak->n_naki);
+	destroy(bak->naki_kotsu);
+	destroy(bak->naki_syuntsu);
+	destroy(bak->n_naki_syuntsu);
+	destroy(bak->n_naki_kotsu);
+	destroy(bak->naki_kan);
+	destroy(bak->naki_ankan);
+	destroy(bak->n_naki_kan);
+	destroy(bak->n_naki_ankan);
+	destroy(bak->score);
+	destroy(bak->riichi);
+	destroy(bak->aka_river);
+	destroy(bak->aka_naki);
+	destroy(bak->aka_dorahyouji);
+	destroy(bak->aka_tehai);
+	destroy(bak->nokori);
 }
 
 void Memory::create_bakyou(Bakyou* bak)

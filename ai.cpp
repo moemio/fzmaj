@@ -10,12 +10,14 @@ AI::AI(FZMAJ *maj) : Pointers(maj)
 {
 	bak = new Bakyou;
 	memory->create_bakyou(bak);
-	//actlist = (int*)malloc(N_ACT*sizeof(int));
 	memory->create(actlist,N_ACT,"Actlist");
 }
 
 AI::~AI() 
 {
+	memory->destroy(actlist);
+	memory->destroy_bakyou(bak);
+	delete bak;
 }
 
 void AI::request(int ai_act)

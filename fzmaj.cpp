@@ -93,7 +93,6 @@ FZMAJ::FZMAJ(int narg, char **arg)
 
 FZMAJ::~FZMAJ()
 {
-//	destroy();
 	if (logfile) fclose(logfile);
 	logfile = NULL;
 
@@ -108,7 +107,7 @@ FZMAJ::~FZMAJ()
 	delete yaku;
 	printf(" class yaku destructed\n");
 
-	//delete game;  // <--- BUG here
+	delete game;  // <--- BUG here
 }
 
 void FZMAJ::help()
