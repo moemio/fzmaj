@@ -34,6 +34,7 @@ public:
 	~Agari();
 	
 	int checkAgari(Bakyou *);
+	int check_agari(Bakyou *bakyou, int is_print);
 	int agari_test( int []);
 	int check_agari_empty(int [],int);
 
@@ -57,6 +58,7 @@ protected:
 	void removeJihai();
 	void updateResult();
 	int tokuHandan();
+	int toku_print;
 
 	void Run(int depth);
 	void printPattern(int);

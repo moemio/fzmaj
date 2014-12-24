@@ -60,8 +60,8 @@ Yaku::Yaku(FZMAJ * maj) : Pointers (maj) {
 	yakufan[YAKU_CHUUREN]        = 13;
 	yakufan[YAKU_JONCHUUREN]     = 13;
 	
-	bak = new Bakyou;
-	memory->create_bakyou(bak);
+	//bak = new Bakyou;
+	//memory->create_bakyou(bak);
 
 }
 
@@ -240,7 +240,7 @@ int Yaku::IsHonrou()
 
 int Yaku::IsChiitoi()
 {
-	return (pattern->n_syuntsu==0 && pattern->n_kotsu==0 && pattern->n_naki==0 && pattern->isChiitoi);
+	return (pattern->isChiitoi);
 }
 
 int Yaku::IsJonchan()
@@ -287,8 +287,8 @@ int Yaku::IsChiniisou()
 	
 int Yaku::IsIppatsu()
 {	if(!bak->riichi[0]) return 0;
-	return (bak->dacya!=0 && bak->jun[0]==bak->riichi[0]) ||
-		   (bak->act==ACT_AGARI_TSUMO && bak->jun[0]==bak->riichi[0]+1); }
+	return bak->jun[0]==bak->riichi[0];
+}
 
 int Yaku::IsDora()
 {	

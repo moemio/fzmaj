@@ -13,6 +13,7 @@ public:
 	int CountPai(int []);
 	void randPerm(int, int []);
 	int check_aka(int);
+	void print_tehai(int []);
 
 	Tools(FZMAJ *maj);
 	~Tools();

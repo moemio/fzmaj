@@ -298,7 +298,7 @@ int Game::gameLoop()
 			tsumoru(cur_pos);
 			if (Ryukyoku==1)break;
 			request_ai(cur_pos);
-
+			if (agari_flag)break;
 			if (pai_ptr==dead_ptr) ryukyoku(RYU_NORMAL);
 			++cur_pos;
 			cur_pos=cur_pos%4;
@@ -764,10 +764,18 @@ void Game::chii(int pos, int cpai, int aka)
 	request_ai(cur_pos);
 }
 
+void Game::get_ura(int pos)
+{
+	updateBakyou(ai[pos]->bak,pos);
+	ai[pos]->bak->ura = ura;
+}
+
 void Game::agari_tsumo(int pos)
 {
 	int i;
-	agari->checkAgari(ai[pos]->bak);
+	if(riichi[pos])get_ura(pos);
+	ai[pos]->bak->act = ACT_AGARI_TSUMO;
+	agari->check_agari(ai[pos]->bak,1);
 	if (pos==oya) 
 		for (i=0;i<4;++i)
 			if(i!=pos) score[i]-=(agari->score_ko + 100*honba);
@@ -778,7 +786,7 @@ void Game::agari_tsumo(int pos)
 				if (i==oya) score[i]-=(agari->score_oya +100*honba);
 				else score[i]-=(agari->score_ko +100*honba);
 			else score[i] += (agari->score_ko*4 + 300*honba);
-	score[i] += residue;
+	score[pos] += residue;
 	residue = 0;
 	// next game
 	agari_flag=1;
@@ -787,7 +795,9 @@ void Game::agari_tsumo(int pos)
 
 void Game::agari_ron(int pos)
 {
-	agari->checkAgari(ai[pos]->bak);
+	if(riichi[pos])get_ura(pos);
+	ai[pos]->bak->act = ACT_AGARI_RON;
+	agari->check_agari(ai[pos]->bak,1);
 	score[pos] += (agari->score + 300*honba);
 	score[cur_pos] -= (agari->score + 300*honba);
 	score[pos] += residue;
@@ -954,6 +964,7 @@ void Game::updateBakyou(Bakyou *bak, int pos)
 #ifdef GAME_DEBUG
 	printf ("bak %d updated. cur_pos = %d, dacya = %d\n",pos,cur_pos,bak->dacya);
 #endif
+	bak->pai_ptr = pai_ptr;
 }
 
 void Game::createEmptyBakyou(Bakyou *bak, int pos)
@@ -1035,7 +1046,7 @@ void Game::request_ai(int pos)
 {
 	updateBakyou(ai[pos]->bak,pos);
 	ai[pos]->actlist = actlist[pos];
-	if (riichi[pos] && actlist[pos][ACT_KAN_SELF]==0 && actlist[pos][ACT_AGARI_TSUMO]==0)
+	if (riichi[pos] && actlist[pos][ACT_AGARI_RON]==0 && actlist[pos][ACT_KAN_SELF]==0 && actlist[pos][ACT_AGARI_TSUMO]==0)
 		request(pos,ACT_TSUMOGIRI);
 	else ai[pos]->compute();
 }

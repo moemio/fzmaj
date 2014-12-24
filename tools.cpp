@@ -84,3 +84,12 @@ string Tools::Pai2str(int cpai, int aka)
 	sth += tp;
 	return sth;
 }
+
+void Tools::print_tehai(int tehai[])
+{
+	int i,j;
+	for(i=0;i<34;++i)
+		for(j=0;j<tehai[i];++j)
+			printf("%s",Pai2str(i,0).c_str());
+	printf("\n");
+}

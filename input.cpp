@@ -431,6 +431,7 @@ void Input::check_pai()
 	}
 	printf ("  check  \n");
 	printf ("\n\n*******************************\n");
+	tools->print_tehai(bak->tehai);
 	nst = syanten->calcSyantenAll(c);
 	if(syanten->min_syanten>0){
 		printf("%d syanten.\n",syanten->min_syanten);
