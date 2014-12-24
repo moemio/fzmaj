@@ -3,6 +3,8 @@
 #include "ai_player.h"
 #include "tools.h"
 #include "input.h"
+#include "stdlib.h"
+#include "string.h"
 #include <iostream>
 
 using namespace FZMAJ_NS;
