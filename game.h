@@ -134,6 +134,7 @@ protected:
 
 	void add_queue(int,int);
 	void deal_queue();
+	void get_ura(int);
 	int c_dora(int);
 	void add_dora();
 	void ryukyoku(int);

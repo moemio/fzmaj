@@ -53,6 +53,12 @@ int Agari::check_agari_empty(int tehai_t[], int last)
 	return checkAgari(bak_t);
 }
 
+int Agari::check_agari(Bakyou *bakyou, int is_print = 0)
+{
+	toku_print = is_print;
+	return checkAgari(bakyou);
+}
+
 int Agari::checkAgari(Bakyou *bakyou)
 {
 	int i,np;
@@ -97,16 +103,14 @@ int Agari::checkAgari(Bakyou *bakyou)
 	pattern.clear();
 //	bak = new Bakyou;
 	bak = bakyou;
-	printf("in agari 1\n");
 	np = tokuHandan();
-	printf("in agari out\n");
 	return np;
 }
 
 int Agari::tokuHandan()
 {
 	
-	int i,j,sc;
+	int i,j,sc=0;
 	PATTERN part;
 	for(i=0;i<34;++i) {
 		part.c[i]=c[i];
@@ -120,7 +124,7 @@ int Agari::tokuHandan()
 	part.n_syuntsu=0;
 	part.n_kotsu=0;
 	part.n_naki=0;
-	part.atama=-1;
+	part.atama=0;
 	part.fan=0;
 	part.fu=20;
 	part.isYakuman = false;
@@ -146,9 +150,6 @@ int Agari::tokuHandan()
 		
 		part.isChiitoi = true;
 		part.isKokushi = false;
-		for(i=0;i<34;++i)
-			part.toitsu[i]=(c[i]==2);
-
 		pattern.push_back(part);
 	}
 
@@ -161,18 +162,16 @@ int Agari::tokuHandan()
 	for(i=0;i<pattern.size();++i) {
 		yaku->countYaku(bak, pattern[i]);
 		if(pattern[i].score > sc) {
-	printf("in agari 7.5\n");
 			sc = pattern[i].score;
 			maxp = i;
 		}
 	}
-	printf("in agari 8\n");
 	if (pattern.size()) {
 		fan = pattern[maxp].fan;
 		fu = pattern[maxp].fu;
 		if (fan==0) printf("Yaku nashi.\n");
 		else {
-			printPattern(maxp);
+			if(toku_print)	printPattern(maxp);
 			score = pattern[maxp].score;
 			score_ko = pattern[maxp].score_ko;
 			score_oya = pattern[maxp].score_oya;
@@ -345,7 +344,7 @@ void Agari::updateResult()
 		part.fu=20;
 		part.n_naki=bak->n_naki[0];
 		part.n_syuntsu=n_syuntsu;
-		part.n_kotsu += bak->n_naki_kotsu[0];
+		//part.n_kotsu += bak->n_naki_kotsu[0];
 		part.n_kotsu += bak->n_naki_kan[0];
 		//part.n_kotsu += bak->n_naki_ankan[0];
 		part.n_syuntsu += bak->n_naki_syuntsu[0];
@@ -377,7 +376,10 @@ void Agari::printPattern(int p)
 		if (pattern[p].syuntsu[i] && !bak->naki_syuntsu[0][i]) 
 			for(j=0;j<pattern[p].syuntsu[i];++j)
 				cout << hai2str(i) << hai2str(i+1) << hai2str(i+2) << " ";
-	cout << hai2str(pattern[p].atama) << hai2str(pattern[p].atama);
+	if(pattern[p].isChiitoi){
+		for(i=0;i<34;++i)
+			if(back_up_c[i])cout << hai2str(i) << hai2str(i) << " ";
+	}else cout << hai2str(pattern[p].atama) << hai2str(pattern[p].atama);
 	// naki
 	if (pattern[p].n_naki){
 		cout << " naki: ";
@@ -402,8 +404,10 @@ void Agari::printPattern(int p)
 	for (i=0;i<bak->n_dora;++i)
 		cout << hai2str(bak->dora[i]);
 	cout << "   ura: ";
+	if(bak->ura.size()==bak->n_dora) {
 	for (i=0;i<bak->n_dora;++i)
 		cout << hai2str(bak->ura[i]);
+	}
 	cout << endl;
 
 	cout << "oya : " << bak->oya << "  jifuu:  " << bak->jifuu << endl;
@@ -426,7 +430,6 @@ void Agari::printPattern(int p)
 		if (pattern[p].yaku[i]) 
 			cout << "     " << YAKU_NAME[i] << "   " << pattern[p].yaku[i] << " Fan" << endl;
 	cout << endl;
-
 
 }
 

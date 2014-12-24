@@ -151,6 +151,10 @@ void AI_Player::player_act(int narg, char** arg)
 			aka = th[np-1].aka;
 			request(ACT_RIICHI);
 		}
+	} else if (!strcmp(arg[1],"tsumo") && actlist[ACT_AGARI_TSUMO]) {
+		request(ACT_AGARI_TSUMO);
+	} else if (!strcmp(arg[1],"ron") && actlist[ACT_AGARI_RON]) {
+		request(ACT_AGARI_RON);
 	} else {
 		np = atoi(arg[1]);
 		if(np<1 || np>tools->CountPai(bak->tehai)) go_default();

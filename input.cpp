@@ -426,17 +426,20 @@ void Input::check_pai()
 			bak->act = ACT_KAN;
 			bak->dacya = 2;
 			iarg += 1;
-		} 
+		} else {
+			error->all(FLERR, "Invalid check command-line");
+		}
 
 	}
 	printf ("  check  \n");
 	printf ("\n\n*******************************\n");
+	tools->print_tehai(bak->tehai);
 	nst = syanten->calcSyantenAll(c);
 	if(syanten->min_syanten>0){
 		printf("%d syanten.\n",syanten->min_syanten);
 		printf("normal: %d   7toi: %d   kokushi: %d\n",syanten->st_normal,syanten->st_7,syanten->st_13);
 	}
-	agari->checkAgari(bak);
+	agari->check_agari(bak,1);
 
 	printf ("*******************************\n");
 	delete bak;
