@@ -244,9 +244,10 @@ void Game::tsumoru(int pos)
 void Game::kan_tsumoru(int pos)
 {
 	int aka, cpai;
-	cpai = pai[136-n_dora];
+	cpai = pai[136-n_kan_tot];
 	aka = tools->check_aka(cpai);
 	cur_aka = aka;
+	printf("kan tot = %d, pai[%d]=%d,%s\n", n_kan_tot,136-n_kan_tot,cpai,tools->Pai2str(cpai>>2,aka).c_str());
 	tsumo_hai = cpai>>2;
 
 	++tehai[pos][tsumo_hai];
@@ -413,11 +414,11 @@ int Game::checkRequest(int pos)
 		agarilist[pos].copy(str,len,0);
 
 		check_furiten(pos);
-#ifdef GAME_DEBUG
+//#ifdef GAME_DEBUG
 		printf ("pos %d is tenpai.\n",pos);
 		if (furiten[pos]) printf( "furiten.\n");
 		printf ("machi %s\n",agarilist[pos].c_str());
-#endif
+//#endif
 	}
 
 
@@ -426,7 +427,7 @@ int Game::checkRequest(int pos)
 	while(p!=pos){
 	updateBakyou(ai[p]->bak,p);
 	++ai[p]->bak->tehai[sutehai];
-	if(agari->checkAgari(ai[p]->bak)){
+	if(agari->checkAgari(ai[p]->bak) && furiten[p]==0){
 		computeflag[p]=1;
 		actlist[p][ACT_AGARI_RON]=1;
 		actlist[p][ACT_CANCEL]=1;
@@ -627,7 +628,7 @@ void Game::check_furiten(int pos)
 
 int Game::in_agari_list(int pos,int cpai)
 {
-	return tenpai[pos][cpai];
+	return agarilist[pos].find(tools->Pai2str(cpai,0))!=string::npos;
 }
 
 void Game::add_dora()
@@ -744,7 +745,7 @@ void Game::chii(int pos, int cpai, int aka)
 	int i,p;
 	++n_naki[pos];
 	p = cpai > sutehai ? sutehai : cpai;
-	n_naki_syuntsu[p]=river[cur_pos].size();
+	n_naki_syuntsu[p]++;
 	if (cur_aka) {
 		aka_naki[pos][cur_aka-1]=1;
 		aka_river[dacya][cur_aka-1]=0;

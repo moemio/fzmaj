@@ -344,7 +344,7 @@ void Agari::updateResult()
 		part.fu=20;
 		part.n_naki=bak->n_naki[0];
 		part.n_syuntsu=n_syuntsu;
-		part.n_kotsu += bak->n_naki_kotsu[0];
+		//part.n_kotsu += bak->n_naki_kotsu[0];
 		part.n_kotsu += bak->n_naki_kan[0];
 		//part.n_kotsu += bak->n_naki_ankan[0];
 		part.n_syuntsu += bak->n_naki_syuntsu[0];

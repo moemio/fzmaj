@@ -218,10 +218,12 @@ return (pattern->n_kotsu)==4; }
 
 int Yaku::IsSananko()
 {	
+	printf("n_kotsu=%d\n",pattern->n_kotsu);
 return (pattern->n_kotsu==3 && bak->act==ACT_AGARI_TSUMO) ||
 		   (pattern->n_kotsu==3 && bak->dacya!=0 && !pattern->kotsu[bak->syanpai]) ||
 		   (pattern->n_kotsu==3 && bak->dacya!=0 && pattern->kotsu[bak->syanpai] && 
 		   pattern->c[bak->syanpai]==4) ||
+		   (pattern->n_kotsu==4 && bak->n_naki_kotsu[0]==1) ||
 		   (pattern->n_kotsu==4 && bak->dacya!=0 && pattern->kotsu[bak->syanpai]); }
 
 int Yaku::IsSyaosangen()
