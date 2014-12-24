@@ -31,9 +31,11 @@ Game::Game(FZMAJ *maj) : Pointers(maj) {
 }
 
 Game::~Game(){
+	int i;
 	delete ai_map; 
-	delete [] ai;
 	memory->destroy(actlist);
+	for (i=0;i<4;++i)
+		delete ai[i];
 }
 
 void Game::start(long s)
@@ -202,7 +204,9 @@ void Game::make_actlist(int pos)
 		if(!riichi[pos]){
 			if(pos==0){
 				int st0 = syanten->calcSyantenAll(tehai[pos]);
+#ifdef GAME_DEBUG
 				printf("pos 0 syanten is: %d, is tenpai = %d\n",st0,syanten->is_tenpai(tehai[pos]));
+#endif
 			}
 
 			actlist[pos][ACT_TEKIRI]=1;
@@ -210,12 +214,9 @@ void Game::make_actlist(int pos)
 				if(tehai[pos][i]==4)actlist[pos][ACT_KAN_SELF]=1;
 			if(riichiable(pos))actlist[pos][ACT_RIICHI]=1;
 		}
-		printf("pass makelist 1\n");
 		int d = agari->checkAgari(ai[pos]->bak);
 		//int d = agari->check_agari_empty(tehai[pos],tsumo_hai);
-		printf("pass makelist 2\n");
 		if(d>0)actlist[pos][ACT_AGARI_TSUMO]=1;
-		printf("pass makelist 3\n");
 		if (pos==0 && riichi[0]){
 			ai[pos]->print_tehai();
 			printf("agari = %d\n",d);
@@ -270,11 +271,11 @@ int Game::gameLoop()
 	while(!endgame) {
 		initGame();
 		printf("start. oya = %d\n",oya);
-		if (bafuu==27) printf("Ton %d kyoku.",kyoku+1);
-		else if (bafuu==28) printf("Nan %d kyoku.", kyoku+1);
-		else if (bafuu==29) printf("Sya %d kyoku.", kyoku+1);
+		if (bafuu==27) printf("Ton %d kyoku ",kyoku+1);
+		else if (bafuu==28) printf("Nan %d kyoku ", kyoku+1);
+		else if (bafuu==29) printf("Sya %d kyoku ", kyoku+1);
 		
-		printf ("%d pon ba. residue = %d\n", honba, residue);
+		printf ("%d pon ba residue = %d\n", honba, residue);
 	
 		cur_pos=oya;
 		
@@ -368,7 +369,7 @@ void Game::request(int pos, int ai_act)
 			else tsumogiri(pos);
 			break;
 		case ACT_AGARI_RON:
-			if (agari->checkAgari(ai[pos]->bak)) add_queue(pos,ACT_AGARI_RON);
+			if (actlist[pos][ACT_AGARI_RON]) add_queue(pos,ACT_AGARI_RON);
 			break;
 		case ACT_AGARI_TSUMO:
 			if (agari->checkAgari(ai[pos]->bak)) agari_tsumo(pos);
@@ -413,11 +414,11 @@ int Game::checkRequest(int pos)
 		agarilist[pos].copy(str,len,0);
 
 		check_furiten(pos);
-//#ifdef GAME_DEBUG
+#ifdef GAME_DEBUG
 		printf ("pos %d is tenpai.\n",pos);
 		if (furiten[pos]) printf( "furiten.\n");
 		printf ("machi %s\n",agarilist[pos].c_str());
-//#endif
+#endif
 	}
 
 
@@ -795,8 +796,11 @@ void Game::agari_tsumo(int pos)
 
 void Game::agari_ron(int pos)
 {
+	printf("in agari ron\n");
 	if(riichi[pos])get_ura(pos);
+	else updateBakyou(ai[pos]->bak,pos);
 	ai[pos]->bak->act = ACT_AGARI_RON;
+	++ai[pos]->bak->tehai[sutehai];
 	agari->check_agari(ai[pos]->bak,1);
 	score[pos] += (agari->score + 300*honba);
 	score[cur_pos] -= (agari->score + 300*honba);

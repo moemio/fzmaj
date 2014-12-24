@@ -60,8 +60,6 @@ Yaku::Yaku(FZMAJ * maj) : Pointers (maj) {
 	yakufan[YAKU_CHUUREN]        = 13;
 	yakufan[YAKU_JONCHUUREN]     = 13;
 	
-	//bak = new Bakyou;
-	//memory->create_bakyou(bak);
 
 }
 

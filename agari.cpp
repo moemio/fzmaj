@@ -101,7 +101,6 @@ int Agari::checkAgari(Bakyou *bakyou)
 	}
 
 	pattern.clear();
-//	bak = new Bakyou;
 	bak = bakyou;
 	np = tokuHandan();
 	return np;

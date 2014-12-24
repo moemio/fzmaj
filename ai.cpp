@@ -10,12 +10,12 @@ AI::AI(FZMAJ *maj) : Pointers(maj)
 {
 	bak = new Bakyou;
 	memory->create_bakyou(bak);
-	memory->create(actlist,N_ACT,"Actlist");
+//	memory->create(actlist,N_ACT,"ai_Actlist");
 }
 
 AI::~AI() 
 {
-	memory->destroy(actlist);
+//	memory->destroy(actlist); <-- double free
 	memory->destroy_bakyou(bak);
 	delete bak;
 }

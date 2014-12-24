@@ -110,5 +110,7 @@ build 16
 
 	Added furiten.
 	Fixed kan dora.
+	Fixed ron bugs.
+	Fixed destructor bugs.
 
 
