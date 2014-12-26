@@ -168,7 +168,10 @@ int Agari::tokuHandan()
 	if (pattern.size()) {
 		fan = pattern[maxp].fan;
 		fu = pattern[maxp].fu;
-		if (fan==0) printf("Yaku nashi.\n");
+		if (fan==0) {
+			printf("Yaku nashi.\n");
+			return 0;
+		}
 		else {
 			if(toku_print)	printPattern(maxp);
 			score = pattern[maxp].score;

@@ -525,6 +525,7 @@ void Game::ryukyoku(int ryu)
 	int i,t[4]={0,0,0,0},nt=0;
 	switch (ryu) {
 		case RYU_NORMAL:
+			printf("ryukyoku.\n");
 			for(i=0;i<4;++i)
 				if(is_nagashi_mankan(i))deal_nagaman(i);
 				if (syanten->is_tenpai(tehai[i])) {
@@ -885,6 +886,7 @@ int Game::kanable(int pos, int pai)
 int Game::riichiable(int pos)
 {
 	if (score[pos]<1000)return 0;
+	if (n_naki[pos])return 0;
 	if (pai_ptr>dead_ptr-4)return 0;
 	return syanten->is_tenpai(tehai[pos]);
 }
