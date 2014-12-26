@@ -3,6 +3,8 @@
 #include "ai_player.h"
 #include "tools.h"
 #include "input.h"
+#include "stdlib.h"
+#include "string.h"
 #include <iostream>
 
 using namespace FZMAJ_NS;
@@ -75,45 +77,6 @@ void AI_Player::settings(int narg, char **arg)
 
 }
 
-void AI_Player::tehai_14()
-{
-	int i,j,p=0,akaflag[3];
-	int nc;
-	int sute_flag=0;
-	for(i=0;i<3;++i)
-		if(bak->aka_tehai[i])akaflag[i]=1;
-		else akaflag[i]=0;
-	nc = tools->CountPai(bak->tehai);
-	if (nc%3==2){
-	   	sute_flag=1;
-		--bak->tehai[bak->syanpai];
-	}
-	for(i=0;i<34;++i) {
-		if(bak->tehai[i]){
-			for(j=0;j<bak->tehai[i];++j){
-				th[p].idx = i;
-				if(i<27 && i%9==4 && akaflag[(i-4)/9]==1) {
-					if(bak->aka!=(i-4)/9+1)	th[p].aka = (i-4)/9+1;
-					akaflag[(i-4)/9]=0;
-				} else th[p].aka = 0;
-				th[p].name = tools->Pai2str(th[p].idx,th[p].aka);
-			++p;
-			}
-		}
-	}
-	if (sute_flag) {
-		th[p].idx = bak->syanpai;
-		th[p].aka = bak->aka;
-		th[p].name = tools->Pai2str(th[p].idx,th[p].aka);
-		++bak->tehai[bak->syanpai];
-	}
-	for(i=0;i<nc;++i)
-		printf("%4d",i+1);
-	printf("\n");
-	for(i=0;i<nc;++i)
-		printf("%4s",th[i].name.c_str());
-	printf("\n");
-}
 
 void AI_Player::player_act(int narg, char** arg)
 {

@@ -20,7 +20,7 @@ public:
 	void player_act(int narg, char** arg);
 	void compute();
 	void settings(int, char**);
-
+/*
 	struct Pai{
 		int idx;
 		int aka;
@@ -28,8 +28,9 @@ public:
 	};
 
 	void tehai_14();
-	void go_default();
 	vector<Pai>th;
+*/
+	void go_default();
 };
 
 }

@@ -3,6 +3,7 @@
 
 #include "pointers.h"
 #include "defs.h"
+#include <string>
 
 namespace FZMAJ_NS {
 
@@ -32,6 +33,19 @@ public:
 	
 	// naki_chii
 	int cpai,caka;
+
+	struct Pai{
+		int idx;
+		int aka;
+		string name;
+		int score;
+	};
+
+	void tehai_14();
+	vector<Pai>th;
+	void paili();
+	void collect_nokori();
+
 
 };
 

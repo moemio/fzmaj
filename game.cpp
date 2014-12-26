@@ -104,6 +104,7 @@ void Game::clearGame()
 		jun[i]=0;
 		riichi[i]=0;
 		furiten[i]=0;
+		nagaman[i]=0;
 	}
 
 
@@ -200,6 +201,8 @@ void Game::make_actlist(int pos)
 	int i;
 	clear_actlist(pos);
 	if (cur_pos==pos){
+		if(jun[pos]==0)
+			if(is_kyukyu(pos))actlist[pos][ACT_NAGASHI]=1;
 		actlist[pos][ACT_TSUMOGIRI]=(naki_flag==0);
 		if(!riichi[pos]){
 			if(pos==0){
@@ -215,7 +218,6 @@ void Game::make_actlist(int pos)
 			if(riichiable(pos))actlist[pos][ACT_RIICHI]=1;
 		}
 		int d = agari->checkAgari(ai[pos]->bak);
-		//int d = agari->check_agari_empty(tehai[pos],tsumo_hai);
 		if(d>0)actlist[pos][ACT_AGARI_TSUMO]=1;
 		if (pos==0 && riichi[0]){
 			ai[pos]->print_tehai();
@@ -387,6 +389,9 @@ void Game::request(int pos, int ai_act)
 			break;
 		case ACT_CANCEL:
 			break;
+		case ACT_NAGASHI:
+			ryukyoku(RYU_KYUKYU);
+			break;
 	}
 	cur_act = ai[pos]->act;
 	naki_flag = 0;
@@ -493,8 +498,26 @@ int Game::is_19z(int k)
 }
 
 int Game::is_nagashi_mankan(int pos)
+{	
+	int i,nmflag;
+	if(nagaman[pos])return 0;
+	for(i=0;i<river[pos].size();++i)
+		nmflag += is_19z(river[pos][i]);
+	return nmflag == river[pos].size();	
+}
+
+void Game::deal_nagaman(int pos)
 {
-	
+	int i;
+	if (pos==oya) {
+		score[pos]+=12000;
+		for(i=1;i<4;++i)
+			score[(pos+i)%4]-=4000;
+	} else {
+		score[pos]+=8000;
+		for(i=1;i<4;++i)
+			score[(pos+i)%4]-=(pos==oya?4000:2000);
+	}
 }
 
 void Game::ryukyoku(int ryu)
@@ -503,6 +526,7 @@ void Game::ryukyoku(int ryu)
 	switch (ryu) {
 		case RYU_NORMAL:
 			for(i=0;i<4;++i)
+				if(is_nagashi_mankan(i))deal_nagaman(i);
 				if (syanten->is_tenpai(tehai[i])) {
 					++nt;
 					printf("%d tenpai\n",i);
@@ -644,13 +668,34 @@ void Game::add_dora()
 		initBakyou(ai[i]->bak,i);
 }
 
+void Game::check_tyankan(int pos, int kanpai)
+{
+	int i;
+	cur_act = ACT_KAN;
+	for(i=0;i<4;++i) {
+		if(i!=pos){
+			++tehai[i][kanpai];
+			updateBakyou(ai[i]->bak,i);
+			if (agari->check_agari(ai[i]->bak,0)) {
+				actlist[i][ACT_AGARI_RON]=1;
+				request_ai(i);
+			}
+			--tehai[i][kanpai];
+		}
+	}
+	deal_queue();
+}
+
 void Game::kan(int pos)
 {
 	int i;
 	int kanpai;
+
+
 	// minkan
 	++n_kan_tot;
 	if (cur_pos!=pos) {
+		nagaman[pos]=1;
 		printf("minkan\n");
 		++n_naki[pos];
 		++n_naki_kan[pos];
@@ -672,6 +717,8 @@ void Game::kan(int pos)
 	// kakan
 		printf("kakan\n");
 		kanpai = ai[pos]->cpai;
+		check_tyankan(pos,kanpai);
+		if (agari_flag) return;
 		if(naki_kotsu[pos][kanpai]) {
 			++n_naki_kan[pos];
 			naki_kan[pos][kanpai]=river[cur_pos].size();
@@ -720,6 +767,7 @@ void Game::kan(int pos)
 void Game::pon(int pos)
 {
 	int i;
+	nagaman[cur_pos]=1;
 	++n_naki[pos];
 	++n_naki_kotsu[pos];
 	naki_kotsu[pos][sutehai]=river[cur_pos].size();
@@ -743,6 +791,7 @@ void Game::pon(int pos)
 void Game::chii(int pos, int cpai, int aka)
 {
 	int i,p;
+	nagaman[cur_pos]=1;
 	++n_naki[pos];
 	p = cpai > sutehai ? sutehai : cpai;
 	n_naki_syuntsu[p]++;
@@ -1028,7 +1077,6 @@ void Game::create_ai(const char *style, int pos)
 	if (ai[pos]) delete ai[pos];
 	ai[pos] = new_ai(style);
 	ai[pos]->pos_me = pos;
-	//strcpy(ai[pos]->style,style);
 	int n = strlen(style)+1;	
 	ai[pos]->style = new char[n];
 	strcpy(ai[pos]->style, style);

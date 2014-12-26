@@ -93,10 +93,11 @@ protected:
 	int Ryukyoku;
 	int tehai[4][34];
 	int juni[4];
-	int tenpai[4][34];
+	int nagaman[4];
 	string agarilist[4];
 	int in_agari_list(int,int);
 	void check_furiten(int);
+	void check_tyankan(int,int);
 	int queue[11];
 	int **actlist;
 
@@ -113,6 +114,7 @@ protected:
 	void update_juni();
 	void clear_actlist(int);
 
+	void deal_nagaman(int);
 	void tsumogiri(int);
 	void tekiri(int);
 	void tsumoru(int);
