@@ -13,8 +13,6 @@ using namespace std;
 AI_Player::AI_Player(FZMAJ *maj) : AI(maj)
 
 {
-	th.clear();
-	th.resize(14);
 }
 
 AI_Player::~AI_Player() {

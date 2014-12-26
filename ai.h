@@ -31,6 +31,8 @@ public:
 
 	int *actlist;
 	
+	int num_tehai;
+
 	// naki_chii
 	int cpai,caka;
 
@@ -39,10 +41,13 @@ public:
 		int aka;
 		string name;
 		int score;
+		vector<int>machi;
+		int n_machi;
 	};
 
 	void tehai_14();
 	vector<Pai>th;
+	
 	void paili();
 	void collect_nokori();
 

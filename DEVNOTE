@@ -117,5 +117,8 @@ build 16
 	Fixed yaku nashi ron.
 	Fixed naki riichi.
 	
-
+build 17
+	
+	Added basic paili.
+	input "check" can show the basic paili.
 

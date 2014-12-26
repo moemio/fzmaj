@@ -71,6 +71,11 @@ void Game::start(long s)
 		update_juni();
 		printf("juni: %d,%d \n%d,%d \n%d,%d \n%d,%d\n",juni[0],score[juni[0]],
 	juni[1],score[juni[1]],juni[2],score[juni[2]],juni[3],score[juni[3]]);
+		for(i=0;i<4;++i)
+			if (!ai[i]) { // error->all(FLERR, "Insufficient AI number");
+				if(i==0)create_ai("player",i);
+				else create_ai("tsumogiri",i);	
+			}
 		gameLoop();
 			
 	}
@@ -206,7 +211,7 @@ void Game::make_actlist(int pos)
 		actlist[pos][ACT_TSUMOGIRI]=(naki_flag==0);
 		if(!riichi[pos]){
 			if(pos==0){
-				int st0 = syanten->calcSyantenAll(tehai[pos]);
+//				int st0 = syanten->calcSyantenAll(tehai[pos]);
 #ifdef GAME_DEBUG
 				printf("pos 0 syanten is: %d, is tenpai = %d\n",st0,syanten->is_tenpai(tehai[pos]));
 #endif
@@ -265,11 +270,6 @@ int Game::gameLoop()
 	int i,j;
 	// check ai
 
-	for(i=0;i<4;++i)
-		if (!ai[i]) { // error->all(FLERR, "Insufficient AI number");
-			if(i==0)create_ai("player",i);
-			else create_ai("tsumogiri",i);	
-		}
 	while(!endgame) {
 		initGame();
 		printf("start. oya = %d\n",oya);

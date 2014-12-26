@@ -350,7 +350,7 @@ void Input::check_agari()
 
 void Input::check_pai()
 {
-	int i,n;
+	int i,j,n;
 	int nst;
 	int c[34], last;
 	Bakyou *bak = new Bakyou;
@@ -439,6 +439,27 @@ void Input::check_pai()
 		printf("%d syanten.\n",syanten->min_syanten);
 		printf("normal: %d   7toi: %d   kokushi: %d\n",syanten->st_normal,syanten->st_7,syanten->st_13);
 	}
+	if (!game->ai[0])game->create_ai("general",0);
+	game->ai[0]->bak = bak;
+	game->ai[0]->paili();
+	int flag_dapai[34];
+	int idx;
+	for(i=0;i<34;++i)
+		flag_dapai[i]=0;
+	for(i=0;i<n;++i) {
+		if(game->ai[0]->th[i].n_machi!=0) {
+			idx = game->ai[0]->th[i].idx;
+			if(flag_dapai[idx]==0) {
+				printf("da %s machi %d : ",tools->Pai2str(idx,0).c_str(),game->ai[0]->th[i].n_machi);
+				for(j=0;j<game->ai[0]->th[i].machi.size();++j){
+					printf(" %s",tools->Pai2str(game->ai[0]->th[i].machi[j],0).c_str());
+				}
+				printf("\n");
+				flag_dapai[idx]=1;
+			}		
+		}
+	}
+	
 	agari->check_agari(bak,1);
 
 	printf ("*******************************\n");

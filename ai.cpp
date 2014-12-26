@@ -2,6 +2,7 @@
 #include "stdio.h"
 #include "game.h"
 #include "tools.h"
+#include "syanten.h"
 #include "memory.h"
 
 using namespace FZMAJ_NS;
@@ -10,6 +11,8 @@ AI::AI(FZMAJ *maj) : Pointers(maj)
 {
 	bak = new Bakyou;
 	memory->create_bakyou(bak);
+	th.clear();
+	th.resize(14);
 }
 
 AI::~AI() 
@@ -98,7 +101,36 @@ void AI::tehai_14()
 
 void AI::paili()
 {
+	int i,j,st,st1,st2;
+	int spai;
+	collect_nokori();
+	tehai_14();
+	num_tehai = tools->CountPai(bak->tehai);
 
+	st = syanten->calcSyantenAll(bak->tehai);	
+	printf("min st = %d\n",st);
+
+	for(i=0;i<num_tehai;++i) {
+		spai = th[i].idx;
+		th[i].n_machi = 0;
+		th[i].machi.clear();
+		--bak->tehai[spai];
+		st1 = syanten->calcSyantenAll(bak->tehai);
+		if (st1==st) {
+			for(j=0;j<34;++j) {
+				if(bak->nokori[j]) {
+					++bak->tehai[j];
+					st2 = syanten->calcSyantenAll(bak->tehai);
+					if (st2<st1) {
+						th[i].n_machi += bak->nokori[j];
+						th[i].machi.push_back(j);
+					}
+					--bak->tehai[j];
+				}
+			}
+		}
+		++bak->tehai[spai];
+	}
 }
 
 void AI::collect_nokori()
@@ -122,10 +154,13 @@ void AI::collect_nokori()
 			if(bak->naki_kotsu[j][i])bak->nokori[i]-=3;
 			if(bak->naki_kan[j][i])bak->nokori[i]-=1;
 			if(bak->naki_ankan[j][i])bak->nokori[i]-=1;
-			if(bak->naki_syuntsu[j][i])bak->nokori[i]-=1;
-			if(bak->naki_syuntsu[j][i-1] && i<27 && i%9>0)bak->nokori[i]-=1;
-			if(bak->naki_syuntsu[j][i-2] && i<27 && i%9>1)bak->nokori[i]-=1;
+			if(bak->naki_syuntsu[j][i])--bak->nokori[i];
+			if(bak->naki_syuntsu[j][i-1] && i<27 && i%9>0)--bak->nokori[i];
+			if(bak->naki_syuntsu[j][i-2] && i<27 && i%9>1)--bak->nokori[i];
 		}
 	}	
+
+	for(i=0;i<bak->n_dora;++i)
+		--bak->nokori[bak->dora[i]];
 
 }
