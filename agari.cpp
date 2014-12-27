@@ -171,8 +171,10 @@ int Agari::tokuHandan()
 		if (fan==0) {
 			printf("Yaku nashi.\n");
 			return 0;
-		}
-		else {
+		} else if (pattern[maxp].fan_nodora==0) {
+			printf("Yaku nashi.\n");
+			return 0;
+		} else {
 			if(toku_print)	printPattern(maxp);
 			score = pattern[maxp].score;
 			score_ko = pattern[maxp].score_ko;
@@ -343,6 +345,7 @@ void Agari::updateResult()
 		part.yakuman_baisu=0;
 		part.n_kotsu=n_kotsu;
 		part.fan=0;
+		part.fan_nodora=0;
 		part.fu=20;
 		part.n_naki=bak->n_naki[0];
 		part.n_syuntsu=n_syuntsu;

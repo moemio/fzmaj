@@ -88,12 +88,13 @@ void Game::clearGame()
 	// clear tehai, river, aka
 
 	for(i=0;i<4;i++) {
-		for(j=0;j<34;j++)
+		for(j=0;j<34;j++){
 			tehai[i][j]=0;
 			naki_kotsu[i][j]=0;
 			naki_syuntsu[i][j]=0;
 			naki_kan[i][j]=0;
 			naki_ankan[i][j]=0;
+		}
 		n_naki[i] = 0;
 		n_naki_syuntsu[i] = 0;
 		n_naki_kotsu[i] = 0;
@@ -526,7 +527,7 @@ void Game::ryukyoku(int ryu)
 	switch (ryu) {
 		case RYU_NORMAL:
 			printf("ryukyoku.\n");
-			for(i=0;i<4;++i)
+			for(i=0;i<4;++i) {
 				if(is_nagashi_mankan(i))deal_nagaman(i);
 				if (syanten->is_tenpai(tehai[i])) {
 					++nt;
@@ -534,6 +535,7 @@ void Game::ryukyoku(int ryu)
 					t[i]=1;
 				}
 				printf("nt=%d\n",nt);
+			}
 			if (nt==0) break;
 			else if (nt==4) {ren_zoku = 1;break;}
 			else {
@@ -795,7 +797,8 @@ void Game::chii(int pos, int cpai, int aka)
 	nagaman[cur_pos]=1;
 	++n_naki[pos];
 	p = cpai > sutehai ? sutehai : cpai;
-	n_naki_syuntsu[p]++;
+	n_naki_syuntsu[pos]++;
+	naki_syuntsu[pos][p]++;
 	if (cur_aka) {
 		aka_naki[pos][cur_aka-1]=1;
 		aka_river[dacya][cur_aka-1]=0;
@@ -1036,6 +1039,7 @@ void Game::createEmptyBakyou(Bakyou *bak, int pos)
 	bak->dead_ptr = dead_ptr;
 	bak->river.resize(4);
 	bak->river_stat.resize(4);
+	bak->naki_str="";
 	for(i=0;i<4;++i) {
 		bak->river[i].clear();
 		bak->river_stat[i].clear();

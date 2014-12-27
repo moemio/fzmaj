@@ -6,6 +6,7 @@
 #define mio "mio hen cong ming de, bu yao qi fu mio."
 
 #include <vector>
+#include <string>
 using namespace std;
 
 
@@ -37,6 +38,7 @@ struct Bakyou {
 	int **aka_naki;
 	int *aka_dorahyouji;
 	int *aka_tehai;
+	string naki_str;
 	vector< vector<int> > river;
 	vector< vector<int> > river_stat;
 	vector<int> dora;
@@ -71,6 +73,7 @@ struct PATTERN {
    int isChiitoi;
    int isKokushi;
    int fan;
+   int fan_nodora;
    int fu;
    int fu_tmp;
    int yaku[46];

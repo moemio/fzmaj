@@ -211,9 +211,10 @@ int Syanten::calcSyanten(int isSkip713)
 */
 	if ((nc%3==1) && min_syanten==0) {
 		gen_agarilist();
-		printf("tenpai.\n");
-		printf("agarilist = %s\n",agarilist.c_str());
+//		printf("tenpai.\n");
+//		printf("agarilist = %s\n",agarilist.c_str());
 	}
+	return 0;
 }
 
 void Syanten::gen_agarilist()

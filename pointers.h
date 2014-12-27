@@ -38,9 +38,9 @@ protected:
 	Input *&input;
 	Tools *&tools;
 	Syanten *&syanten;
+	Yaku *&yaku;
 	Game *&game;
 	Agari *&agari;
-	Yaku *&yaku;
 
 	FILE *&infile;
 	FILE *&logfile;

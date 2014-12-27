@@ -106,6 +106,8 @@ void AI::paili()
 	collect_nokori();
 	tehai_14();
 	num_tehai = tools->CountPai(bak->tehai);
+	
+	if(num_tehai%3!=2)return;
 
 	st = syanten->calcSyantenAll(bak->tehai);	
 	printf("min st = %d\n",st);

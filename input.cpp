@@ -439,6 +439,10 @@ void Input::check_pai()
 		printf("%d syanten.\n",syanten->min_syanten);
 		printf("normal: %d   7toi: %d   kokushi: %d\n",syanten->st_normal,syanten->st_7,syanten->st_13);
 	}
+	else printf("tenpai.\n");
+	//paili part
+	if(n%3==2) {
+
 	if (!game->ai[0])game->create_ai("general",0);
 	game->ai[0]->bak = bak;
 	game->ai[0]->paili();
@@ -458,6 +462,8 @@ void Input::check_pai()
 				flag_dapai[idx]=1;
 			}		
 		}
+	}
+
 	}
 	
 	agari->check_agari(bak,1);

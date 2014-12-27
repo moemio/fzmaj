@@ -3,7 +3,7 @@ SHELL = /bin/sh
 
 CC = g++
 LIBS = 
-CFLAGS = -g -O   
+CFLAGS = -g -O 
 DEPFLAGS = -M
 
 FLAG = $(CFLAGS) $(LIBS) $(DEPFLAGS)

@@ -20,7 +20,7 @@ AI_Player::~AI_Player() {
 
 void AI_Player::compute()
 {
-	int i,j,p,akap;
+	int i,j,k,p,akap;
 	printf("ai %d computing, dacya %d\n",pos_me,bak->dacya);
 	for (i=0;i<4;++i){
 		printf("river %d is :",i);
@@ -34,6 +34,20 @@ void AI_Player::compute()
 					printf("%s ",tools->Pai2str(p,0).c_str());
 			} else
 			printf("%s ",tools->Pai2str(p,0).c_str());
+		}
+		printf("\n");
+	}
+	for(i=0;i<4;++i){
+		printf("naki %d is : ",i);
+		for(j=0;j<34;++j){
+			if(bak->naki_ankan[i][j])printf("##%s%s## ", tools->Pai2str(j,0).c_str(),tools->Pai2str(j,0).c_str());
+			else if (bak->naki_kan[i][j])printf("%s%s%s%s ",tools->Pai2str(j,0).c_str(),tools->Pai2str(j,0).c_str(),
+				tools->Pai2str(j,0).c_str() ,tools->Pai2str(j,0).c_str());
+			else if(bak->naki_kotsu[i][j])printf("%s%s%s ",tools->Pai2str(j,0).c_str(),tools->Pai2str(j,0).c_str(),tools->Pai2str(j,0).c_str());
+			if(bak->naki_syuntsu[i][j])
+				for(k=0;k<bak->naki_syuntsu[i][j];++k)
+				printf("%s%s%s ",tools->Pai2str(j,0).c_str(),tools->Pai2str(j+1,0).c_str(),tools->Pai2str(j+2,0).c_str());
+
 		}
 		printf("\n");
 	}
