@@ -592,6 +592,7 @@ void Yaku::countFan()
 	}
 
 	fan_nodora=pattern->fan-yakus[YAKU_DORA] - yakus[YAKU_URA] - yakus[YAKU_AKA];
+	pattern->fan_nodora = fan_nodora;
 
 	pattern->fu_tmp=countFu();
 	pattern->fu=pattern->fu_tmp==25?25:(int)ceil((float)pattern->fu_tmp/10)*10;
